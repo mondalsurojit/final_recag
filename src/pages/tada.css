@@ -1,0 +1,44 @@
+.animated {
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+
+  .tada {
+    animation-name: tada;
+  }
+  
+  @keyframes tada {
+    0% {
+      transform: scale3d(1, 1, 1);
+    }
+  
+    10%, 20% {
+      transform: scale3d(.7, .7, .7) rotate3d(0, 0, 1, -3deg);
+    }
+  
+    30%, 50%, 70%, 90% {
+      transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, 3deg);
+    }
+  
+    40%, 60%, 80% {
+      transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+    }
+  
+    100% {
+      transform: scale3d(1, 1, 1);
+    }
+  }
+
+  
+  .progress-bar {
+    width: 0;
+    animation: scrollAnimation 2s forwards;
+}
+
+@keyframes scrollAnimation {
+    to {
+        width: 55%; /* Adjust to the desired width */
+    }
+}
+
+  

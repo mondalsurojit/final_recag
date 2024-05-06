@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Montserrat:wght@500&family=Mulish&family=Poppins:wght@500&display=swap');
+
+:root{
+    --font-size-one: 2.2rem;
+    --font-size-para: 1.2rem;
+    --font-size-explore: 1.5rem;
+    --font-size-explore-btn: 0.9rem;
+    --font-size-option: 0.8rem;
+}
+
+section.ranking{
+    overflow:hidden;
+    padding:0.4rem 1rem;
+    position:relative;
+}
+.rank-container{
+    max-width: 100rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+.rank-content{
+    display:flex;
+    flex-flow:column;
+    justify-content: flex-start;
+    padding:0.5rem;
+}
+.rank-title{
+    padding:1.5rem 0;
+    display:flex;
+}
+.rank-title>h3.main{
+    font-size:var(--font-size-one);
+    font-weight: 900;
+}
+.activity-list{
+    padding:1.5rem 0;
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap:2rem;
+}
+.compete,.data-set,.notebook,.discuss{
+    display:flex;
+    flex-flow:column;
+    align-items: center;
+    text-align: center;
+    position:relative;
+    gap:1rem;   
+    height: 2.5rem;
+    cursor:pointer;
+}
+.list-title{
+    font-size:var(--font-size-para);
+    font-weight: 500;
+    opacity: 0.8;
+}
+.list-border{
+    position: absolute;
+    bottom: 0;
+    border-top-left-radius: 1.3rem;
+    border-top-right-radius: 1.3rem;
+    transition: all 0.3s ease;
+}
+
+.compete:hover .list-border,.data-set:hover .list-border,.notebook:hover .list-border,.discuss:hover .list-border {
+    width: 100%;
+    height: 0.3rem;
+    transition: all 0.3s ease;
+    background-color: black;
+}
+.rank-logo{
+    padding:1rem 0;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.rank-grandmasters,.rank-masters,.rank-experts,.rank-contributors,.rank-novices{
+    display:flex;
+    gap:0.9rem;
+    justify-content: center;
+    align-items: center;
+}
+.rank-img{
+    display: flex;
+    align-items: center;
+}
+.rank-data{
+    display:flex;
+    flex-flow: column;
+    gap:0.2rem;
+    font-size:1rem;
+    font-weight: 400;
+    opacity: 0.9;
+}
+.logo-name{
+    text-transform: capitalize;
+}
+.ranking-table{
+    margin-top: 2rem;
+    width:100%;
+    border:0.2rem solid rgba(228,230,232,0.7);
+    border-radius: 1rem;
+    position: relative;
+    max-height: 58rem;
+    overflow: scroll;
+}
+.table-head{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: rgba(150, 151, 151, 0.766);
+    width:100%;
+    display:flex;
+    align-items: center;
+    border-bottom:0.1rem solid rgba(228,230,232,0.7);
+}
+.rank,.tier,.users,.medals,.points{
+    padding:1.5rem 0;
+    font-size: 1.15rem;
+    font-weight: 600;
+    /* opacity: 0.9; */
+    text-align: center;
+    text-transform: capitalize;
+}
+.users,.medals{
+    display:flex;
+    justify-content: flex-start;
+}
+.grid5{
+    display:grid;
+    grid-template-columns: 0.5fr 0.5fr 1.9fr 0.7fr 0.7fr;
+    text-align: center;
+}
+.table-data{
+    position: relative;
+    display:grid;
+    grid-template-columns: 0.5fr 0.5fr 1.9fr 0.7fr 0.7fr;
+    padding:0.5rem 0;
+    align-items: center;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    opacity: 0.9;
+    border-bottom:0.1rem solid rgba(228,230,232,0.7);
+}
+.table-data:hover{
+    background-color: rgb(241, 243, 244);
+}
+.rank-points,.tier-data,.medals-data{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+
+}
+.left-user-data{
+    display:flex;
+    align-items: center;
+    gap:0.5rem;
+}
+.left-user-data>img{
+    width:1.6rem;
+    height:1.6rem;
+}
+.user-data{
+    overflow: hidden;
+    white-space: nowrap;
+    display:flex;
+    align-items: center;
+    padding: 0 1.8rem 0 0.1rem;
+    justify-content: space-between;
+}
+.medals-data{
+    /* padding-left: 0.5rem; */
+    display:flex;
+    justify-content: flex-start;
+    gap:2.5rem;
+    
+}
+.medal-logo{
+    display:flex;
+    gap:0.5rem;
+    align-items: center;
+}
+.medal-logo>img{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.rank-points{
+    font-size: 1.15rem;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+.ranking-table::-webkit-scrollbar{
+    display: none;
+}
+
+.rank-img{
+    width: 3rem;
+    height: 3rem;
+}
+.rank-im{
+    width: 100%;
+    height: 100%;
+}
+.tier-data{
+    width: 1.5rem;
+    height: 1.5rem;   
+}
+.medal-logo{
+    width: 2.5rem;
+    height: 2.5rem;  
+}
+
+
+/* css for responsiveness */
+@media screen and (max-width:991px){
+    .joined{
+        display: none;
+    }
+    .rank-container{
+        padding:0 0.2rem;
+    }
+}
+
+@media screen and (max-width:840px){
+    div.rank-logo{
+        flex-flow: column;
+        align-items: flex-start;
+        gap:1rem;
+    }
+    div.activity-list{
+        overflow: scroll hidden;
+    }
+    .rank-data{
+        flex-flow:row;
+        gap:0.7rem;
+    }
+    .tier,.tier-data{
+        display: none;
+    }
+    .table-data,.grid5{
+        grid-template-columns: 0.6fr 1.9fr 0.7fr 0.7fr;
+    }
+}
+
+@media screen and (max-width:600px){
+    .table-data,.grid5{
+        grid-template-columns: 0.5fr 1.2fr 0.7fr 0.7fr;
+    }
+}
+
+@media screen and (max-width:500px){
+    .table-data,.grid5{
+        grid-template-columns: 0.5fr 0.7fr 0.7fr 0.5fr;
+    }
+    .medals-data{
+        gap:2rem;
+    }
+    section.ranking{
+        padding: 0.3rem;
+    }
+    h3.main{
+        font-size: 1.8rem;
+    }
+    .list-title{
+        font-size: 0.9rem;
+    }
+    .rank-data{
+        font-size: 0.7rem;
+    }
+    .rank,.tier,.users,.medals,.points{
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width:400px){
+    body{
+        font-size:52.5% !important;
+    }
+    .table-data,.grid5{
+        grid-template-columns: 0.5fr 0.7fr 0.7fr 0.5fr;
+    }
+    .medals-data{
+        gap:1.5rem;
+    }
+    .ranking-table{
+        overflow: scroll;
+    }
+}
+@media screen and (max-width:350px){
+    .user-name{
+        display:none;
+    }
+}
+@media screen and (max-width:250px){
+    .user-name{
+        display:none;
+    }
+}
+
+
+
+
+
+
+
