@@ -1,6 +1,6 @@
 import './nutrify.css';
 import Home from './pages/Home';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Code from './pages/Codepage/Code';

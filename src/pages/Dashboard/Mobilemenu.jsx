@@ -215,162 +215,165 @@ function Mobilemenu() {
 
     return (
         <nav className='mobile' >
-            <div className='d-flex tit'>
-                <Link to="/" className=" " >
-                    {/* <img src={logo} alt='logo' className='logo' /> */}
-                    <span className='mo-tit'>Bharat Tech</span>
-                </Link>
-                <div className="menu" onClick={() => setMenuOpen(!menuOpen)} style={{ height: "1.5rem", width: "2rem", top: "1.5rem" }}>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-
-                <ul className={menuOpen ? "open" : ""} style={{ background: "#1e40ad", right: "0", marginTop: "55px" }}>
-                    <li>
-                        <Nav.Link className='mo-men'>
-                            <Link to="/dashboard" className={`si-menu flex items-center `} >
-                                <div className="side-menu__icon">
-                                    <Home size={20} />
-                                </div>
-                                <div className="side-menu__title ml-3 pt-1">
-                                    Dashboard
-                                </div>
-                            </Link>
-                        </Nav.Link>
-                    </li>
-                    <li>
-                        <Nav.Link className='mo-men'>
-                            <Link to="/Dataset" className={`si-menu flex items-center  `} >
-                                <div className="side-menu__icon">
-                                    <LayoutDashboard size={20} />
-                                </div>
-                                <div className="side-menu__title ml-3 pt-1">
-                                    Dataset
-                                </div>
-                            </Link>
-                        </Nav.Link>
-                    </li>
-                    <li>
-                        <Nav.Link className='mo-men'><Link to="/model" className={`si-menu flex items-center  `}>
-                            <div className="side-menu__icon">
-                                <Component size={20} />
-                            </div>
-                            <div className="side-menu__title ml-3 pt-1">
-                                Model
-                            </div>
-                        </Link> </Nav.Link>
-                    </li>
-                    <li>
-                        <Nav.Link className='mo-men'><Link to="/code" className={`si-menu flex items-center  `}>
-                            <div className="side-menu__icon">
-                                <FileCode2 size={20} />
-                            </div>
-                            <div className="side-menu__title ml-3 pt-1">
-                                Code
-                            </div>
-                        </Link></Nav.Link>
-                    </li>
-                    
-                    <li>
-                        <Nav.Link className='mo-men'>                        
-                        <Link to="/competition" className={`si-menu flex items-center  `}>
-                            <div className="side-menu__icon">
-                                <Laptop size={20}/>
-                            </div>
-                            <div className="side-menu__title ml-3 pt-1">
-                                Competitions
-                            </div>
-                        </Link></Nav.Link>
-                    </li>
-
-                    <li>
-                        <Nav.Link className='mo-men'><Link to="/courses" className={`si-menu flex items-center  `}>
-                            <div className="side-menu__icon">
-                                <BookMarked size={20}/>
-                            </div>
-                            <div className="side-menu__title ml-3 pt-1">
-                                Courses
-                            </div>
-                        </Link></Nav.Link>
-                    </li>
-
-                    <li>
-                        <Nav.Link className='mo-men'><Link to="/discussions" className={`si-menu flex items-center  `}>
-                            <div className="side-menu__icon">
-                                <Users size={20}/>
-                            </div>
-                            <div className="side-menu__title ml-3 pt-1">
-                                Discussions
-                            </div>
-                        </Link></Nav.Link>
-                    </li>
-
-                    <li>
-                        <Nav.Link className='mo-men'><Link to="/rankings" className={`si-menu flex items-center  `}>
-                            <div className="si-menu__icon">
-                                <Radio size={20}/>
-                            </div>
-                            <div className="side-menu__title ml-3 pt-1">
-                                Rankings
-                            </div>
-                        </Link></Nav.Link>
-                    </li>
-
-                    <li>
-                        <Nav.Link className='mo-men'><Link to="/documentation" className={`si-menu flex items-center  `}>
-                            <div className="side-menu__icon">
-                                <FileText size={20}/>
-                            </div>
-                            <div className="side-menu__title ml-3 pt-1">
-                                Research Paper
-                            </div>
-                        </Link></Nav.Link>
-                    </li>
-
-                    <li>
-                        <Nav.Link className='mo-men'><Link to="/blog" className={`si-menu flex items-center  `}>
-                            <div className="side-menu__icon">
-                                <Newspaper size={20}/>
-                            </div>
-                            <div className="side-menu__title ml-3 pt-1">
-                                Blog
-                            </div>
-                        </Link></Nav.Link>
-                    </li>
-
-                    <li>
-                        <Nav.Link className='mo-men'><Link to="/hostcomp" className={`si-menu flex items-center  `}>
-                            <div className="side-menu__icon">
-                                <ScreenShare size={20}/>
-                            </div>
-                            <div className="side-menu__title ml-3">
-                                Host Competitions
-                            </div>
-                        </Link></Nav.Link>
-                    </li>
-
-                    <li>
-                        <Nav.Link className='mo-men'><Link to="/privacy" className={`si-menu flex items-center  `}>
-                            <div className="si-menu__icon">
-                                <GlobeLock size={20}/>
-                            </div>
-                            <div className="side-menu__title ml-3 pt-1">
-                                Privacy
-                            </div>
-                        </Link></Nav.Link>
-                    </li>
-
-
-
-
-
-                </ul>
-
-
-            </div>
+           
         </nav>
     );
 }
 
 export default Mobilemenu;
+
+
+// {/* <div className='d-flex tit'>
+// <Link to="/" className=" " >
+//     {/* <img src={logo} alt='logo' className='logo' /> */}
+//     <span className='mo-tit'>Bharat Tech</span>
+// </Link>
+// <div className="menu" onClick={() => setMenuOpen(!menuOpen)} style={{ height: "1.5rem", width: "2rem", top: "1.5rem" }}>
+//     <span></span>
+//     <span></span>
+//     <span></span>
+// </div>
+
+// <ul className={menuOpen ? "open" : ""} style={{ background: "#1e40ad", right: "0", marginTop: "55px" }}>
+//     <li>
+//         <Nav.Link className='mo-men'>
+//             <Link to="/dashboard" className={`si-menu flex items-center `} >
+//                 <div className="side-menu__icon">
+//                     <Home size={20} />
+//                 </div>
+//                 <div className="side-menu__title ml-3 pt-1">
+//                     Dashboard
+//                 </div>
+//             </Link>
+//         </Nav.Link>
+//     </li>
+//     <li>
+//         <Nav.Link className='mo-men'>
+//             <Link to="/Dataset" className={`si-menu flex items-center  `} >
+//                 <div className="side-menu__icon">
+//                     <LayoutDashboard size={20} />
+//                 </div>
+//                 <div className="side-menu__title ml-3 pt-1">
+//                     Dataset
+//                 </div>
+//             </Link>
+//         </Nav.Link>
+//     </li>
+//     <li>
+//         <Nav.Link className='mo-men'><Link to="/model" className={`si-menu flex items-center  `}>
+//             <div className="side-menu__icon">
+//                 <Component size={20} />
+//             </div>
+//             <div className="side-menu__title ml-3 pt-1">
+//                 Model
+//             </div>
+//         </Link> </Nav.Link>
+//     </li>
+//     <li>
+//         <Nav.Link className='mo-men'><Link to="/code" className={`si-menu flex items-center  `}>
+//             <div className="side-menu__icon">
+//                 <FileCode2 size={20} />
+//             </div>
+//             <div className="side-menu__title ml-3 pt-1">
+//                 Code
+//             </div>
+//         </Link></Nav.Link>
+//     </li>
+    
+//     <li>
+//         <Nav.Link className='mo-men'>                        
+//         <Link to="/competition" className={`si-menu flex items-center  `}>
+//             <div className="side-menu__icon">
+//                 <Laptop size={20}/>
+//             </div>
+//             <div className="side-menu__title ml-3 pt-1">
+//                 Competitions
+//             </div>
+//         </Link></Nav.Link>
+//     </li>
+
+//     <li>
+//         <Nav.Link className='mo-men'><Link to="/courses" className={`si-menu flex items-center  `}>
+//             <div className="side-menu__icon">
+//                 <BookMarked size={20}/>
+//             </div>
+//             <div className="side-menu__title ml-3 pt-1">
+//                 Courses
+//             </div>
+//         </Link></Nav.Link>
+//     </li>
+
+//     <li>
+//         <Nav.Link className='mo-men'><Link to="/discussions" className={`si-menu flex items-center  `}>
+//             <div className="side-menu__icon">
+//                 <Users size={20}/>
+//             </div>
+//             <div className="side-menu__title ml-3 pt-1">
+//                 Discussions
+//             </div>
+//         </Link></Nav.Link>
+//     </li>
+
+//     <li>
+//         <Nav.Link className='mo-men'><Link to="/rankings" className={`si-menu flex items-center  `}>
+//             <div className="si-menu__icon">
+//                 <Radio size={20}/>
+//             </div>
+//             <div className="side-menu__title ml-3 pt-1">
+//                 Rankings
+//             </div>
+//         </Link></Nav.Link>
+//     </li>
+
+//     <li>
+//         <Nav.Link className='mo-men'><Link to="/documentation" className={`si-menu flex items-center  `}>
+//             <div className="side-menu__icon">
+//                 <FileText size={20}/>
+//             </div>
+//             <div className="side-menu__title ml-3 pt-1">
+//                 Research Paper
+//             </div>
+//         </Link></Nav.Link>
+//     </li>
+
+//     <li>
+//         <Nav.Link className='mo-men'><Link to="/blog" className={`si-menu flex items-center  `}>
+//             <div className="side-menu__icon">
+//                 <Newspaper size={20}/>
+//             </div>
+//             <div className="side-menu__title ml-3 pt-1">
+//                 Blog
+//             </div>
+//         </Link></Nav.Link>
+//     </li>
+
+//     <li>
+//         <Nav.Link className='mo-men'><Link to="/hostcomp" className={`si-menu flex items-center  `}>
+//             <div className="side-menu__icon">
+//                 <ScreenShare size={20}/>
+//             </div>
+//             <div className="side-menu__title ml-3">
+//                 Host Competitions
+//             </div>
+//         </Link></Nav.Link>
+//     </li>
+
+//     <li>
+//         <Nav.Link className='mo-men'><Link to="/privacy" className={`si-menu flex items-center  `}>
+//             <div className="si-menu__icon">
+//                 <GlobeLock size={20}/>
+//             </div>
+//             <div className="side-menu__title ml-3 pt-1">
+//                 Privacy
+//             </div>
+//         </Link></Nav.Link>
+//     </li>
+
+
+
+
+
+// </ul>
+
+
+// </div> */}

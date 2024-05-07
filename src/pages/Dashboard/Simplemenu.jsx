@@ -27,7 +27,7 @@ const Simplemenu = () => {
     }, []);
     
     return (
-        <div style={{ fontSize: "14px", color: "white" , backgroundColor:"#1e40ad"}}>
+        <div className='' style={{ fontSize: "14px", color: "white" , backgroundColor:"#1e40ad"}}>
 
 
             {/* <!-- BEGIN: Simple Menu --> */}

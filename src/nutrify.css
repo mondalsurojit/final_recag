@@ -13,19 +13,10 @@
     top: 60px; /* Move down */
   }
 }
-/* 
-body{
-  overflow-x: hidden;
-}
 
-.hover\:bg-white:hover,
-.hover\:text-slateblue:hover,
-.relative:hover button {
-    opacity: 100;
-} */
-.landingpage{
+body{
   background-color: #2434b3;
-  /* overflow-x: hidden; */
+ 
 }
 
 
