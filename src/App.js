@@ -20,7 +20,7 @@ import Dashboard from './pages/Dashboard/Dashboard.jsx';
 import Community from './pages/Discussions Page/Community.jsx';
 function App() {
   return (
-    <div className="App">
+    <div className="App ">
       <AppProvider>
 
         <BrowserRouter>

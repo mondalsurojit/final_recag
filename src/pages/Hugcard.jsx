@@ -8,7 +8,7 @@ function Hugcard() {
     return (
         <div>
 
-            <div className='hugcard'>
+            <div className='hugcard sm:w-[510px] p-2'>
                 <div className='flex p-2'>
                     <Database />
                     <h2 className='mt-1 ml-3' style={{ fontSize: "16px" }}>microsoft/orca-math-word-problems-200k</h2>

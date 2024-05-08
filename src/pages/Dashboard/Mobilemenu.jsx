@@ -202,7 +202,7 @@ import { Anvil } from 'lucide-react';
 
 // export default Mobilemenu
 import React, { useState } from 'react';
-import './Mobilemenu.css'; // Import CSS styles for the mobile menu
+// import './Mobilemenu.css'; // Import CSS styles for the mobile menu
 import { Link } from 'react-router-dom';
 
 // import Container from 'react-bootstrap/Container';
@@ -214,7 +214,7 @@ function Mobilemenu() {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        <nav className='mobile' >
+        <nav className='mobile bg-red-200' >
            
         </nav>
     );
