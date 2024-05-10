@@ -224,7 +224,7 @@ h1.trending-title,h1.social-title,h1.finance-title,h1.rogrammming-title,h1.textd
     display: flex;
     color: #fff;
     opacity: 0.95;
-    background-color: rgb(25, 25, 27);
+    background-color:#2434b3;
     font-size: var(--font-size-para);
     font-weight: 400;
     cursor: pointer;
