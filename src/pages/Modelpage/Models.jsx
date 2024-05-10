@@ -27,6 +27,7 @@ import Simplemenu from '../Dashboard/Simplemenu'
 import profile4 from "../image/fakers/profile-4.jpg"
 import { ArrowDownNarrowWide, BellRing, Search } from 'lucide-react';
 import Hugcard from '../Hugcard';
+import { FaPlus } from 'react-icons/fa';
 
 export default function Models() {
 
@@ -39,7 +40,18 @@ export default function Models() {
         }));
     };
 
+    const [isOpen, setIsOpen] = useState(false);
 
+    const toggleModal = () => {
+        setIsOpen(!isOpen);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Your form submission logic here
+        console.log("Form submitted!");
+        toggleModal();
+    };
 
     const { pos } = useContext(AppContext);
     const searchModels = "Search Models";
@@ -153,19 +165,19 @@ export default function Models() {
 
 
             <Mobilemenu />
-            <div className="mt-[4.7rem] flex md:mt-0">
+            <div className="flex sm:m-8 m-2">
                 <Simplemenu style={{ color: "#fff" }} />
-                <section className={`model das`} style={{ overflow: 'scroll', height: "100vh", width: "100vw", backgroundColor: "#f1f5f9", borderRadius: "15px" }}
+                <section className={`model das`} style={{ overflow: 'scroll', height: "100vh", width: "100vw", backgroundColor: "white", borderRadius: "15px", padding: "0 2rem" }}
                 >
-                    <div className="container">
+                    <div className="container p-1">
                         <div className="model-section">
                             <div className="top-section">
 
                                 {/* <!-- BEGIN: Top Bar --> */}
-                                <div className="relative z-[51] flex h-[40px] items-center border-b border-slate-200" style={{ marginTop: "-28px", padding: "0 10px" , zIndex:"0"}}>
+                                <div className="relative z-[51] flex h-[40px] items-center border-b border-slate-200" style={{ marginTop: "-10px", padding: "0 10px", zIndex: "0" }}>
 
                                     {/* <!-- BEGIN: Breadcrumb --> */}
-                                    <div aria-label="breadcrumb" className="flex -intro-x mr-auto hidden sm:flex">
+                                    <div aria-label="breadcrumb" className=" -intro-x mr-auto hidden sm:flex">
                                         <ol className="flex items-center text-theme-1 dark:text-slate-300" >
                                             <li className="">
                                                 <a href="/">Application</a>
@@ -200,11 +212,77 @@ export default function Models() {
                                     <div className="model-content">
                                         <h1 className="main-title">Models</h1>
                                         <p className="model-para">Search and discover hundreds of trained, ready-to-deploy machine learning models in one place.</p>
+
+
+
+                                        <div className='flex flex-row gap-[1rem]'>
+                                            <button
+                                                className="bg-darkblue-100 hover:bg-blue-600 text-white font-[600]  flex"
+                                                onClick={toggleModal}
+                                                style={{ borderRadius: "20px", padding: "8px 16px 8px 12px" }}
+                                            >
+                                                <FaPlus className='plus-icon' /> <span className='ml-2 text-[14px]'>Add Model</span>
+                                            </button>
+                                            {isOpen && (
+                                                <div className="fixed inset-0 flex justify-center items-center z-50">
+                                                    <div className="absolute inset-0 bg-black opacity-50"></div>
+                                                    <div className="dataform bg-white sm:bg-red-400 p-8 rounded shadow-md z-50">
+                                                        <h2 className="text-2xl font-bold mb-4">Popup Form</h2>
+                                                        <form onSubmit={handleSubmit}>
+                                                            <div className="mb-4">
+                                                                <label className="block text-gray-700 font-bold mb-2" htmlFor="name">Name</label>
+                                                                <input className="border rounded px-3 py-2 w-full" type="text" id="name" name="name" required />
+                                                            </div>
+                                                            <div className="mb-4">
+                                                                <label className="block text-gray-700 font-bold mb-2" htmlFor="title">Title</label>
+                                                                <input className="border rounded px-3 py-2 w-full" type="text" id="title" name="title" required />
+                                                            </div>
+                                                            <div className="mb-4">
+                                                                <label className="block text-gray-700 font-bold mb-2" htmlFor="description">Description</label>
+                                                                <textarea className="border rounded px-3 py-2 w-full" id="description" name="description" required ></textarea>
+                                                            </div>
+                                                            <div className="mb-4">
+                                                                <label className="block text-gray-700 font-bold mb-2">Gender</label>
+                                                                <div>
+                                                                    <label className="inline-flex items-center mr-4">
+                                                                        <input type="radio" className="form-radio text-blue-500" name="gender" value="male" required />
+                                                                        <span className="ml-2">Male</span>
+                                                                    </label>
+                                                                    <label className="inline-flex items-center">
+                                                                        <input type="radio" className="form-radio text-blue-500" name="gender" value="female" required />
+                                                                        <span className="ml-2">Female</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div className="text-right">
+                                                                <button
+                                                                    className="bg-blue-600 hover:bg-darkblue-200 text-white font-bold py-2 px-4 rounded mr-2"
+                                                                    type="submit"
+                                                                >
+                                                                    Submit
+                                                                </button>
+                                                                <button
+                                                                    className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded"
+                                                                    onClick={toggleModal}
+                                                                >
+                                                                    Cancel
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            )}
+
+
+                                        </div>
                                     </div>
                                     <div className="models-image">
                                         <img src={img1} alt="models" width={220} height={170} />
                                     </div>
+
+
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -220,24 +298,40 @@ export default function Models() {
                             </div>
 
                             <div className='flex mb-6'>
-                                <span className='flex items-center p-2 mr-3' style={{ backgroundColor: "#1e40ad", color: "white", fontSize: "18px" }}><ArrowDownNarrowWide /> Filters</span>
+                                {/* <span className='flex items-center  mr-3' style={{padding:"6px 12px" ,backgroundColor: "#1e40ad", color: "white", fontSize: "14px" , borderRadius:"16px" }}><ArrowDownNarrowWide size={16}/><span className='ml-2'>Filters</span> </span> */}
+                                <span
+                                    className="bg-darkblue-100 mr-3 hover:bg-blue-600 text-white font-[600] flex justify-center items-center"
 
-                                <div className='flex overflow-auto mainy m-1 mr-2'>
+                                    style={{ borderRadius: "20px", padding: "0px 16px 0px 12px" }}
+                                >
+                                    <ArrowDownNarrowWide /> <span className='ml-2  text-[14px]'>Filters</span>
+                                </span>
+                                <div className="flex overflow-auto mainy m-1 mr-2">
                                     {data.map((item) => (
                                         <div
-                                            className={`opti flex mr-3`}
+                                            className=" flex mr-3"
                                             key={item.id}
-                                            style={{ fontSize: "18px", backgroundColor: buttonStates[item.id] ? '#1e40ad' : 'white', color: buttonStates[item.id] ? 'white' : 'black' }}
                                         >
                                             <button
                                                 onClick={() => handle(item.id)}
-                                                className="p-1"
+                                                style={{ borderRadius: "16px", padding: "6px 12px" }}
+                                                className={`text-[14 px] font-[400] border border-gray-400  ${buttonStates[item.id] ? 'bg-darkblue-100 text-white ' : 'bg-white text-black'}`}
                                             >
                                                 {item.title}
                                             </button>
                                         </div>
                                     ))}
                                 </div>
+
+
+
+
+
+
+
+
+
+
                             </div>
 
                             <div className="trending-cards grid4">
@@ -314,7 +408,7 @@ export default function Models() {
                             </div>
                             <div className="trending-side-data">See All</div>
                         </div>
-                        <div className="hugc grid2">
+                        <div className="hugc flex flex-row flex-wrap justify-evenly">
                             {
                                 recentData.map((data) => {
                                     return (

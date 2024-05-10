@@ -36,7 +36,7 @@ export default function Datasets() {
 
   const [buttonStates, setButtonStates] = useState({});
   const handle = (itemId) => {
-    
+
     setButtonStates((prevState) => ({
       ...prevState,
       [itemId]: !prevState[itemId] || false,
@@ -121,50 +121,6 @@ export default function Datasets() {
     },
   ]
 
-  // data must be used later on
-  // const exerciseData = [
-  //     {
-  //         id: 1, rating: 8,
-  //         image: img6,
-  //         title: "Factors influencing US House Prices",
-  //         desc1: "Jyotsna Gurjar",
-  //         time: 'Updated a day ago',
-  //         use: 'Usability 7.6',
-  //         size: '8 kB',
-  //         desc3: '1 File (CSV)'
-  //     },
-  //     {
-  //         id: 2, rating: 18,
-  //         image: img7,
-  //         title: "Online Retail Transaction Records",
-  //         desc1: "The Devastator",
-  //         time: 'Updated 2 days ago',
-  //         use: 'Usability 7.1',
-  //         size: '9 MB',
-  //         desc3: '1 File (CSV)'
-  //     },
-  //     {
-  //         id: 3, rating: 12,
-  //         image: img4,
-  //         title: "SXSW 2019 Schedule Dataset",
-  //         desc1: "The Devastator",
-  //         time: 'Updated 4 days ago',
-  //         use: 'Usability 10.0',
-  //         size: '2 MB',
-  //         desc3: '3 File (CSV,other)'
-  //     },
-  //     {
-  //         id: 4, rating: 18,
-  //         image: img8,
-  //         title: "Heart Failure Prediction",
-  //         desc1: "Bhavik Jikadara",
-  //         time: 'Updated 4 days ago',
-  //         use: 'Usability 8.8',
-  //         size: '4 kB',
-  //         desc3: '1 File (CSV)'
-  //     },
-  // ]
-
 
   const recentData = [
     {
@@ -224,6 +180,21 @@ export default function Datasets() {
       likes: "25"
     }
   ]
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Your form submission logic here
+    console.log("Form submitted!");
+    toggleModal();
+  };
+
+
   return (
     <div>
 
@@ -231,9 +202,9 @@ export default function Datasets() {
 
 
       <Mobilemenu />
-      <div className="mt-[4.7rem] flex md:mt-0">
-        <Simplemenu style={{ color: "#fff" }} />
-        <section className={`dataset das`} style={{ overflow: 'scroll', height: "100vh", width: "100vw", backgroundColor: "#f1f5f9", borderRadius: "15px" }}
+      <div className=" flex sm:m-8 m-2">
+        <Simplemenu />
+        <section className={`dataset das`} style={{ overflow: 'scroll', overflowX: "hidden", height: "100vh", width: "100vw", backgroundColor: "#f1f5f9", borderRadius: "15px" }}
         >
           <div className="container">
             <div className="dataset-section">
@@ -241,10 +212,10 @@ export default function Datasets() {
 
 
                 {/* <!-- BEGIN: Top Bar --> */}
-                <div className="relative z-[51] flex h-[40px] items-center border-b border-slate-200" style={{ marginTop: "-28px", padding: "0 10px",zIndex:"0" }}>
+                <div className="relative z-[51] flex h-[40px] items-center border-b border-slate-200" style={{ marginTop: "-10px", padding: "0 10px 5px 10px", zIndex: "0" }}>
 
                   {/* <!-- BEGIN: Breadcrumb --> */}
-                  <div aria-label="breadcrumb" className="flex -intro-x mr-auto hidden sm:flex">
+                  <div aria-label="breadcrumb" className=" -intro-x mr-auto hidden sm:flex">
                     <ol className="flex items-center text-theme-1 dark:text-slate-300" >
                       <li className="">
                         <a href="/">Application</a>
@@ -277,27 +248,91 @@ export default function Datasets() {
 
 
                 <div className="dataset-details">
-                  <div className="dataset-content">
+                  <div className="dataset-content p-4">
                     <h1 className="main-title">Datasets</h1>
                     <p className="dataset-para">Explore, analyze, and share quality data. Learn more about data types, creating, and collaborating.</p>
                     {/* <Buttons /> */}
 
-                    <div className='buttons'>
+                    {/* <div className='buttons'>
                       <div className="button first" style={{ backgroundColor: " #1e40ad " }}>
                         <FaPlus className='plus-icon' />
-                        <button style={{color:"white"}}>
-                          <Link to="/" style={{color:"white"}}>Add dataset</Link>
+                        <button style={{ color: "white" }}>
+                          <Link to="/" style={{ color: "white" }}>Add dataset</Link>
                         </button>
-                        
+
                       </div>
                       <div className="button second">
                         <div className="button-content">Your Work</div>
                       </div>
+                    </div> */}
+
+
+                    <div className='flex flex-row gap-[1rem]'>
+                      <button
+                        className="bg-darkblue-100 hover:bg-blue-600 text-white font-[600]  flex"
+                        onClick={toggleModal}
+                        style={{ borderRadius: "20px", padding: "8px 16px 8px 12px" }}
+                      >
+                        <FaPlus className='plus-icon' /> <span className='ml-2 text-[14px]'>Add Dataset</span>
+                      </button>
+                      {isOpen && (
+                        <div className="fixed inset-0 flex justify-center items-center z-50">
+                          <div className="absolute inset-0 bg-black opacity-50"></div>
+                          <div className="dataform bg-white sm:bg-red-400 p-8 rounded shadow-md z-50">
+                            <h2 className="text-2xl font-bold mb-4">Popup Form</h2>
+                            <form onSubmit={handleSubmit}>
+                              <div className="mb-4">
+                                <label className="block text-gray-700 font-bold mb-2" htmlFor="name">Name</label>
+                                <input className="border rounded px-3 py-2 w-full" type="text" id="name" name="name" required />
+                              </div>
+                              <div className="mb-4">
+                                <label className="block text-gray-700 font-bold mb-2" htmlFor="title">Title</label>
+                                <input className="border rounded px-3 py-2 w-full" type="text" id="title" name="title" required />
+                              </div>
+                              <div className="mb-4">
+                                <label className="block text-gray-700 font-bold mb-2" htmlFor="description">Description</label>
+                                <textarea className="border rounded px-3 py-2 w-full" id="description" name="description" required ></textarea>
+                              </div>
+                              <div className="mb-4">
+                                <label className="block text-gray-700 font-bold mb-2">Gender</label>
+                                <div>
+                                  <label className="inline-flex items-center mr-4">
+                                    <input type="radio" className="form-radio text-blue-500" name="gender" value="male" required />
+                                    <span className="ml-2">Male</span>
+                                  </label>
+                                  <label className="inline-flex items-center">
+                                    <input type="radio" className="form-radio text-blue-500" name="gender" value="female" required />
+                                    <span className="ml-2">Female</span>
+                                  </label>
+                                </div>
+                              </div>
+                              <div className="text-right">
+                                <button
+                                  className="bg-blue-600 hover:bg-darkblue-200 text-white font-bold py-2 px-4 rounded mr-2"
+                                  type="submit"
+                                >
+                                  Submit
+                                </button>
+                                <button
+                                  className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded"
+                                  onClick={toggleModal}
+                                >
+                                  Cancel
+                                </button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      )}
+
+
                     </div>
 
 
+
+
                   </div>
-                  <div className="datasets-image">
+                  <div className="datasets-image pr-4">
                     <img src={img1} alt="logo-1" width={220} height={170} />
                   </div>
                 </div>
@@ -307,40 +342,56 @@ export default function Datasets() {
 
 
 
-          <div className='container'>
+          <div className='container p-4'>
             <div className="trending-section">
               <div className="top-trending">
                 <div className="trending-logo">
                   <MdOutlineInsights className="timeline-icon" />
                   <h1 className="trending-title">Trending Datasets</h1>
                 </div>
-                <div className="trending-side-data">See All</div>
+                <div className="trending-side-data ">See All</div>
               </div>
 
 
               <div className='flex mb-6'>
-                <span className='flex items-center p-2 mr-3' style={{ backgroundColor: "#1e40ad", color: "white", fontSize: "18px" }}><ArrowDownNarrowWide /> Filters</span>
+                {/* <span className='flex items-center  mr-3' style={{padding:"6px 12px" ,backgroundColor: "#1e40ad", color: "white", fontSize: "14px" , borderRadius:"16px" }}><ArrowDownNarrowWide size={16}/><span className='ml-2'>Filters</span> </span> */}
+                <span
+                  className="bg-darkblue-100 mr-3 hover:bg-blue-600 text-white font-[600] flex justify-center items-center"
 
-                <div className='flex overflow-auto mainy m-1 mr-2'>
+                  style={{ borderRadius: "20px", padding: "0px 16px 0px 12px" }}
+                >
+                  <ArrowDownNarrowWide /> <span className='ml-2  text-[14px]'>Filters</span>
+                </span>
+                <div className="flex overflow-auto mainy m-1 mr-2">
                   {data.map((item) => (
                     <div
-                      className={`opti flex mr-3`}
+                      className=" flex mr-3"
                       key={item.id}
-                      style={{ fontSize: "18px", backgroundColor: buttonStates[item.id] ? '#1e40ad' : 'white', color: buttonStates[item.id] ? 'white' : 'black' }}
                     >
                       <button
                         onClick={() => handle(item.id)}
-                        className="p-1"
+                        style={{ borderRadius: "16px", padding: "6px 12px" }}
+                        className={`text-[14 px] font-[400] border border-gray-400  ${buttonStates[item.id] ? 'bg-darkblue-100 text-white ' : 'bg-white text-black'}`}
                       >
                         {item.title}
                       </button>
                     </div>
                   ))}
                 </div>
+
+
+
+
+
+
+
+
+
+
               </div>
 
 
-              <div className="trending-cards grid4" style={{ overflow: "auto" }}>
+              <div className="trending-cards flex flex-row gap-[1rem] m-2" style={{ overflow: "auto" }}>
                 {
                   trendingData.map((data) => {
                     return (
@@ -352,98 +403,6 @@ export default function Datasets() {
             </div>
 
           </div>
-
-          {/* this is other card which can be usefull in future so just commenting this code  */}
-          {/* <div className="exercise-section">
-                            <div className="top-exercise">
-                                <div className="exercise-logo">
-                                    <GoTag className="exercise-icon" />
-                                    <h1 className="exercise-title">Exercise</h1>
-                                </div>
-                                <div className="exercise-side-data">See All</div>
-                            </div>
-                            <div className="exercise-cards grid4">
-                                {
-                                    exerciseData.map((data) => {
-                                        return (
-                                            <Cards key={data.id}{...data} />
-                                        )
-                                    })
-                                }
-                            </div>
-                        </div>
-                        <div className="finance-section">
-                            <div className="top-finance">
-                                <div className="finance-logo">
-                                    <GoTag className="finance-icon" />
-                                    <h1 className="finance-title">Finance</h1>
-                                </div>
-                                <div className="finance-side-data">See All</div>
-                            </div>
-                            <div className="finance-cards grid4">
-                                {
-                                    exerciseData.map((data) => {
-                                        return (
-                                            <Cards key={data.id}{...data} />
-                                        )
-                                    })
-                                }
-                            </div>
-                        </div>
-                        <div className="programmming-section">
-                            <div className="top-programmming">
-                                <div className="programmming-logo">
-                                    <GoTag className="programmming-icon" />
-                                    <h1 className="programmming-title">Programming</h1>
-                                </div>
-                                <div className="programmming-side-data">See All</div>
-                            </div>
-                            <div className="programmming-cards grid4">
-                                {
-                                    exerciseData.map((data) => {
-                                        return (
-                                            <Cards key={data.id}{...data} />
-                                        )
-                                    })
-                                }
-                            </div>
-                        </div>
-                        <div className="textdata-section">
-                            <div className="top-textdata">
-                                <div className="textdata-logo">
-                                    <MdOutlineInsights className="textdata-icon" />
-                                    <h1 className="textdata-title">Text Data</h1>
-                                </div>
-                                <div className="textdata-side-data">See All</div>
-                            </div>
-                            <div className="textdata-cards grid4">
-                                {
-                                    exerciseData.map((data) => {
-                                        return (
-                                            <Cards key={data.id}{...data} />
-                                        )
-                                    })
-                                }
-                            </div>
-                        </div>
-                        <div className="social-section">
-                            <div className="top-social">
-                                <div className="social-logo">
-                                    <GoTag className="social-icon" />
-                                    <h1 className="social-title">Social Issues And Advocacy</h1>
-                                </div>
-                                <div className="social-side-data">See All</div>
-                            </div>
-                            <div className="social-cards grid4">
-                                {
-                                    exerciseData.map((data) => {
-                                        return (
-                                            <Cards key={data.id}{...data} />
-                                        )
-                                    })
-                                }
-                            </div>
-                        </div> */}
 
 
           {/* hugging face card */}
@@ -457,7 +416,7 @@ export default function Datasets() {
               </div>
               <div className="trending-side-data">See All</div>
             </div>
-            <div className="hugc grid2">
+            <div className="hugc flex flex-row flex-wrap justify-evenly">
               {
                 recentData.map((data) => {
                   return (
@@ -476,9 +435,7 @@ export default function Datasets() {
           </div>
           {/* </div> */}
         </section>
-        {/* <div className="ai-image">
-        <img src={aiLogo} alt="BharatAi" width="100" />
-      </div>  */}
+
       </div>
     </div>
 

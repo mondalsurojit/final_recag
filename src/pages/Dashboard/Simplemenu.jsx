@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import log from "../image/logo.svg"
+import React, { useEffect, useState } from 'react';
+import log from "../image/logo.svg";
 
 import {  Home } from 'lucide-react';
 import { LayoutDashboard } from 'lucide-react';
@@ -15,171 +15,168 @@ import { ScreenShare } from 'lucide-react';
 import { GlobeLock } from 'lucide-react';
 import { Anvil } from 'lucide-react';
 
-import "./checkactive.js"
-
-
 const Simplemenu = () => {
-
     const [activeLink, setActiveLink] = useState('');
 
     useEffect(() => {
         setActiveLink(window.location.pathname);
     }, []);
-    
+
     return (
-        <div className='' style={{ fontSize: "14px", color: "white" , backgroundColor:"#1e40ad"}}>
+        <div className="bg-red">
 
-
-            {/* <!-- BEGIN: Simple Menu --> */}
-            <div className="side-nav side-nav--simple hidden w-[200px] overflow-x-hidden pb-16 pr-5 md:block">
-                <a className="intro-x flex items-center pl-5 pt-6" href="/">
+            <div className="side-nav side-nav--simple hidden w-[230px] overflow-x-hidden pb-16 md:block">
+                <a className="intro-x flex items-center  pt-6 ml-4" href="/">
                     <img className="w-6" src={log} alt="Midone - Tailwind Admin Dashboard Template" />
-                    <span class="hidden ml-3 text-lg text-white xl:block" style={{zIndex:"0"}}>BharatTech</span>
+                    <span className="hidden ml-6 text-[1.5rem] text-white xl:block" style={{zIndex:"0"}}>BharatTech</span>
                 </a>
-                <div className="side-nav__divider my-6"></div>
-                <ul>
-                    <li className="">
-                        <a href="/dashboard" className={`side-menu flex items-center pl-5 ${activeLink === '/dashboard' ? 'active' : ''}`} >
+                <div className="side-nav__divider my-6 " ></div>
+                <ul className='ml-4 text-[1.25rem]'>
+                    <li className="pt-4">
+                        <a href="/dashboard" className={`side-menu flex items-center  ${activeLink === '/dashboard' ? 'bg-white text-black p-3 rounded-l-3xl' : 'text-white'}`} >
                             <div className="side-menu__icon">
-                                <Home size={20} />
+                                <Home size={22} />
                             </div>
-                            <div className="side-menu__title ml-3 pt-1">
+                            <div className="side-menu__title ml-6 pt-1">
                                 Dashboard
                             </div>
                         </a>
                     </li>
-
-                    <li>
-                        <a href="/Dataset" className={`side-menu flex items-center  ${activeLink === '/Dataset' ? 'active' : ''}`} >
+                    <li className='pt-6'>
+                        <a href="/Dataset" className={`side-menu flex items-center  ${activeLink === '/Dataset' ? 'bg-white text-black p-3 rounded-l-3xl' : 'text-white'}`} >
                             <div className="side-menu__icon">
-                                <LayoutDashboard size={20}/>
+                                <LayoutDashboard size={22}/>
                             </div>
-                            <div className="side-menu__title ml-3 pt-1">
-                                Dataset                          
+                            <div className="side-menu__title ml-6 pt-1">
+                                Dataset
                             </div>
                         </a>
                     </li>
-
-                    <li>
-                        <a href="/model" className={`side-menu flex items-center  ${activeLink === '/model' ? 'active' : ''}`}>
+                    <li className='pt-6'>
+                        <a href="/model" className={`side-menu flex items-center  ${activeLink === '/model' ? 'bg-white text-black p-3 rounded-l-3xl' : 'text-white'}`} >
                             <div className="side-menu__icon">
-                                <Component size={20}/>
+                                <Component size={22}/>
                             </div>
-                            <div className="side-menu__title ml-3 pt-1">
+                            <div className="side-menu__title ml-6 pt-1">
                                 Model
                             </div>
                         </a>
                     </li>
-                    <li>
-                        <a href="/code" className={`side-menu flex items-center  ${activeLink === '/code' ? 'active' : ''}`}>
+
+                    <li className='pt-6'>
+                        <a href="/code" className={`side-menu flex items-center  ${activeLink === '/code' ? 'bg-white text-black p-3 rounded-l-3xl' : 'text-white'}`} >
                             <div className="side-menu__icon">
-                                <FileCode2 size={20}/>
+                                <FileCode2 size={22}/>
                             </div>
-                            <div className="side-menu__title ml-3 pt-1">
+                            <div className="side-menu__title ml-6 pt-1">
                                 Code
                             </div>
                         </a>
                     </li>
 
-                    <li>
-                        <a href="/competition" className={`side-menu flex items-center  ${activeLink === '/competition' ? 'active' : ''}`}>
+                    <li className='pt-6'>
+                        <a href="/competition" className={`side-menu flex items-center  ${activeLink === '/competition' ? 'bg-white text-black p-3 rounded-l-3xl' : 'text-white'}`} >
                             <div className="side-menu__icon">
-                                <Laptop size={20}/>
+                                <Laptop size={22}/>
                             </div>
-                            <div className="side-menu__title ml-3 pt-1">
-                                Competitions
+                            <div className="side-menu__title ml-6 pt-1">
+                                Competition
                             </div>
                         </a>
                     </li>
 
-                    <li>
-                        <a href="/courses" className={`side-menu flex items-center  ${activeLink === '/courses' ? 'active' : ''}`}>
+                    <li className='pt-6'>
+                        <a href="/courses" className={`side-menu flex items-center  ${activeLink === '/courses' ? 'bg-white text-black p-3 rounded-l-3xl' : 'text-white'}`} >
                             <div className="side-menu__icon">
-                                <BookMarked size={20}/>
+                                <BookMarked size={22}/>
                             </div>
-                            <div className="side-menu__title ml-3 pt-1">
+                            <div className="side-menu__title ml-6 pt-1">
                                 Courses
                             </div>
                         </a>
                     </li>
 
-                    <li>
-                        <a href="/discussions" className={`side-menu flex items-center  ${activeLink === '/discussions' ? 'active' : ''}`}>
+                    <li className='pt-6'>
+                        <a href="/discussions" className={`side-menu flex items-center  ${activeLink === '/discussions' ? 'bg-white text-black p-3 rounded-l-3xl' : 'text-white'}`} >
                             <div className="side-menu__icon">
-                                <Users size={20}/>
+                                <Users size={22}/>
                             </div>
-                            <div className="side-menu__title ml-3 pt-1">
+                            <div className="side-menu__title ml-6 pt-1">
                                 Discussions
                             </div>
                         </a>
                     </li>
 
-                    <li>
-                        <a href="/rankings" className={`side-menu flex items-center  ${activeLink === '/rankings' ? 'active' : ''}`}>
+                    <li className='pt-6'>
+                        <a href="/rankings" className={`side-menu flex items-center  ${activeLink === '/rankings' ? 'bg-white text-black p-3 rounded-l-3xl' : 'text-white'}`} >
                             <div className="side-menu__icon">
-                                <Radio size={20}/>
+                                <Radio size={22}/>
                             </div>
-                            <div className="side-menu__title ml-3 pt-1">
+                            <div className="side-menu__title ml-6 pt-1">
                                 Rankings
                             </div>
                         </a>
                     </li>
-                    
-                    <li>
-                        <a href="/documentation" className={`side-menu flex items-center  ${activeLink === '/documentation' ? 'active' : ''}`}>
+
+                    <li className='pt-6'>
+                        <a href="/documentation" className={`side-menu flex items-center  ${activeLink === '/documentation' ? 'bg-white text-black p-3 rounded-l-3xl' : 'text-white'}`} >
                             <div className="side-menu__icon">
-                                <FileText size={20}/>
+                                <FileText size={22}/>
                             </div>
-                            <div className="side-menu__title ml-3 pt-1">
-                                Research Paper
+                            <div className="side-menu__title ml-6 pt-1">
+                                Documentation
                             </div>
                         </a>
                     </li>
-                    <li>
-                        <a href="/blog" className={`side-menu flex items-center  ${activeLink === '/blog' ? 'active' : ''}`}>
+
+                    <li className='pt-6'>
+                        <a href="/blog" className={`side-menu flex items-center  ${activeLink === '/blog' ? 'bg-white text-black p-3 rounded-l-3xl' : 'text-white'}`} >
                             <div className="side-menu__icon">
-                                <Newspaper size={20}/>
+                                <Newspaper size={22}/>
                             </div>
-                            <div className="side-menu__title ml-3 pt-1">
+                            <div className="side-menu__title ml-6 pt-1">
                                 Blog
                             </div>
                         </a>
                     </li>
-                    <li>
-                        <a href="/hostcomp" className={`side-menu flex items-center  ${activeLink === '/hostcomp' ? 'active' : ''}`}>
+
+                    <li className='pt-6'>
+                        <a href="/hostcomp" className={`side-menu flex items-center  ${activeLink === '/hostcomp' ? 'bg-white text-black p-3 rounded-l-3xl' : 'text-white'}`} >
                             <div className="side-menu__icon">
-                                <ScreenShare size={20}/>
+                                <ScreenShare/>
                             </div>
-                            <div className="side-menu__title ml-3">
-                                Host Competitions
+                            <div className="side-menu__title ml-6 pt-1">
+                               Host Competition
                             </div>
                         </a>
                     </li>
-                    <li>
-                        <a href="/privacy" className={`side-menu flex items-center  ${activeLink === '/privacy' ? 'active' : ''}`}>
+
+                    <li className='pt-6'>
+                        <a href="/privavcy" className={`side-menu flex items-center  ${activeLink === '/privavcy' ? 'bg-white text-black p-3 rounded-l-3xl' : 'text-white'}`} >
                             <div className="side-menu__icon">
-                                <GlobeLock size={20}/>
+                                <GlobeLock size={22}/>
                             </div>
-                            <div className="side-menu__title ml-3 pt-1">
-                                Privacy
+                            <div className="side-menu__title ml-6 pt-1">
+                              Privavcy
                             </div>
                         </a>
                     </li>
-                    <li>
-                        <a href="/team" className={`side-menu flex items-center  ${activeLink === '/team' ? 'active' : ''}`}>
+
+                    <li className='pt-6'>
+                        <a href="/team" className={`side-menu flex items-center  ${activeLink === '/team' ? 'bg-white text-black p-3 rounded-l-3xl' : 'text-white'}`} >
                             <div className="side-menu__icon">
-                                <Anvil size={20}/>
+                                <Anvil size={22}/>
                             </div>
-                            <div className="side-menu__title ml-3 pt-1">
-                                Team
+                            <div className="side-menu__title ml-6 pt-1">
+                              Team
                             </div>
                         </a>
                     </li>
+                    {/* Add other menu items here */}
                 </ul>
             </div>
-            {/* <!-- END: Simple Menu --> */}
         </div>
-    )
+    );
 }
 
 export default Simplemenu;

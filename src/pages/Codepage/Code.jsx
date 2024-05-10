@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import "./Code.css"
 import { SearchBar } from '../SearchBar'
 import { Buttons } from '../Buttons'
@@ -36,10 +36,21 @@ import { AppContext } from '../context/context';
 import Simplemenu from '../Dashboard/Simplemenu'
 import Mobilemenu from '../Dashboard/Mobilemenu'
 import profile4 from "../image/fakers/profile-4.jpg"
-import { BellRing, Search } from 'lucide-react'
+import { ArrowDownNarrowWide, BellRing, Search } from 'lucide-react'
 
 
 function Code() {
+
+
+
+    const [buttonStates, setButtonStates] = useState({});
+    const handle = (itemId) => {
+
+        setButtonStates((prevState) => ({
+            ...prevState,
+            [itemId]: !prevState[itemId] || false,
+        }));
+    };
 
 
     const { pos } = useContext(AppContext);
@@ -171,11 +182,11 @@ function Code() {
     return (
         <div>
             <Mobilemenu />
-            <div className="mt-[4.7rem] flex md:mt-0">
+            <div className="flex sm:m-8 m-2">
 
-            {/* <div className="flex"> */}
+                {/* <div className="flex"> */}
                 <Simplemenu style={{ color: "#fff" }} />
-                <section className={`code das`} style={{ overflow: 'scroll', height: "100vh", width: "100vw", background: "#f1f5f9", borderRadius: "15px" }}>
+                <section className={`code das`} style={{ overflow: 'scroll', height: "100vh", width: "100vw", background: "#f1f5f9", borderRadius: "15px", padding: "1rem 2rem" }}>
                     {/* <Header /> */}
                     <div className="container">
                         <div className="code-section">
@@ -184,10 +195,10 @@ function Code() {
 
 
                                 {/* <!-- BEGIN: Top Bar --> */}
-                                <div className="relative z-[51] flex h-[40px] items-center border-b border-slate-200" style={{ marginTop: "-28px", padding: "0 10px" , zIndex:"0"}}>
+                                <div className="relative z-[51] flex h-[40px] items-center border-b border-slate-200" style={{ marginTop: "-18px", padding: "0 10px", zIndex: "0" }}>
 
                                     {/* <!-- BEGIN: Breadcrumb --> */}
-                                    <div aria-label="breadcrumb" className="flex -intro-x mr-auto hidden sm:flex">
+                                    <div aria-label="breadcrumb" className=" -intro-x mr-auto hidden sm:flex">
                                         <ol className="flex items-center text-theme-1 dark:text-slate-300" >
                                             <li className="">
                                                 <a href="/">Application</a>
@@ -230,30 +241,60 @@ function Code() {
                             </div>
                         </div>
                     </div>
-                    <div className="">
-                        <div className="filter-section">
-                            <FilterSearchBar btnData={btnData[1]} />
-                            <div className="option-section">
-                                {
-                                    data.map((data) => {
-                                        return (
-                                            <div className="options" key={data.id}>{data.title}
-                                            </div>
-                                        )
-                                    })
-                                }
-                            </div>
-                        </div>
-                    </div>
+
+
                     <div className='container'>
                         <div className="trending-section">
-                            <div className="top-trending">
+                            <div className="flex justify-between">
                                 <div className="trending-logo">
                                     <MdOutlineInsights className="timeline-icon" />
                                     <h1 className="trending-title">Trending</h1>
                                 </div>
                                 <div className="trending-side-data">See All</div>
                             </div>
+
+                            <div className='flex mb-6'>
+                                {/* <span className='flex items-center  mr-3' style={{padding:"6px 12px" ,backgroundColor: "#1e40ad", color: "white", fontSize: "14px" , borderRadius:"16px" }}><ArrowDownNarrowWide size={16}/><span className='ml-2'>Filters</span> </span> */}
+
+
+                                {/* <div className=""> */}
+
+                                    <div className="filter-section">
+
+
+                                        <div className="option-section">
+                                            <span
+                                                className="bg-darkblue-100 mr-3 hover:bg-blue-600 text-white font-[600] flex justify-center items-center"
+
+                                                style={{ borderRadius: "20px", padding: "0px 16px 0px 12px" }}
+                                            >
+                                                <ArrowDownNarrowWide /> <span className='ml-2  text-[14px]'>Filters</span>
+                                            </span>
+                                            {
+
+                                                data.map
+                                                    ((data) => {
+                                                        return (
+                                                            <div onClick={() => handle(data.id)}
+                                                                className={`options text-[14 px] font-[400] border border-gray-400  ${buttonStates[data.id] ? 'bg-darkblue-100 text-white ' : 'bg-white text-black'}`} key={
+                                                                    data.id
+                                                                }>{data.title}
+                                                            </div>
+                                                        )
+                                                    })
+                                            }
+                                        </div>
+                                    {/* </div> */}
+                                </div>
+
+
+                            </div>
+
+
+
+
+
+
                             <div className="trending-cards grid4">
                                 {
                                     trendingCode.map((data) => {
@@ -338,8 +379,8 @@ function Code() {
                         </div>
                         <div className="explore-section">
                             <div className="explore-title">Didn&apos;t find what you were looking for?</div>
-                            <div className="explore-button">
-                                <div className="button-content">Explore all public notebooks</div>
+                            <div className="explore-button bg-darkblue-100">
+                                <div className="button-content ">Explore all public notebooks</div>
                             </div>
                         </div>
                     </div>

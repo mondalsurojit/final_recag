@@ -8,6 +8,16 @@
     --font-size-option: 0.8rem;
 }
 
+.dataform{
+    width: calc(100vw/3);
+}
+
+@media screen and (max-width:450px) {
+    .dataform{
+        width:calc(100vw/1.2)
+    }
+}
+
 section.dataset{
     overflow:hidden;
     padding:0.3rem 1rem;
@@ -357,8 +367,7 @@ div.imglesscard-para{
 /* css for card */
 .card{
     max-width:23rem;
-    min-width: 18rem;
-    height: 22rem;
+    height: 25rem;
     display: flex;
     flex-direction: column;
     border-radius: 16px;
@@ -498,7 +507,7 @@ figure>img{
     border-radius: 5px;
     margin-top: 10px;
     /* height: 90px; */
-    width: 40vw;
+    
     margin: 10px;
     
 }

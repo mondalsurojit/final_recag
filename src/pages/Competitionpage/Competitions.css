@@ -11,8 +11,9 @@
 a.lined{
     border-bottom: 1px solid grey;
     opacity: 0.8;
-    color: #000;
+    color:gray;
     text-decoration: none;
+    font-weight: 400;
 }
 a.lined:hover{
     border-bottom: 1px solid #000;
@@ -34,7 +35,7 @@ section.competition{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 2rem;
+    
 }
 .competition-content{
     display: flex;
@@ -97,7 +98,7 @@ p.competition-para{
     display: flex;
     color: #fff;
     opacity: 0.95;
-    background-color: rgb(25, 25, 27);
+    background-color: #2434b3;
     font-size: var(--font-size-para);
     font-weight: 400;
     cursor: pointer;
@@ -195,6 +196,10 @@ h1.trending-title,h1.social-title,h1.finance-title,h1.rogrammming-title,h1.textd
     padding-bottom: 3rem;
     border-bottom: 0.15rem solid rgb(218, 220, 224);
 }
+
+.textdata-cards::-webkit-scrollbar{
+    display: none;
+}
 .grid4{
     display:grid;
     grid-template-columns: repeat(4,1fr);
@@ -276,12 +281,19 @@ h1.trending-title,h1.social-title,h1.finance-title,h1.rogrammming-title,h1.textd
     font-weight: 300;
 }
 
-
+.communitytitle{
+    margin:2rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 40%;
+    color: #475569;
+}
 /* css for card */
 .card{
-    max-width:25rem;
-    min-width: 18rem;
-    height: 28rem;
+   min-width:200px;
+    height: 390px;
     display: flex;
     flex-direction: column;
     border-radius: 16px;
@@ -365,7 +377,7 @@ figure>img{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.2rem;
+    padding: 0.6rem;
     bottom: 0;
     left: 0;
     right: 0;

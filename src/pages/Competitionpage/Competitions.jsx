@@ -44,9 +44,24 @@ export default function Competitions() {
         }));
     };
 
-    const handleSubmit =()=>{
+
+    const handleSubmit = () => {
         console.log("this will handel the submit for competition")
     }
+
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleModal = () => {
+        setIsOpen(!isOpen);
+    };
+
+    const handleSubmity = (e) => {
+        e.preventDefault();
+        // Your form submission logic here
+        console.log("Form submitted!");
+        toggleModal();
+    };
 
     const data = [
         {
@@ -303,9 +318,9 @@ export default function Competitions() {
 
 
             <Mobilemenu />
-            <div className="mt-[4.7rem] flex md:mt-0">
+            <div className="flex sm:m-8 m-2">
                 <Simplemenu style={{ color: "#fff" }} />
-                <section className={`competition das`} style={{ overflow: 'scroll', height: "100vh", width: "100vw", backgroundColor: "#f1f5f9", borderRadius: "15px" }}
+                <section className={`competition das`} style={{ overflow: 'scroll', height: "100vh", width: "100vw", backgroundColor: "#f1f5f9", borderRadius: "15px", padding: "1.5rem 2rem" }}
                 >
                     <div className="container">
                         <div className="competition-section">
@@ -315,7 +330,7 @@ export default function Competitions() {
                                 <div className="relative  flex h-[40px] items-center border-b border-slate-200" style={{ marginTop: "-28px", padding: "0 10px", zIndex: "0" }}>
 
                                     {/* <!-- BEGIN: Breadcrumb --> */}
-                                    <div aria-label="breadcrumb" className="flex -intro-x mr-auto hidden sm:flex">
+                                    <div aria-label="breadcrumb" className=" -intro-x mr-auto hidden sm:flex">
                                         <ol className="flex items-center text-theme-1 dark:text-slate-300" >
                                             <li className="">
                                                 <a href="/">Application</a>
@@ -352,69 +367,64 @@ export default function Competitions() {
                                         <p className="competition-para">Grow your data science skills by competing in our exciting competitions. Find help in the <a href="/" className="lined">documentation</a> or learn about <a href="/" className="lined">Community Competitions</a>.</p>
 
                                         <div className='buttons'>
-                                            <div className="button first" style={{ backgroundColor: " #1e40ad " }}>
-                                                <FaPlus className='plus-icon' />
-
-                                                <button onClick={() => setvisible(true)} style={{ color: "white" }}>
-                                                    <div style={{ color: "white" }}>Add Competition</div>
+                                            <div className='flex flex-row gap-[1rem] mt-3'>
+                                                <button
+                                                    className="bg-darkblue-100 hover:bg-blue-600 text-white font-[600]  flex"
+                                                    onClick={toggleModal}
+                                                    style={{ borderRadius: "20px", padding: "8px 16px 8px 12px" }}
+                                                >
+                                                    <FaPlus className='plus-icon' /> <span className='ml-2 text-[14px]'>Add Competition</span>
                                                 </button>
-
-                                                <Model isOpen={visible} onRequestClose={() => setvisible(false)}
-                                                    style={{
-
-                                                        content: {
-                                                            position: "absolute",
-                                                            background: "white",
-                                                            zIndex: "2",
-                                                            display:"flex",
-                                                            justifyContent:"center",
-                                                            color:"black",
-                                                        }
-                                                    }}>
-                                                    <form onSubmit={handleSubmit}>
-                                                        <div style={{}}>
-                                                                <button onClick={() => setvisible(false)}  style={{position: "absolute", top: "20px", right: "20px"}}><X /></button>
-                                                            <div className='comihead flex'>
-                                                                <h1 style={{fontSize:"22px" }}>Details About Competition</h1>
-                                                            </div>
-
-                                                            <div className='comiform pt-5'>
-                                                                <div className='tit p-2'>
-                                                                <label >Title</label>
-                                                                <input type="text" placeholder="title"/>
+                                                {isOpen && (
+                                                    <div className="fixed inset-0 flex justify-center items-center z-50">
+                                                        <div className="absolute inset-0 bg-black opacity-50"></div>
+                                                        <div className="dataform bg-white sm:bg-red-400 p-8 rounded shadow-md z-50">
+                                                            <h2 className="text-2xl font-bold mb-4">Popup Form</h2>
+                                                            <form onSubmit={handleSubmity}>
+                                                                <div className="mb-4">
+                                                                    <label className="block text-gray-700 font-bold mb-2" htmlFor="name">Name</label>
+                                                                    <input className="border rounded px-3 py-2 w-full" type="text" id="name" name="name" required />
                                                                 </div>
-
-                                                                <div className='overvie p-2'>
-                                                                <label>Overview</label>
-                                                                <input type="text" placeholder="overview"/>
+                                                                <div className="mb-4">
+                                                                    <label className="block text-gray-700 font-bold mb-2" htmlFor="title">Title</label>
+                                                                    <input className="border rounded px-3 py-2 w-full" type="text" id="title" name="title" required />
                                                                 </div>
-
-                                                                <div className='overvie p-2'>
-                                                                <label>Price</label>
-                                                                <input type="text" placeholder="overview"/>
+                                                                <div className="mb-4">
+                                                                    <label className="block text-gray-700 font-bold mb-2" htmlFor="description">Description</label>
+                                                                    <textarea className="border rounded px-3 py-2 w-full" id="description" name="description" required ></textarea>
                                                                 </div>
-
-                                                                <div className='overvie p-2'>
-                                                                <label>Rules</label>
-                                                                <input type="text" placeholder="overview"/>
+                                                                <div className="mb-4">
+                                                                    <label className="block text-gray-700 font-bold mb-2">Gender</label>
+                                                                    <div>
+                                                                        <label className="inline-flex items-center mr-4">
+                                                                            <input type="radio" className="form-radio text-blue-500" name="gender" value="male" required />
+                                                                            <span className="ml-2">Male</span>
+                                                                        </label>
+                                                                        <label className="inline-flex items-center">
+                                                                            <input type="radio" className="form-radio text-blue-500" name="gender" value="female" required />
+                                                                            <span className="ml-2">Female</span>
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-
-                                                                <div className='overvie p-2'>
-                                                                <label>Start Date</label>
-                                                                <input type="date" placeholder="overview"/>
+                                                                <div className="text-right">
+                                                                    <button
+                                                                        className="bg-blue-600 hover:bg-darkblue-200 text-white font-bold py-2 px-4 rounded mr-2"
+                                                                        type="submit"
+                                                                    >
+                                                                        Submit
+                                                                    </button>
+                                                                    <button
+                                                                        className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded"
+                                                                        onClick={toggleModal}
+                                                                    >
+                                                                        Cancel
+                                                                    </button>
                                                                 </div>
-
-                                                                <div className='overvie p-2'>
-                                                                <label>End Date</label>
-                                                                <input type="date" placeholder="overview"/>
-                                                                </div>
-
-                                                                <button type='Submit'> Submit</button>
-                                                            </div>
+                                                            </form>
                                                         </div>
-                                                    </form>
+                                                    </div>
+                                                )}
 
-                                                </Model>
 
                                             </div>
                                             <div className="button second">
@@ -433,29 +443,10 @@ export default function Competitions() {
                     </div>
 
 
-                    <div className='flex m-6' style={{ paddingRight: "15px", marginLeft: "50px" }}>
-                        <span className='flex items-center p-2 mr-5' style={{ backgroundColor: "#1e40ad", color: "white", fontSize: "18px" }}><ArrowDownNarrowWide /> Filters</span>
+                    
 
-                        <div className='flex overflow-auto mainy m-1 mr-2'>
-                            {data.map((item) => (
-                                <div
-                                    className={`opti flex mr-5`}
-                                    key={item.id}
-                                    style={{ fontSize: "18px", backgroundColor: buttonStates[item.id] ? '#1e40ad' : 'white', color: buttonStates[item.id] ? 'white' : 'black' }}
-                                >
-                                    <button
-                                        onClick={() => handle(item.id)}
-                                        className="p-1"
-                                    >
-                                        {item.title}
-                                    </button>
-
-                                </div>
-                            ))}
-                        </div>
-                    </div>
                     <div className='container'>
-                        <div className="trending-section">
+                        <div className="trending-section ">
                             <div className="top-trending">
                                 <div className="trending-logo">
                                     <MdOutlineOutlinedFlag className="flag-icon" />
@@ -463,12 +454,35 @@ export default function Competitions() {
                                 </div>
                                 <div className="trending-side-data">See All</div>
                             </div>
+
+                            <div className="flex mb-6">
+                        <span
+                            className="bg-darkblue-100 mr-3 hover:bg-blue-600 text-white font-semibold flex items-center whitespace-no-wrap"
+                            style={{ borderRadius: "20px", padding: "6px 12px" }}
+                        >
+                            <ArrowDownNarrowWide />
+                            <span className="ml-2 text-sm">Filters</span>
+                        </span>
+                        <div className="flex overflow-auto mainy m-1 mr-2">
+                            {data.map((item) => (
+                                <div className="flex mr-3" key={item.id}>
+                                    <button
+                                        onClick={() => handle(item.id)}
+                                        className={`text-sm font-medium border border-gray-400 rounded-full px-4 py-2 ${buttonStates[item.id] ? 'bg-darkblue-100 text-white' : 'bg-white text-black'}`}
+                                    >
+                                        {item.title}
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
+                    </div> 
+
                             <div className="trending-cards grid4">
-                                <div className="text-card">
-                                    <h1 className="text-card-title">
-                                        New to Kaggle?
+                                <div className=" flex flex-col justify-center items-center">
+                                    <h1 className="flex justify-center items-center mb-4 text-4xl font-bold leading-none tracking-tight  md:text-5xl lg:text-6xl dark:text">
+                                        New to Recag ?
                                     </h1>
-                                    <p className="text-card-para">
+                                    <p className=" text-center mb-6 text-lg font-normal text-gray-500 lg:text-xl  dark:text-gray-400">
                                         These competitons are perfect for newcomers.
                                     </p>
                                 </div>
@@ -489,7 +503,7 @@ export default function Competitions() {
                                 </div>
                                 <div className="exercise-side-data">See All</div>
                             </div>
-                            <div className="exercise-cards grid4">
+                            <div className="exercise-cards grid4 m-2">
                                 {
                                     activeData.map((data) => {
                                         return (
@@ -525,18 +539,22 @@ export default function Competitions() {
                                 </div>
                                 <div className="textdata-side-data">See All</div>
                             </div>
-                            <div className="textdata-cards grid4">
-                                <div className="text-card">
-                                    <h1 className="text-card-title">
-                                        Make Learning Fun
-                                    </h1>
-                                    <p className="text-card-para">
-                                        Use our no-cost, self-service platform to create competitions for your community.<a href="/" className="lined"> Learn more</a>
-                                    </p>
-                                    <p className="text-card-para">
-                                        Ready to host? <a href="/" className="lined"> Create a competition or view our library of cloneable competitions.</a>
-                                    </p>
-                                </div>
+
+                            <div className="communitytitle" >
+                                <h5 className="mb-4 text-4xl font-bold leading-none tracking-tight  md:text-5xl lg:text-6xl dark:text">
+                                    Make Learning Fun
+                                </h5>
+                                <p className="mb-6 text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400 text-center">
+                                    Use our no-cost, self-service platform to create competitions for your community.
+                                    <a href="/" className="text-gray-400 lined" ><br/> Learn more. <br/> </a>
+                                    Ready to host?
+                                    <a href="/" className="text-gray-400 lined"> Create a competition or view our library of cloneable competitions.</a>
+                                </p>
+
+                            </div>
+
+                            <div className="textdata-cards grid4 ">
+
                                 {
                                     activeData.map((data) => {
                                         return (
