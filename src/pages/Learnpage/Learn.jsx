@@ -282,7 +282,7 @@ export default function Learn() {
 
 
             <Mobilemenu />
-            <div className="mt-[4.7rem] flex md:mt-0">
+            <div className="flex sm:m-8 m-2">
                 <Simplemenu style={{ color: "#fff" }} />
                 <section className={`learn das`} style={{ overflow: 'scroll', height: "100vh", width: "100vw", backgroundColor: "#f1f5f9", borderRadius: "15px" }}
                 >

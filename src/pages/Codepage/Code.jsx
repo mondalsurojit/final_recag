@@ -171,7 +171,7 @@ function Code() {
     return (
         <div>
             <Mobilemenu />
-            <div className="mt-[4.7rem] flex md:mt-0">
+            <div className="flex sm:m-8 m-2">
 
             {/* <div className="flex"> */}
                 <Simplemenu style={{ color: "#fff" }} />

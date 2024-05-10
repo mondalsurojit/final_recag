@@ -33,7 +33,7 @@ const Simplemenu = () => {
                 <div className="side-nav__divider my-6 " ></div>
                 <ul className='ml-4 text-[1.25rem]'>
                     <li className="pt-4">
-                        <a href="/dashboard" className={`side-menu flex items-center  ${activeLink === '/dashboard' ? 'bg-white text-black p-2 rounded-l-3xl' : 'text-white'}`} >
+                        <a href="/dashboard" className={`side-menu flex items-center  ${activeLink === '/dashboard' ? 'bg-white text-black p-3 rounded-l-3xl' : 'text-white'}`} >
                             <div className="side-menu__icon">
                                 <Home size={22} />
                             </div>
@@ -42,8 +42,8 @@ const Simplemenu = () => {
                             </div>
                         </a>
                     </li>
-                    <li className='pt-5'>
-                        <a href="/Dataset" className={`side-menu flex items-center  ${activeLink === '/Dataset' ? 'bg-white text-black p-2 rounded-l-3xl' : 'text-white'}`} >
+                    <li className='pt-6'>
+                        <a href="/Dataset" className={`side-menu flex items-center  ${activeLink === '/Dataset' ? 'bg-white text-black p-3 rounded-l-3xl' : 'text-white'}`} >
                             <div className="side-menu__icon">
                                 <LayoutDashboard size={22}/>
                             </div>
@@ -52,8 +52,8 @@ const Simplemenu = () => {
                             </div>
                         </a>
                     </li>
-                    <li className='pt-5'>
-                        <a href="/model" className={`side-menu flex items-center  ${activeLink === '/model' ? 'bg-white text-black p-2 rounded-l-3xl' : 'text-white'}`} >
+                    <li className='pt-6'>
+                        <a href="/model" className={`side-menu flex items-center  ${activeLink === '/model' ? 'bg-white text-black p-3 rounded-l-3xl' : 'text-white'}`} >
                             <div className="side-menu__icon">
                                 <Component size={22}/>
                             </div>
@@ -63,8 +63,8 @@ const Simplemenu = () => {
                         </a>
                     </li>
 
-                    <li className='pt-5'>
-                        <a href="/code" className={`side-menu flex items-center  ${activeLink === '/code' ? 'bg-white text-black p-2 rounded-l-3xl' : 'text-white'}`} >
+                    <li className='pt-6'>
+                        <a href="/code" className={`side-menu flex items-center  ${activeLink === '/code' ? 'bg-white text-black p-3 rounded-l-3xl' : 'text-white'}`} >
                             <div className="side-menu__icon">
                                 <FileCode2 size={22}/>
                             </div>
@@ -74,8 +74,8 @@ const Simplemenu = () => {
                         </a>
                     </li>
 
-                    <li className='pt-5'>
-                        <a href="/competition" className={`side-menu flex items-center  ${activeLink === '/competition' ? 'bg-white text-black p-2 rounded-l-3xl' : 'text-white'}`} >
+                    <li className='pt-6'>
+                        <a href="/competition" className={`side-menu flex items-center  ${activeLink === '/competition' ? 'bg-white text-black p-3 rounded-l-3xl' : 'text-white'}`} >
                             <div className="side-menu__icon">
                                 <Laptop size={22}/>
                             </div>
@@ -85,8 +85,8 @@ const Simplemenu = () => {
                         </a>
                     </li>
 
-                    <li className='pt-5'>
-                        <a href="/courses" className={`side-menu flex items-center  ${activeLink === '/courses' ? 'bg-white text-black p-2 rounded-l-3xl' : 'text-white'}`} >
+                    <li className='pt-6'>
+                        <a href="/courses" className={`side-menu flex items-center  ${activeLink === '/courses' ? 'bg-white text-black p-3 rounded-l-3xl' : 'text-white'}`} >
                             <div className="side-menu__icon">
                                 <BookMarked size={22}/>
                             </div>
@@ -96,8 +96,8 @@ const Simplemenu = () => {
                         </a>
                     </li>
 
-                    <li className='pt-5'>
-                        <a href="/discussions" className={`side-menu flex items-center  ${activeLink === '/discussions' ? 'bg-white text-black p-2 rounded-l-3xl' : 'text-white'}`} >
+                    <li className='pt-6'>
+                        <a href="/discussions" className={`side-menu flex items-center  ${activeLink === '/discussions' ? 'bg-white text-black p-3 rounded-l-3xl' : 'text-white'}`} >
                             <div className="side-menu__icon">
                                 <Users size={22}/>
                             </div>
@@ -107,8 +107,8 @@ const Simplemenu = () => {
                         </a>
                     </li>
 
-                    <li className='pt-5'>
-                        <a href="/rankings" className={`side-menu flex items-center  ${activeLink === '/rankings' ? 'bg-white text-black p-2 rounded-l-3xl' : 'text-white'}`} >
+                    <li className='pt-6'>
+                        <a href="/rankings" className={`side-menu flex items-center  ${activeLink === '/rankings' ? 'bg-white text-black p-3 rounded-l-3xl' : 'text-white'}`} >
                             <div className="side-menu__icon">
                                 <Radio size={22}/>
                             </div>
@@ -118,8 +118,8 @@ const Simplemenu = () => {
                         </a>
                     </li>
 
-                    <li className='pt-5'>
-                        <a href="/documentation" className={`side-menu flex items-center  ${activeLink === '/documentation' ? 'bg-white text-black p-2 rounded-l-3xl' : 'text-white'}`} >
+                    <li className='pt-6'>
+                        <a href="/documentation" className={`side-menu flex items-center  ${activeLink === '/documentation' ? 'bg-white text-black p-3 rounded-l-3xl' : 'text-white'}`} >
                             <div className="side-menu__icon">
                                 <FileText size={22}/>
                             </div>
@@ -129,8 +129,8 @@ const Simplemenu = () => {
                         </a>
                     </li>
 
-                    <li className='pt-5'>
-                        <a href="/blog" className={`side-menu flex items-center  ${activeLink === '/blog' ? 'bg-white text-black p-2 rounded-l-3xl' : 'text-white'}`} >
+                    <li className='pt-6'>
+                        <a href="/blog" className={`side-menu flex items-center  ${activeLink === '/blog' ? 'bg-white text-black p-3 rounded-l-3xl' : 'text-white'}`} >
                             <div className="side-menu__icon">
                                 <Newspaper size={22}/>
                             </div>
@@ -140,8 +140,8 @@ const Simplemenu = () => {
                         </a>
                     </li>
 
-                    <li className='pt-5'>
-                        <a href="/hostcomp" className={`side-menu flex items-center  ${activeLink === '/hostcomp' ? 'bg-white text-black p-2 rounded-l-3xl' : 'text-white'}`} >
+                    <li className='pt-6'>
+                        <a href="/hostcomp" className={`side-menu flex items-center  ${activeLink === '/hostcomp' ? 'bg-white text-black p-3 rounded-l-3xl' : 'text-white'}`} >
                             <div className="side-menu__icon">
                                 <ScreenShare/>
                             </div>
@@ -151,8 +151,8 @@ const Simplemenu = () => {
                         </a>
                     </li>
 
-                    <li className='pt-5'>
-                        <a href="/privavcy" className={`side-menu flex items-center  ${activeLink === '/privavcy' ? 'bg-white text-black p-2 rounded-l-3xl' : 'text-white'}`} >
+                    <li className='pt-6'>
+                        <a href="/privavcy" className={`side-menu flex items-center  ${activeLink === '/privavcy' ? 'bg-white text-black p-3 rounded-l-3xl' : 'text-white'}`} >
                             <div className="side-menu__icon">
                                 <GlobeLock size={22}/>
                             </div>
@@ -162,8 +162,8 @@ const Simplemenu = () => {
                         </a>
                     </li>
 
-                    <li className='pt-5'>
-                        <a href="/team" className={`side-menu flex items-center  ${activeLink === '/team' ? 'bg-white text-black p-2 rounded-l-3xl' : 'text-white'}`} >
+                    <li className='pt-6'>
+                        <a href="/team" className={`side-menu flex items-center  ${activeLink === '/team' ? 'bg-white text-black p-3 rounded-l-3xl' : 'text-white'}`} >
                             <div className="side-menu__icon">
                                 <Anvil size={22}/>
                             </div>

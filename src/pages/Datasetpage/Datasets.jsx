@@ -248,7 +248,7 @@ export default function Datasets() {
 
 
                 <div className="dataset-details">
-                  <div className="dataset-content">
+                  <div className="dataset-content p-4">
                     <h1 className="main-title">Datasets</h1>
                     <p className="dataset-para">Explore, analyze, and share quality data. Learn more about data types, creating, and collaborating.</p>
                     {/* <Buttons /> */}
@@ -269,15 +269,16 @@ export default function Datasets() {
 
                     <div className='flex flex-row gap-[1rem]'>
                       <button
-                        className="bg-darkblue-100 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded flex"
+                        className="bg-darkblue-100 hover:bg-blue-600 text-white font-[600]  flex"
                         onClick={toggleModal}
+                        style={{ borderRadius: "20px", padding: "8px 16px 8px 12px" }}
                       >
-                        <FaPlus className='plus-icon' /> Add Dataset
+                        <FaPlus className='plus-icon' /> <span className='ml-2 text-[14px]'>Add Dataset</span>
                       </button>
                       {isOpen && (
-                        <div className="fixed inset-0 flex justify-center items-center z-10">
+                        <div className="fixed inset-0 flex justify-center items-center z-50">
                           <div className="absolute inset-0 bg-black opacity-50"></div>
-                          <div className="bg-white p-8 rounded shadow-md w-1/3 z-50">
+                          <div className="dataform bg-white sm:bg-red-400 p-8 rounded shadow-md z-50">
                             <h2 className="text-2xl font-bold mb-4">Popup Form</h2>
                             <form onSubmit={handleSubmit}>
                               <div className="mb-4">
@@ -307,12 +308,11 @@ export default function Datasets() {
                               </div>
                               <div className="text-right">
                                 <button
-                                  className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
+                                  className="bg-blue-600 hover:bg-darkblue-200 text-white font-bold py-2 px-4 rounded mr-2"
                                   type="submit"
                                 >
                                   Submit
                                 </button>
-
                                 <button
                                   className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded"
                                   onClick={toggleModal}
@@ -325,14 +325,14 @@ export default function Datasets() {
                         </div>
                       )}
 
-                    
+
                     </div>
 
 
 
 
                   </div>
-                  <div className="datasets-image">
+                  <div className="datasets-image pr-4">
                     <img src={img1} alt="logo-1" width={220} height={170} />
                   </div>
                 </div>
@@ -349,33 +349,49 @@ export default function Datasets() {
                   <MdOutlineInsights className="timeline-icon" />
                   <h1 className="trending-title">Trending Datasets</h1>
                 </div>
-                <div className="trending-side-data">See All</div>
+                <div className="trending-side-data ">See All</div>
               </div>
 
 
               <div className='flex mb-6'>
-                <span className='flex items-center p-2 mr-3' style={{ backgroundColor: "#1e40ad", color: "white", fontSize: "18px" }}><ArrowDownNarrowWide /> Filters</span>
+                {/* <span className='flex items-center  mr-3' style={{padding:"6px 12px" ,backgroundColor: "#1e40ad", color: "white", fontSize: "14px" , borderRadius:"16px" }}><ArrowDownNarrowWide size={16}/><span className='ml-2'>Filters</span> </span> */}
+                <span
+                  className="bg-darkblue-100 mr-3 hover:bg-blue-600 text-white font-[600] flex justify-center items-center"
 
-                <div className='flex overflow-auto mainy m-1 mr-2'>
+                  style={{ borderRadius: "20px", padding: "0px 16px 0px 12px" }}
+                >
+                  <ArrowDownNarrowWide /> <span className='ml-2  text-[14px]'>Filters</span>
+                </span>
+                <div className="flex overflow-auto mainy m-1 mr-2">
                   {data.map((item) => (
                     <div
-                      className={`opti flex mr-3`}
+                      className=" flex mr-3"
                       key={item.id}
-                      style={{ fontSize: "18px", backgroundColor: buttonStates[item.id] ? '#1e40ad' : 'white', color: buttonStates[item.id] ? 'white' : 'black' }}
                     >
                       <button
                         onClick={() => handle(item.id)}
-                        className="p-1"
+                        style={{ borderRadius: "16px", padding: "6px 12px" }}
+                        className={`text-[14 px] font-[400] border border-gray-400  ${buttonStates[item.id] ? 'bg-darkblue-100 text-white ' : 'bg-white text-black'}`}
                       >
                         {item.title}
                       </button>
                     </div>
                   ))}
                 </div>
+
+
+
+
+
+
+
+
+
+
               </div>
 
 
-              <div className="trending-cards grid4" style={{ overflow: "auto" }}>
+              <div className="trending-cards flex flex-row gap-[1rem] m-2" style={{ overflow: "auto" }}>
                 {
                   trendingData.map((data) => {
                     return (
