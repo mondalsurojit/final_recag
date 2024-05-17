@@ -6,7 +6,7 @@ import { GoTriangleUp } from "react-icons/go";
 export const ImagelessCard = () => {
     // const {image,title,desc1,time,use,size,desc3,rating} = data;
   return (
-    <div className='imgless-card'>
+    <div className='imgless-card transform transition-transform duration-300 hover:scale-105'>
         <a href="/" className='card-link'>
             <div className="card-data">
                 <div className="imglesscard-title">Gemini API

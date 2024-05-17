@@ -12,12 +12,25 @@ import Simplemenu from '../Dashboard/Simplemenu'
 import profile4 from "../image/fakers/profile-4.jpg"
 import { BellRing, Search } from 'lucide-react'
 import { FaPlus } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
 import Model from "react-modal"
 
 export default function Docs() {
 
     const [visible, setvisible] = useState(false)
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleModal = () => {
+      setIsOpen(!isOpen);
+    };
+  
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      // Your form submission logic here
+      console.log("Form submitted!");
+      toggleModal();
+    };
+  
 
     const paper = [
         {
@@ -85,15 +98,15 @@ export default function Docs() {
             <Mobilemenu />
             <div className="flex sm:m-8 m-2">
                 <Simplemenu style={{ color: "#fff" }} />
-                <section className={`docs-section das`} style={{ overflow: 'scroll', height: "100vh", width: "100vw", backgroundColor: "#f1f5f9", borderRadius: "15px" }}
+                <section className={`docs-section das`} style={{ overflow: 'scroll', height: "100vh", width: "100vw", backgroundColor: "white", borderRadius: "15px" , padding:"2rem"}}
                 >
                     <div className='container'>
 
                         {/* <!-- BEGIN: Top Bar --> */}
-                        <div className="relative flex h-[40px] items-center border-b border-slate-200" style={{ marginTop: "-28px", padding: "0 10px", zIndex: "0" }}>
+                        <div className="relative flex h-[40px] items-center border-b border-slate-200" style={{ marginTop: "-36px", padding: "0 10px", zIndex: "0" }}>
 
                             {/* <!-- BEGIN: Breadcrumb --> */}
-                            <div aria-label="breadcrumb" className="flex -intro-x mr-auto hidden sm:flex">
+                            <div aria-label="breadcrumb" className=" -intro-x mr-auto hidden sm:flex">
                                 <ol className="flex items-center text-theme-1 dark:text-slate-300" >
                                     <li className="">
                                         <a href="/">Application</a>
@@ -123,88 +136,70 @@ export default function Docs() {
                             </button>
                             </div>
                         </div>
-                        <div className="docs-heading">Some Research About Datasets</div>
+                        <div className="docs-heading">Research Papers</div>
 
-                        <div className='buttons' style={{ padding: "20px" }}>
-                            <div className="button first" style={{ backgroundColor: " #1e40ad " }}>
-                                <FaPlus className='plus-icon' />
-                                <button style={{ color: "white" }} onClick={() => setvisible(true)}>
-                                    <div style={{ color: "white" }}>Add Paper</div>
-                                </button>
-
-                                <Model isOpen={visible} onRequestClose={() => setvisible(false)}
-
-                                    style={{
-
-
-                                        content: {
-                                            // position: "absolute",
-                                            background: "white",
-                                            zIndex: "2",
-                                            display: "flex",
-                                            // justifyContent: "center",
-                                            color: "black",
-                                            width: "500px",
-                                            marginLeft: "500px"
-
-                                        }
-                                    }}
+                        <div className='buttons' style={{ padding: "10px 0 0 0" , marginBottom:"3rem" }}>
+                        <button
+                        className="bg-darkblue-100 hover:bg-blue-600 text-white font-[600]  flex"
+                        onClick={toggleModal}
+                        style={{ borderRadius: "20px", padding: "8px 16px 8px 12px" }}
+                      >
+                        <FaPlus className='plus-icon' /> <span className='ml-2 text-[14px]'>Add Paper</span>
+                      </button>
+                      {isOpen && (
+                        <div className="fixed inset-0 flex justify-center items-center z-50">
+                          <div className="absolute inset-0 bg-black opacity-50"></div>
+                          <div className="dataform bg-white sm:bg-red-400 p-8 rounded shadow-md z-50">
+                            <h2 className="text-2xl font-bold mb-4">Popup Form</h2>
+                            <form onSubmit={handleSubmit}>
+                              <div className="mb-4">
+                                <label className="block text-gray-700 font-bold mb-2" htmlFor="name">Name</label>
+                                <input className="border rounded px-3 py-2 w-full" type="text" id="name" name="name" required />
+                              </div>
+                              <div className="mb-4">
+                                <label className="block text-gray-700 font-bold mb-2" htmlFor="title">Title</label>
+                                <input className="border rounded px-3 py-2 w-full" type="text" id="title" name="title" required />
+                              </div>
+                              <div className="mb-4">
+                                <label className="block text-gray-700 font-bold mb-2" htmlFor="description">Description</label>
+                                <textarea className="border rounded px-3 py-2 w-full" id="description" name="description" required ></textarea>
+                              </div>
+                              <div className="mb-4">
+                                <label className="block text-gray-700 font-bold mb-2">Gender</label>
+                                <div>
+                                  <label className="inline-flex items-center mr-4">
+                                    <input type="radio" className="form-radio text-blue-500" name="gender" value="male" required />
+                                    <span className="ml-2">Male</span>
+                                  </label>
+                                  <label className="inline-flex items-center">
+                                    <input type="radio" className="form-radio text-blue-500" name="gender" value="female" required />
+                                    <span className="ml-2">Female</span>
+                                  </label>
+                                </div>
+                              </div>
+                              <div className="text-right">
+                                <button
+                                  className="bg-blue-600 hover:bg-darkblue-200 text-white font-bold py-2 px-4 rounded mr-2"
+                                  type="submit"
                                 >
+                                  Submit
+                                </button>
+                                <button
+                                  className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded"
+                                  onClick={toggleModal}
+                                >
+                                  Cancel
+                                </button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      )}
 
-                                    <form className='formpaper'>
 
-                                        <div className='paperbut'>
-                                            <button onClick={() => setvisible(false)}>
-                                                X
-                                            </button>
-                                        </div>
-                                        <div className='research-intake'>
-
-
-                                            <div className='research-data'>
-                                                <label>Title : </label>
-                                                <input type='text' className='research-input' style={{marginLeft:"70px"}}/>
+                      <div className="" style={{ borderRadius: "20px", padding: "8px 16px 8px 12px" , border:"1px solid black"}}>
+                                                <div className=" text-[14px]">Your Work</div>
                                             </div>
-
-                                            <div className='research-data'>
-                                                <label >Description <br/>of Paper  : </label>
-                                                <textarea type="text" className='research-input'></textarea>
-                                            </div>
-
-                                            <div className='research-data'>
-                                                <label>Name of <br/>Publisher : </label>
-                                                <input type='text' className='research-input my-4' style={{marginLeft:"30px"}}/>
-                                            </div>
-
-                                            <div className='research-data'>
-                                                <label>Category : </label>
-                                                <input type='text' className='research-input' style={{marginLeft:"35px"}}/>
-                                            </div>
-
-                                            <div className='research-data'>
-                                                <label>Year of <br/> Published : </label>
-                                                <input type='date' className='research-input' style={{marginLeft:"30px"}}/>
-                                            </div>
-
-                                            <div className='research-data'>
-                                                <label>Pdf Link : </label>
-                                                <input type='text' className='research-input' style={{marginLeft:"45px"}}/>
-                                            </div>
-                                        </div>
-
-                                        <div style={{ position:"relative"}}>
-                                            <button className='research-submit'>Submit</button>
-                                        </div>
-                                    </form>
-
-                                </Model>
-
-
-
-                            </div>
-                            <div className="button second">
-                                <div className="button-content">Your Work</div>
-                            </div>
                         </div>
 
                         <div className="docs-content">
@@ -212,9 +207,9 @@ export default function Docs() {
                             {paper.map((item) => (
                                 <div key={item.id}>
                                     <a href={item.link}>
-                                        <div className="docs-card">
+                                        <div className="docs-card transform transition-transform duration-300 hover:scale-105">
                                             <div className="docs-card-title">{item.title}</div>
-                                            <div className="docs-card-para">{item.discription}</div>
+                                            <div className="docs-card-para ">{item.discription}</div>
                                             <div className='publisher-name'>{item.name}</div>
                                             <div className='Book-category'>{item.category}</div>
                                             <div className='published-year'>{item.date}</div>

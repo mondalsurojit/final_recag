@@ -297,42 +297,37 @@ export default function Models() {
                                 <div className="trending-side-data">See All</div>
                             </div>
 
+
                             <div className='flex mb-6'>
                                 {/* <span className='flex items-center  mr-3' style={{padding:"6px 12px" ,backgroundColor: "#1e40ad", color: "white", fontSize: "14px" , borderRadius:"16px" }}><ArrowDownNarrowWide size={16}/><span className='ml-2'>Filters</span> </span> */}
-                                <span
-                                    className="bg-darkblue-100 mr-3 hover:bg-blue-600 text-white font-[600] flex justify-center items-center"
 
-                                    style={{ borderRadius: "20px", padding: "0px 16px 0px 12px" }}
-                                >
-                                    <ArrowDownNarrowWide /> <span className='ml-2  text-[14px]'>Filters</span>
-                                </span>
-                                <div className="flex overflow-auto mainy m-1 mr-2">
-                                    {data.map((item) => (
-                                        <div
-                                            className=" flex mr-3"
-                                            key={item.id}
-                                        >
-                                            <button
-                                                onClick={() => handle(item.id)}
-                                                style={{ borderRadius: "16px", padding: "6px 12px" }}
-                                                className={`text-[14 px] font-[400] border border-gray-400  ${buttonStates[item.id] ? 'bg-darkblue-100 text-white ' : 'bg-white text-black'}`}
-                                            >
-                                                {item.title}
-                                            </button>
-                                        </div>
-                                    ))}
+
+                                {/* <div className=""> */}
+
+
+                                <div className="overflow-x-auto flex items-center" >
+                                    <span className="bg-darkblue-100 mr-3 hover:bg-blue-600 text-white font-semibold flex items-center px-4 py-2" style={{borderRadius:"20px"}}>
+                                        <ArrowDownNarrowWide className="w-5 h-5 mr-1" />
+                                        Filters
+                                    </span>
+
+                                    <div className="codebutton flex flex-row gap-4 text-[14px]" style={{ maxHeight: "90px", overflowX: "auto" }}>
+                                        {data.map((data) => (
+                                            <div onClick={() => handle(data.id)}
+                                                style={{ borderRadius: "16px", }}
+                                                className={`text-sm font-normal border border-gray-400 whitespace-nowrap px-3 py-2 ${buttonStates[data.id] ? 'bg-darkblue-100 text-white' : 'bg-white text-black'}`} key={data.id}>
+                                                {data.title}
+                                            </div>
+                                        ))}
+                                    </div>
+
                                 </div>
 
 
 
 
-
-
-
-
-
-
                             </div>
+
 
                             <div className="trending-cards grid4">
                                 <ImagelessCard />

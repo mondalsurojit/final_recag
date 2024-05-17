@@ -37,7 +37,7 @@ import Simplemenu from '../Dashboard/Simplemenu'
 import Mobilemenu from '../Dashboard/Mobilemenu'
 import profile4 from "../image/fakers/profile-4.jpg"
 import { ArrowDownNarrowWide, BellRing, Search } from 'lucide-react'
-
+import { FaPlus } from 'react-icons/fa';
 
 function Code() {
 
@@ -53,12 +53,7 @@ function Code() {
     };
 
 
-    const { pos } = useContext(AppContext);
-
-    const btnData = [
-        { btn1: "New Notebook" },
-        { searchData: "Search public notebooks" }
-    ]
+   
 
     const data = [
         {
@@ -232,7 +227,22 @@ function Code() {
                                     <div className="code-content">
                                         <h1 className="main-title">Code</h1>
                                         <p className="code-para">Explore, analyze, and share quality data. Learn more about data types, creating, and collaborating.</p>
-                                        <Buttons btnData={btnData[0]} />
+                                        <div className='flex flex-row gap-4' >
+                                            <div>
+                                                {/* <FaPlus className='plus-icon' /> */}
+                                                <button
+                                                    className="bg-darkblue-100 hover:bg-blue-600 text-white font-[600]  flex"
+                                                    style={{ borderRadius: "20px", padding: "8px 16px 8px 12px" }}
+                                                >
+                                                    <FaPlus className='plus-icon' /> <span className='ml-2 text-[14px]'>New Notebook</span>
+                                                </button>
+
+                                            </div>
+                                            <div className="" style={{ borderRadius: "20px", padding: "8px 16px 8px 12px" , border:"1px solid black"}}>
+                                                <div className=" text-[14px]">Your Work</div>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
                                     <div className="code-image">
                                         <img src={img1} alt="logo-1" width={220} height={170} />
@@ -253,39 +263,32 @@ function Code() {
                                 <div className="trending-side-data">See All</div>
                             </div>
 
-                            <div className='flex mb-6'>
+                            <div className='flex '>
                                 {/* <span className='flex items-center  mr-3' style={{padding:"6px 12px" ,backgroundColor: "#1e40ad", color: "white", fontSize: "14px" , borderRadius:"16px" }}><ArrowDownNarrowWide size={16}/><span className='ml-2'>Filters</span> </span> */}
 
 
                                 {/* <div className=""> */}
 
-                                    <div className="filter-section">
 
+                                <div className="overflow-x-auto flex items-center my-8" >
+                                    <span className="bg-darkblue-100 mr-3 hover:bg-blue-600 text-white font-semibold flex items-center  px-4 py-2" style={{ borderRadius: "20px" }}>
+                                        <ArrowDownNarrowWide className="w-5 h-5 mr-1" />
+                                        Filters
+                                    </span>
 
-                                        <div className="option-section">
-                                            <span
-                                                className="bg-darkblue-100 mr-3 hover:bg-blue-600 text-white font-[600] flex justify-center items-center"
+                                    <div className="codebutton flex flex-row gap-4 text-[14px]" style={{ maxHeight: "90px", overflowX: "auto" }}>
+                                        {data.map((data) => (
+                                            <div onClick={() => handle(data.id)}
+                                                style={{ borderRadius: "16px", }}
+                                                className={`text-sm font-normal border border-gray-400 whitespace-nowrap px-3 py-2 ${buttonStates[data.id] ? 'bg-darkblue-100 text-white' : 'bg-white text-black'}`} key={data.id}>
+                                                {data.title}
+                                            </div>
+                                        ))}
+                                    </div>
 
-                                                style={{ borderRadius: "20px", padding: "0px 16px 0px 12px" }}
-                                            >
-                                                <ArrowDownNarrowWide /> <span className='ml-2  text-[14px]'>Filters</span>
-                                            </span>
-                                            {
-
-                                                data.map
-                                                    ((data) => {
-                                                        return (
-                                                            <div onClick={() => handle(data.id)}
-                                                                className={`options text-[14 px] font-[400] border border-gray-400  ${buttonStates[data.id] ? 'bg-darkblue-100 text-white ' : 'bg-white text-black'}`} key={
-                                                                    data.id
-                                                                }>{data.title}
-                                                            </div>
-                                                        )
-                                                    })
-                                            }
-                                        </div>
-                                    {/* </div> */}
                                 </div>
+
+
 
 
                             </div>

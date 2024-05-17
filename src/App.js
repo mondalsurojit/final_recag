@@ -19,6 +19,8 @@ import Ranking from "./pages/Rankings/Rankings"
 import Dashboard from './pages/Dashboard/Dashboard.jsx';
 import Community from './pages/Discussions Page/Community.jsx';
 
+import Team from './pages/Team/Team.jsx';
+
 function App() {
   return (
     <div className="App">
@@ -37,12 +39,14 @@ function App() {
             <Route path='/competition' element={<Competitions />} />
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/blog' element={<Blog />} />
-            <Route path="/hostcomp" element={<Hostcomp />} />
+            <Route path="/host-competition" element={<Hostcomp />} />
             <Route path='/discussions' element={<Discussions />} />
             <Route path='/discussions/community' element={<Community />} />
             <Route path='/documentation' element={<Document />} />
             <Route path='/privacy' element={<Privacy />} />
             <Route path="/rankings" element={<Ranking />} />
+            <Route path="/team" element={<Team />} />
+
           </Routes>
         </BrowserRouter>
       </AppProvider>

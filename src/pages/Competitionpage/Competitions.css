@@ -10,14 +10,17 @@
 
 a.lined{
     border-bottom: 1px solid grey;
+    color: rgb(59 53 53);
     opacity: 0.8;
-    color:gray;
+    /* color:; */
     text-decoration: none;
-    font-weight: 400;
+    font-weight: 450;
+    line-height: 25px;
 }
 a.lined:hover{
     border-bottom: 1px solid #000;
 }
+
 section.competition{
     overflow:hidden;
     padding:0.4rem 1rem;
@@ -282,12 +285,13 @@ h1.trending-title,h1.social-title,h1.finance-title,h1.rogrammming-title,h1.textd
 }
 
 .communitytitle{
+    text-align: center;
     margin:2rem auto;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 40%;
+    width: 55%;
     color: #475569;
 }
 /* css for card */

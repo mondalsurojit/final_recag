@@ -428,7 +428,7 @@ export default function Competitions() {
 
                                             </div>
                                             <div className="button second">
-                                                <div className="button-content">Your Work</div>
+                                                <div className="text-[14px] font-medium">Your Work</div>
                                             </div>
                                         </div>
 
@@ -456,6 +456,7 @@ export default function Competitions() {
                             </div>
 
                             <div className="flex mb-6">
+                        <div className="flex overflow-auto mainy m-1 mr-2">
                         <span
                             className="bg-darkblue-100 mr-3 hover:bg-blue-600 text-white font-semibold flex items-center whitespace-no-wrap"
                             style={{ borderRadius: "20px", padding: "6px 12px" }}
@@ -463,7 +464,6 @@ export default function Competitions() {
                             <ArrowDownNarrowWide />
                             <span className="ml-2 text-sm">Filters</span>
                         </span>
-                        <div className="flex overflow-auto mainy m-1 mr-2">
                             {data.map((item) => (
                                 <div className="flex mr-3" key={item.id}>
                                     <button
@@ -546,9 +546,9 @@ export default function Competitions() {
                                 </h5>
                                 <p className="mb-6 text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400 text-center">
                                     Use our no-cost, self-service platform to create competitions for your community.
-                                    <a href="/" className="text-gray-400 lined" ><br/> Learn more. <br/> </a>
+                                    <a href="/" className=" lined " ><br/> Learn more. <br/> </a>
                                     Ready to host?
-                                    <a href="/" className="text-gray-400 lined"> Create a competition or view our library of cloneable competitions.</a>
+                                    <a href="/" className=" lined"> Create a competition or view our library of cloneable competitions.</a>
                                 </p>
 
                             </div>

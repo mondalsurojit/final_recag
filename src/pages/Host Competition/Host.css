@@ -30,7 +30,9 @@ a{
 }
 .host-detailss{
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* flex-direction: column-reverse; */
     gap: 1rem;
     height: 100%;
 }
@@ -43,7 +45,7 @@ a{
     flex-direction: column;
     gap: 1rem;
     margin: auto;
-    height: 37rem;
+    /* height: 37rem; */
 }
 /* css for buttons */
 .buttons{
@@ -52,8 +54,8 @@ a{
     gap: 1rem;
     justify-content: flex-start;
     align-items: center;
-    max-width: fit-content;
-    
+    max-width: -moz-fit-content;
+    max-width: fit-content;    
 }
 .button{
     border: 0.1rem solid rgba(0, 0, 0, 0.483);
@@ -135,7 +137,7 @@ a{
     flex-flow: column;
     align-items: flex-start;
     gap:1.5rem;
-    padding-top: 4rem;
+    /* padding-top: 4rem; */
 }
 h3.main{
     padding: 0.8rem 0;
@@ -144,9 +146,10 @@ h3.main{
     font-weight: 600;
 }
 .bottom-head{
+    margin-bottom: 3rem;
     display:flex;
     width: 100%;
-    height: 30rem;
+    height: auto;
     gap:3rem;
     justify-content: space-between;
 }
@@ -154,7 +157,7 @@ h3.main{
     display:flex;
     gap:1rem;
     flex-flow: column;
-    width: 23rem;
+    width: 31rem;
 }
 p.left-sec{
     margin-bottom: 1rem;
@@ -164,10 +167,10 @@ p.left-sec{
     opacity: 0.8;
 }
 .right-sec{
-    min-width: 28rem;
-    max-height: 30rem;
-    height: 24rem;
-    width: 100%;
+    min-width: 300px;
+    max-height: 300px;
+    height: 20rem;
+    width: 50%;
     padding: 2rem;
     border-radius: 3rem;
     position: relative;
@@ -214,7 +217,15 @@ h3.heading{
 .sub-content .sub-head{
     font-size: 0.95rem;
 }
+.host-par{
+    margin: 0.5rem 0;
+    font-size: var(--font-size-para);
+    line-height: 1.4;
+    font-weight: 500;
+    opacity: 0.8;
+}
 p.third-sec{
+    width: 14rem;
     margin: 0.5rem 0;
     font-size: var(--font-size-para);
     line-height: 1.4;
@@ -273,7 +284,7 @@ div.row>img{
 }
 .community-sec,.featured-sec,.research-sec{
     display: flex;
-    width: 33.3%;
+    width: calc(33.3333%); 
     flex-flow: column;
     justify-content: center;
     align-items: center;
@@ -376,16 +387,18 @@ button.start,button.apply,button.contact{
     transition: all 0.3s ease 0s;
     white-space: nowrap;
     font-weight: 600;
+    width: -moz-fit-content;
     width: fit-content;
 }
 .learn-more{
-    margin-top: 1rem;
-    font-size: var(--font-size-para);
-    padding: 0.8rem 2rem;
-    border-radius: 2rem;
+    margin: 1rem 0;
+    font-size: 14px;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
     line-height: 1.4;
-    font-weight: 500;
+    font-weight: 600;
     opacity: 0.9;
+    
 }
 .learn-more:hover{
     background-color:rgb(218,220,224);
@@ -394,6 +407,7 @@ button.start,button.apply,button.contact{
     color: #000;
     transition: all 0.3s ease 0s;
     white-space: nowrap;
+    width: -moz-fit-content;
     width: fit-content;
 }
 button.start:hover,button.apply:hover,button.contact:hover{
@@ -417,6 +431,11 @@ button.start:hover,button.apply:hover,button.contact:hover{
     display: flex;
     flex-flow: column;
     width: 100%;
+    background-color: #f1f5f9;
+    border-radius: 5px;
+    /* border: 1px solid black; */
+    margin-bottom: 1rem;
+    padding-left: 5px;
 }
 .faq-ques{
     display: flex;
@@ -442,9 +461,9 @@ button.start:hover,button.apply:hover,button.contact:hover{
     background-color: rgb(232, 234, 237);
 }
 h5.ques{
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     line-height: 1.4;
-    font-weight: 600;
+    font-weight: 500;
     opacity: 0.95;
 }
 .ans.visible,.star.visible{
@@ -456,11 +475,11 @@ h5.ques{
 }
 p.ans,p.star{
     display:none;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     line-height: 1.4;
-    font-weight: 300;
-    opacity: 0.85;
-    margin-top: 1.5rem;
+    font-weight: 400;
+    /* opacity: 0.85; */
+    /* margin-top: 1.5rem; */
 }
 p.star{
     margin-top: 1rem;
@@ -468,7 +487,7 @@ p.star{
 img.arrow{
     opacity: 0.8;
     width: 100%;
-    height: 100%;
+    height: 70%;
     align-self: center;
     justify-self: center;    
 }

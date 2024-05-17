@@ -414,8 +414,8 @@ div.discussion-main.list{
     justify-content: center;
     gap:0.5rem;
     font-size: 0.9rem;
-    font-weight: 200;
-    opacity: 0.7;
+    font-weight: 400;
+    /* opacity: 0.7; */
 }
 .user-content>.comments, .user-content .dots{
     align-self: center;
@@ -439,7 +439,7 @@ div.discussion-main.list{
 /* stack */
 
 .dis-stack{
-    padding: 40px;
+    padding-top: 40px;
 }
 
 .dis-head{
@@ -462,7 +462,7 @@ div.discussion-main.list{
     border-radius: 5px;
 }
 .dis-search{
-    padding: 20px;
+    padding-top: 20px;
     border-radius: 15px;
     cursor: pointer; 
 }
@@ -501,9 +501,10 @@ margin-top: 30px;
 }
 .dis-card-tag1{
     border: 1px solid #f4f6f8;
-    background-color: #f4f6f8;
-    padding: 8px 15px;
-    border-radius: 5px;
+    background-color: white;
+    padding: 8px 16px 8px 12px;
+    
+    border-radius: 20px;
     margin-right: 5px;
 }
 

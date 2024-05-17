@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Blog.css'
 import { NavLink } from 'react-router-dom'
-import img1 from '../../assets/blog-icon1.svg'
+import img1 from '../../assets/dataset-img1.svg'
 import img2 from '../../assets/blog-img1.png'
 import img3 from '../../assets/blog-img2.png'
 import img4 from '../../assets/blog-search.svg'
@@ -29,6 +29,7 @@ import Mobilemenu from '../Dashboard/Mobilemenu'
 import Simplemenu from '../Dashboard/Simplemenu'
 import { BellRing, Search } from 'lucide-react'
 import profile4 from "../image/fakers/profile-4.jpg"
+import { FaPlus } from 'react-icons/fa'
 
 
 const BlogsListData = [
@@ -66,7 +67,7 @@ const BlogsListData = [
     },
     {
         id: 5,
-        title: "“The 3 ingredients to our success.” | Winners dish on their solution to Google's QUEST Q&A Labeling",
+        title: "“The 3 ingredients to our success.” Winners dish on their solution to Google's QUEST Labeling",
         desc: "First place foursome, ‘Bibimorph’ share their winning approach to the Quest Q&A Labeling competition by Google, and more!",
         image: img12,
         date: "March 4,2020",
@@ -90,23 +91,32 @@ const BlogsListData = [
     },
     {
         id: 8,
-        title: "Instacart Market Basket Analysis",
+        title: "Instacart Market Basket Analysis Book Special Oriented Data Must Preserved",
         desc: "Winner’s Interview: 2nd place, Kazuki Onodera",
         image: img14,
         date: "Jan 8,2020",
         time: "11 min"
     },
-    {
-        id: 9,
-        title: "Two Sigma Financial Modeling Code Competition, 5th Place Winners’ Interview: Team Best Fitting |…",
-        desc: "Originally published: 05.11.2017",
-        image: img15,
-        date: "Dec 6,2020",
-        time: "8 min"
-    },
+    
 ]
 
 export default function Blog() {
+
+    
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Your form submission logic here
+    console.log("Form submitted!");
+    toggleModal();
+  };
+
+
 
     return (
         <div>
@@ -118,15 +128,15 @@ export default function Blog() {
             <div className="flex sm:m-8 m-2">
                 <Simplemenu style={{ color: "#fff" }} />
 
-                <section className={`blog das`} style={{ overflow: 'scroll', height: "100vh", width: "100vw", backgroundColor: "#f1f5f9", borderRadius: "15px" }}
+                <section className={`blog das`} style={{ overflow: 'scroll', height: "100vh", width: "100vw", backgroundColor: "white", borderRadius: "15px" , padding:"2rem 0"}}
                 >
 
 
                     {/* <!-- BEGIN: Top Bar --> */}
-                    <div className="relative z-[51] flex h-[40px] items-center border-b border-slate-200" style={{ marginTop: "3px", padding: "0 20px" ,zIndex:"0"}}>
+                    <div className="relative z-[51] flex h-[40px] items-center border-b border-slate-200" style={{ marginTop: "-3px", padding: "0 20px" ,zIndex:"0"}}>
 
                         {/* <!-- BEGIN: Breadcrumb --> */}
-                        <div aria-label="breadcrumb" className="flex -intro-x mr-auto hidden sm:flex">
+                        <div aria-label="breadcrumb" className=" -intro-x mr-auto hidden sm:flex">
                             <ol className="flex items-center text-theme-1 dark:text-slate-300" >
                                 <li className="">
                                     <a href="/">Application</a>
@@ -159,48 +169,95 @@ export default function Blog() {
 
                     
                     <div className="hero-container">
-                        <a href="/">
-                            <div className="blog-hero">
-                                <div className="hero-img">
-                                    <img src={img2} alt="blog-img" />
+                    <div className="dataset-details mb-4">
+                  <div className="dataset-content p-4">
+                    <h1 className="main-title">Blogs</h1>
+                    <p className="dataset-para">Explore, analyze, and share quality content. Learn more about data types, creating, and collaborating.</p>
+                   
+
+
+                    <div className='flex flex-row gap-[1rem]'>
+                      <button
+                        className="bg-darkblue-100 hover:bg-blue-600 text-white font-[600]  flex"
+                        onClick={toggleModal}
+                        style={{ borderRadius: "20px", padding: "8px 16px 8px 12px" }}
+                      >
+                        <FaPlus className='plus-icon' /> <span className='ml-2 text-[14px]'>Write Blog</span>
+                      </button>
+                      {isOpen && (
+                        <div className="fixed inset-0 flex justify-center items-center z-50">
+                          <div className="absolute inset-0 bg-black opacity-50"></div>
+                          <div className="dataform bg-white sm:bg-red-400 p-8 rounded shadow-md z-50">
+                            <h2 className="text-2xl font-bold mb-4">Popup Form</h2>
+                            <form onSubmit={handleSubmit}>
+                              <div className="mb-4">
+                                <label className="block text-gray-700 font-bold mb-2" htmlFor="name">Name</label>
+                                <input className="border rounded px-3 py-2 w-full" type="text" id="name" name="name" required />
+                              </div>
+                              <div className="mb-4">
+                                <label className="block text-gray-700 font-bold mb-2" htmlFor="title">Title</label>
+                                <input className="border rounded px-3 py-2 w-full" type="text" id="title" name="title" required />
+                              </div>
+                              <div className="mb-4">
+                                <label className="block text-gray-700 font-bold mb-2" htmlFor="description">Description</label>
+                                <textarea className="border rounded px-3 py-2 w-full" id="description" name="description" required ></textarea>
+                              </div>
+                              <div className="mb-4">
+                                <label className="block text-gray-700 font-bold mb-2">Gender</label>
+                                <div>
+                                  <label className="inline-flex items-center mr-4">
+                                    <input type="radio" className="form-radio text-blue-500" name="gender" value="male" required />
+                                    <span className="ml-2">Male</span>
+                                  </label>
+                                  <label className="inline-flex items-center">
+                                    <input type="radio" className="form-radio text-blue-500" name="gender" value="female" required />
+                                    <span className="ml-2">Female</span>
+                                  </label>
                                 </div>
-                            </div>
-                        </a>
-                        <div className="blog-links">
-                            <div className="links-left-section">
-                                <div className="buttons-links">
-                                    <a href="/"><div className="first-btn">
-                                        COMPETITION STORIES</div></a>
-                                    <a href="/"><div className="second-btn">
-                                        JOIN A COMPETITION</div></a>
-                                </div>
-                            </div>
-                            <div className="links-right-section">
-                                <a href="/"><div className="searchicon">
-                                    <img src={img4} alt="link-images" />
-                                </div></a>
-                                <a href="/"><div className="twitter-icon">
-                                    <img src={img5} alt="link-images" />
-                                </div></a>
-                                <a href="/"><div className="facebook-icon">
-                                    <img src={img6} alt="link" />
-                                </div></a>
-                                <div className="follow">
-                                    follow
-                                </div>
-                            </div>
+                              </div>
+                              <div className="text-right">
+                                <button
+                                  className="bg-blue-600 hover:bg-darkblue-200 text-white font-bold py-2 px-4 rounded mr-2"
+                                  type="submit"
+                                >
+                                  Submit
+                                </button>
+                                <button
+                                  className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded"
+                                  onClick={toggleModal}
+                                >
+                                  Cancel
+                                </button>
+                              </div>
+                            </form>
+                          </div>
                         </div>
+                      )}
+
+
+                    </div>
+
+
+
+
+                  </div>
+                  <div className="datasets-image pr-4">
+                    <img src={img1} alt="logo-1" width={220} height={170} />
+                  </div>
+                </div>
+                
+                        
                         <div className="blog-main">
                             <div className="blog-main-image">
                                 <img src={img3} alt="main" />
                             </div>
                             <div className="blog-main-content">
                                 <div className="main-title">I trained a model. What is next?</div>
-                                <div className="main-description">This post was written by Vladimir Iglovikov, and is filled with advice that he wishes someone had shared when he was active on Kaggle.</div>
+                                <div className="main-description">This post was written by Vladimir Iglovikov, and is filled with advice that he wishes someone had shared when he was active on Recage.</div>
                                 <div className="bottom-caption">
                                     <img src={img7} alt="user-logo" />
                                     <div className="caption-data">
-                                        <div className="title">Kaggle Team</div>
+                                        <div className="title">Recage Team</div>
                                         <div className="date">Sept 10,2020 {" . "} 11 min read</div>
                                     </div>
                                 </div>
@@ -217,15 +274,7 @@ export default function Blog() {
                                 })
                             }
                         </div>
-                        <div className="bottom-links">
-                            <a href='/'><div className="about-blog"><li>About Kaggle Blog</li></div></a>
-                            <a href='/'><div className="latest-stories"><li>Latest Stories</li></div></a>
-                            <a href='/'><div className="archive"><li>Archive</li></div></a>
-                            <a href='/'><div className="about"><li>About Medium</li></div></a>
-                            <a href='/'><div className="terms"><li>Terms</li></div></a>
-                            <a href='/'><div className="privacy"><li>Privacy</li></div></a>
-                            <a href='/'><div className="teams"><li>Teams</li></div></a>
-                        </div>
+                        
                     </div>
                 </section>
             </div>
@@ -238,23 +287,27 @@ export default function Blog() {
 const BlogsList = (data) => {
     const { title, desc, time, date, image } = data;
     return (
-        <div className="blog-list">
+        <div className="blog-list transform transition-transform duration-300 hover:scale-105">
             <div className="bloglist-image">
                 <img src={image} alt="img8" />
             </div>
+
             <div className="bloglist-title">
-                {`${title}`.slice(0, 60)}...
-            </div>
-            <div className="bloglist-para">
-                {desc}
-            </div>
-            <div className="bottom-caption">
+            <div className="date">
+            <div>{date}</div> <div>{" . "} {time} read</div> </div>
+            <div className="bottom-caption flex items-center mb-4">
                 <img src={img7} alt="user-logo" />
                 <div className="caption-data">
-                    <div className="title">Kaggle Team</div>
-                    <div className="date">{date} {" . "} {time} read</div>
+                    <div className="title text-[1rem] ">Recag Team</div>
+                    {/* <div className="date pl-1">{date} {" . "} {time} read</div> */}
                 </div>
+            </div> 
+                {`${title}`.slice(0, 50)}...
             </div>
+            <div className="bloglist-para">
+                {`${desc}`.slice(0 , 50)}...
+            </div>
+            
         </div>
     )
 }

@@ -251,22 +251,7 @@ export default function Datasets() {
                   <div className="dataset-content p-4">
                     <h1 className="main-title">Datasets</h1>
                     <p className="dataset-para">Explore, analyze, and share quality data. Learn more about data types, creating, and collaborating.</p>
-                    {/* <Buttons /> */}
-
-                    {/* <div className='buttons'>
-                      <div className="button first" style={{ backgroundColor: " #1e40ad " }}>
-                        <FaPlus className='plus-icon' />
-                        <button style={{ color: "white" }}>
-                          <Link to="/" style={{ color: "white" }}>Add dataset</Link>
-                        </button>
-
-                      </div>
-                      <div className="button second">
-                        <div className="button-content">Your Work</div>
-                      </div>
-                    </div> */}
-
-
+                    
                     <div className='flex flex-row gap-[1rem]'>
                       <button
                         className="bg-darkblue-100 hover:bg-blue-600 text-white font-[600]  flex"
@@ -336,6 +321,7 @@ export default function Datasets() {
                     <img src={img1} alt="logo-1" width={220} height={170} />
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
@@ -355,6 +341,7 @@ export default function Datasets() {
 
               <div className='flex mb-6'>
                 {/* <span className='flex items-center  mr-3' style={{padding:"6px 12px" ,backgroundColor: "#1e40ad", color: "white", fontSize: "14px" , borderRadius:"16px" }}><ArrowDownNarrowWide size={16}/><span className='ml-2'>Filters</span> </span> */}
+                <div className="flex overflow-auto mainy m-1 mr-2">
                 <span
                   className="bg-darkblue-100 mr-3 hover:bg-blue-600 text-white font-[600] flex justify-center items-center"
 
@@ -362,7 +349,6 @@ export default function Datasets() {
                 >
                   <ArrowDownNarrowWide /> <span className='ml-2  text-[14px]'>Filters</span>
                 </span>
-                <div className="flex overflow-auto mainy m-1 mr-2">
                   {data.map((item) => (
                     <div
                       className=" flex mr-3"
