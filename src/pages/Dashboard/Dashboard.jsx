@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "../css/vendors/tippy.css"
 import "../css/vendors/litepicker.css"
 import "../css/vendors/tiny-slider.css"
@@ -27,30 +27,63 @@ import profile13 from "../image/fakers/profile-13.jpg"
 import profile10 from "../image/fakers/profile-10.jpg"
 import profile2 from "../image/fakers/profile-2.jpg"
 
-import { ChevronDown, ChevronUp, Search } from 'lucide-react';
-import { BellRing } from 'lucide-react';
-import { RefreshCcw } from 'lucide-react';
-import { ShoppingCart } from 'lucide-react';
-import { CreditCard } from 'lucide-react';
-import { Monitor } from 'lucide-react';
-import { User } from 'lucide-react';
-
-
+import { ChevronLeft, ChevronRight, ChevronUp, ChevronDown, Search, BellRing, RefreshCcw, ShoppingCart, CreditCard, Monitor, User } from 'lucide-react';
 
 import Mobilemenu from './Mobilemenu.jsx'
 import Simplemenu from './Simplemenu.jsx'
 import "./dashb.css"
 
 import SalesReport from "../../components/sales-report.component.jsx";
+import ReportBox from '../../components/report-box.component.jsx';
 import WeeklyTop from '../../components/weekly-top.component.jsx';
+import SalesReport2 from '../../components/sales-report2.component.jsx';
+
+import OfficialStoresMap from '../../components/official-stores-map.component.jsx';
+import WeeklyBestSellersCard from '../../components/weekly-best-sellers-card.component.jsx';
+
+import GeneralReportCard1 from '../../components/general-report-card1.component.jsx';
+import GeneralReportCard2 from '../../components/general-report-card2.component.jsx';
+
+import WeeklyTopProductsData from '../../components/weekly-top-products-card.component.jsx';
+import ImportantNotesSlider from '../../components/important-notes-slider.component.jsx';
+import TransactionsCard from '../../components/transactions-card.component.jsx';
+import RecentActivitiesCard from '../../components/recent-activities-card.component.jsx';
+import SearchPopup from '../../components/search-popup.component.jsx';
+import NotificationPopup from '../../components/notification-popup.component.jsx';
+import ProfilePopup from '../../components/profile-popup.component.jsx';
+import Breadcrumb from '../../components/breadcrumb.component.jsx'
 
 
 function Dashboard() {
+    const [isSearchPopupVisible, setIsSearchPopupVisible] = useState(false);
+    const [isNotificationPopupVisible, setIsNotificationPopupVisible] = useState(false);
+    const [isProfilePopupVisible, setIsProfilePopupVisible] = useState(false);
+
+    const toggleSearchPopup = () => {
+        closeOtherPopups();
+        setIsSearchPopupVisible(!isSearchPopupVisible);
+    };
+
+    const toggleNotificationPopup = () => {
+        closeOtherPopups();
+        setIsNotificationPopupVisible(!isNotificationPopupVisible);
+    };
+
+    const toggleProfilePopup = () => {
+        closeOtherPopups();
+        setIsProfilePopupVisible(!isProfilePopupVisible);
+    };
+
+    const closeOtherPopups = () => {
+        setIsSearchPopupVisible(false);
+        setIsNotificationPopupVisible(false);
+        setIsProfilePopupVisible(false);
+    }
+
+    // closeOtherPopups();
     return (
         <div>
-
-
-
+            {/* style={{padding:"20px 30px"}} */}
 
             <Mobilemenu />
             <div className="mt-[4.7rem] flex md:mt-0">
@@ -58,285 +91,37 @@ function Dashboard() {
 
 
                 {/* <!-- BEGIN: Content --> */}
-                <div className="das md:max-w-auto min-h-screen min-w-0 max-w-full flex-1 rounded-[30px] bg-slate-100 px-4 pb-10 before:block before:h-px before:w-full before:content-[''] dark:bg-darkmode-700 md:px-[22px]" style={{ overflow: "scroll", height: "100vh" }}>
+                <div className="das md:max-w-auto min-h-screen min-w-0 max-w-full flex-1 rounded-[30px] bg-slate-100 px-4 pb-10 before:block before:h-px before:w-full before:content-[''] dark:bg-darkmode-700 md:px-[22px]" style={{ overflowX: "hidden", overflowY: "scroll", height: "100%", margin: "20px 30px 20px 0" }}>
                     {/* <!-- BEGIN: Top Bar --> */}
                     <div className="relative z-[51] flex h-[67px] items-center border-b border-slate-200" style={{ zIndex: "0" }}>
-                        {/* <!-- BEGIN: Breadcrumb --> */}
-                        <div aria-label="breadcrumb" className="flex -intro-x mr-auto hidden sm:flex">
-                            <ol className="flex items-center text-theme-1 dark:text-slate-300">
-                                <li className="">
-                                    <a href="/">Application</a>
-                                </li>
-                                <li className="relative ml-5 pl-0.5 before:content-[''] before:w-[14px] before:h-[14px] before:bg-chevron-black before:transform before:rotate-[-90deg] before:bg-[length:100%] before:-ml-[1.125rem] before:absolute before:my-auto before:inset-y-0 dark:before:bg-chevron-white text-slate-800 cursor-text dark:text-slate-400">
-                                    <a href="/">Dashboard</a>
-                                </li>
-                            </ol>
-                        </div>
-                        {/* <!-- END: Breadcrumb --> */}
+
+                      <Breadcrumb/>
 
                         {/* <!-- BEGIN: Search --> */}
-                        <div className="search intro-x relative mr-3 sm:mr-6" style={{ backgroundColor: "#f1f5f9" }}>
+                        <div className="search intro-x relative mr-3 sm:mr-6" style={{ backgroundColor: "transparent" }}>
                             <div className="relative hidden sm:block" >
-                                <input data-tw-merge="" type="text" placeholder="Search..." className="disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:bg-darkmode-800/50 dark:disabled:border-transparent [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 [&[readonly]]:dark:border-transparent ease-in-out text-sm placeholder:text-slate-400/90 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-opacity-40 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 group-[.form-inline]:flex-1 group-[.input-group]:rounded-none group-[.input-group]:[&:not(:first-child)]:border-l-transparent group-[.input-group]:first:rounded-l group-[.input-group]:last:rounded-r group-[.input-group]:z-10 w-56 rounded-full border-transparent bg-slate-300/50 pr-8 shadow-none transition-[width] duration-300 focus:w-72 focus:border-transparent dark:bg-darkmode-400/70" />
-                                <i data-tw-merge="" data-lucide="search" className="stroke-1.5 w-5 h-5 absolute inset-y-0 right-0 my-auto mr-3 text-slate-600 dark:text-slate-500"><Search style={{ marginTop: "-3" }} /></i>
+                                <input data-tw-merge="" type="text" placeholder="Search..." className="disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:bg-darkmode-800/50 dark:disabled:border-transparent [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 [&[readonly]]:dark:border-transparent ease-in-out text-sm placeholder:text-slate-400/90 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-opacity-40 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 group-[.form-inline]:flex-1 group-[.input-group]:rounded-none group-[.input-group]:[&:not(:first-child)]:border-l-transparent group-[.input-group]:first:rounded-l group-[.input-group]:last:rounded-r group-[.input-group]:z-10 w-56 rounded-full border-transparent bg-slate-300/50 pr-8 shadow-none transition-[width] duration-300 focus:w-72 focus:border-transparent dark:bg-darkmode-400/70" onClick={toggleSearchPopup} />
+                                <Search data-tw-merge="" data-lucide="search" className="stroke-1.5 w-5 h-5 absolute inset-y-0 right-0 my-auto mr-3 text-slate-600 dark:text-slate-500" />
                             </div>
-
-                            <a className="relative text-slate-600 sm:hidden" href="#">
-                                <i data-tw-merge="" data-lucide="search" className="stroke-1.5 w-5 h-5 dark:text-slate-500"><Search /></i>
-                            </a>
-
-                            {/* search bar ke under pop page  */}
-                            {/* <div data-transition="" data-selector=".show" data-enter="transition-all ease-linear duration-150" data-enter-from="mt-5 invisible opacity-0 translate-y-1" data-enter-to="mt-[3px] visible opacity-100 translate-y-0" data-leave="transition-all ease-linear duration-150" data-leave-from="mt-[3px] visible opacity-100 translate-y-0" data-leave-to="mt-5 invisible opacity-0 translate-y-1" className="search-result absolute right-0 z-10 mt-[3px] hidden">
-                            <div className="box w-[450px] p-5">
-                                <div className="mb-2 font-medium">Pages</div>
-                                <div className="mb-5">
-                                    <a className="flex items-center" href="#">
-                                        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-success/20 text-success dark:bg-success/10">
-                                            <i data-tw-merge="" data-lucide="inbox" className="stroke-1.5 h-4 w-4"></i>
-                                        </div>
-                                        <div className="ml-3">Mail Settings</div>
-                                    </a>
-                                    <a className="mt-2 flex items-center" href="#">
-                                        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-pending/10 text-pending">
-                                            <i data-tw-merge="" data-lucide="users" className="stroke-1.5 h-4 w-4"></i>
-                                        </div>
-                                        <div className="ml-3">Users & Permissions</div>
-                                    </a>
-                                    <a className="mt-2 flex items-center" href="/">
-                                        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary/80 dark:bg-primary/20">
-                                            <i data-tw-merge="" data-lucide="credit-card" className="stroke-1.5 h-4 w-4"></i>
-                                        </div>
-                                        <div className="ml-3">Transactions Report</div>
-                                    </a>
-                                </div>
-                                <div className="mb-2 font-medium">Users</div>
-                                <div className="mb-5">
-                                    <a className="mt-2 flex items-center" href="/">
-                                        <div className="image-fit h-8 w-8">
-                                            <img className="rounded-full" src={profile15} alt="Midone - Tailwind Admin Dashboard Template"/>
-                                        </div>
-                                      <div className="ml-3">Tom Cruise</div>
-                                        <div className="ml-auto w-48 truncate text-right text-xs text-slate-500">
-                                            tomcruise@left4code.com
-                                        </div>
-                                    </a>
-                                    <a className="mt-2 flex items-center" href="/">
-                                        <div className="image-fit h-8 w-8">
-                                            <img className="rounded-full" src={profile8} alt="Midone - Tailwind Admin Dashboard Template"/>
-                                        </div>
-                                        <div className="ml-3">Arnold Schwarzenegger</div>
-                                        <div className="ml-auto w-48 truncate text-right text-xs text-slate-500">
-                                            arnoldschwarzenegger@left4code.com
-                                        </div>
-                                    </a>
-                                    <a className="mt-2 flex items-center" href="/">
-                                        <div className="image-fit h-8 w-8">
-                                            <img className="rounded-full" src={profile14} alt="Midone - Tailwind Admin Dashboard Template"/>
-                                        </div>
-                                        <div className="ml-3">Tom Cruise</div>
-                                        <div className="ml-auto w-48 truncate text-right text-xs text-slate-500">
-                                            tomcruise@left4code.com
-                                        </div>
-                                    </a>
-                                    <a className="mt-2 flex items-center" href="/">
-                                        <div className="image-fit h-8 w-8">
-                                            <img className="rounded-full" src={profile12} alt="Midone - Tailwind Admin Dashboard Template"/>
-                                        </div>
-                                        <div className="ml-3">Al Pacino</div>
-                                        <div className="ml-auto w-48 truncate text-right text-xs text-slate-500">
-                                            alpacino@left4code.com
-                                        </div>
-                                    </a>
-                                </div>
-                                <div className="mb-2 font-medium">Products</div>
-                                <a className="mt-2 flex items-center" href="/">
-                                    <div className="image-fit h-8 w-8">
-                                        <img className="rounded-full" src={preview15} alt="Midone - Tailwind Admin Dashboard Template"/>
-                                    </div>
-                                    <div className="ml-3">Nikon Z6</div>
-                                    <div className="ml-auto w-48 truncate text-right text-xs text-slate-500">
-                                        Photography
-                                    </div>
-                                </a>
-                                <a className="mt-2 flex items-center" href="/">
-                                    <div className="image-fit h-8 w-8">
-                                        <img className="rounded-full" src={preview1} alt="Midone - Tailwind Admin Dashboard Template"/>
-                                    </div>
-                                    <div className="ml-3">Sony A7 III</div>
-                                    <div className="ml-auto w-48 truncate text-right text-xs text-slate-500">
-                                        Photography
-                                    </div>
-                                </a>
-                                <a className="mt-2 flex items-center" href="/">
-                                    <div className="image-fit h-8 w-8">
-                                        <img className="rounded-full" src={preview2} alt="Midone - Tailwind Admin Dashboard Template"/>
-                                    </div>
-                                    <div className="ml-3">Samsung Q90 QLED TV</div>
-                                    <div className="ml-auto w-48 truncate text-right text-xs text-slate-500">
-                                        Electronic
-                                    </div>
-                                </a>
-                                <a className="mt-2 flex items-center" href="/">
-                                    <div className="image-fit h-8 w-8">
-                                        <img className="rounded-full" src={preview12} alt="Midone - Tailwind Admin Dashboard Template"/>
-                                    </div>
-                                    <div className="ml-3">Samsung Q90 QLED TV</div>
-                                    <div className="ml-auto w-48 truncate text-right text-xs text-slate-500">
-                                        Electronic
-                                    </div>
-                                </a>
-                            </div>
-                        </div> */}
+                            {isSearchPopupVisible && <SearchPopup />}
                         </div>
                         {/* <!-- END: Search  --> */}
 
+
                         {/* <!-- BEGIN: Notifications --> */}
                         <div data-tw-merge="" data-tw-placement="bottom-end" className="dropdown relative intro-x mr-auto sm:mr-6">
-                            <div data-tw-toggle="dropdown" aria-expanded="false" className="cursor-pointer relative block text-slate-600 outline-none before:absolute before:right-0 before:top-[-2px] before:h-[8px] before:w-[8px] before:rounded-full before:bg-danger before:content-['']"><i data-tw-merge="" data-lucide="bell" className="stroke-1.5 w-5 h-5 dark:text-slate-500"><BellRing /></i></div>
-
-
-                            {/* notification ke under pop up page hai */}
-
-                            {/* <div data-transition="" data-selector=".show" data-enter="transition-all ease-linear duration-150" data-enter-from="absolute !mt-5 invisible opacity-0 translate-y-1" data-enter-to="!mt-1 visible opacity-100 translate-y-0" data-leave="transition-all ease-linear duration-150" data-leave-from="!mt-1 visible opacity-100 translate-y-0" data-leave-to="absolute !mt-5 invisible opacity-0 translate-y-1" className="dropdown-menu absolute z-[9999] hidden">
-                            <div data-tw-merge="" className="dropdown-content rounded-md border-transparent bg-white shadow-[0px_3px_10px_#00000017] dark:border-transparent dark:bg-darkmode-600 mt-2 w-[280px] p-5 sm:w-[350px]">
-                                <div className="mb-5 font-medium">Notifications</div>
-                                <div className="cursor-pointer relative flex items-center">
-                                    <div className="image-fit relative mr-1 h-12 w-12 flex-none">
-                                        <img className="rounded-full" src={profile15} alt="Midone - Tailwind Admin Dashboard Template"/>
-                                        <div className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-white bg-success dark:border-darkmode-600">
-                                        </div>
-                                    </div>
-                                    <div className="ml-2 overflow-hidden">
-                                        <div className="flex items-center">
-                                            <a className="mr-5 truncate font-medium" href="/">
-                                                Tom Cruise
-                                            </a>
-                                            <div className="ml-auto whitespace-nowrap text-xs text-slate-400">
-                                                05:09 AM
-                                            </div>
-                                        </div>
-                                        <div className="mt-0.5 w-full truncate text-slate-500">
-                                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 20
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="cursor-pointer relative flex items-center mt-5">
-                                    <div className="image-fit relative mr-1 h-12 w-12 flex-none">
-                                        <img className="rounded-full" src={profile8} alt="Midone - Tailwind Admin Dashboard Template"/>
-                                        <div className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-white bg-success dark:border-darkmode-600">
-                                        </div>
-                                    </div>
-                                    <div className="ml-2 overflow-hidden">
-                                        <div className="flex items-center">
-                                            <a className="mr-5 truncate font-medium" href="/">
-                                                Arnold Schwarzenegger
-                                            </a>
-                                            <div className="ml-auto whitespace-nowrap text-xs text-slate-400">
-                                                01:10 PM
-                                            </div>
-                                        </div>
-                                        <div className="mt-0.5 w-full truncate text-slate-500">
-                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="cursor-pointer relative flex items-center mt-5">
-                                    <div className="image-fit relative mr-1 h-12 w-12 flex-none">
-                                        <img className="rounded-full" src={profile14} alt="Midone - Tailwind Admin Dashboard Template"/>
-                                        <div className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-white bg-success dark:border-darkmode-600">
-                                        </div>
-                                    </div>
-                                    <div className="ml-2 overflow-hidden">
-                                        <div className="flex items-center">
-                                            <a className="mr-5 truncate font-medium" href="/">
-                                                Tom Cruise
-                                            </a>
-                                            <div className="ml-auto whitespace-nowrap text-xs text-slate-400">
-                                                01:10 PM
-                                            </div>
-                                        </div>
-                                        <div className="mt-0.5 w-full truncate text-slate-500">
-                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="cursor-pointer relative flex items-center mt-5">
-                                    <div className="image-fit relative mr-1 h-12 w-12 flex-none">
-                                        <img className="rounded-full" src={profile12} alt="Midone - Tailwind Admin Dashboard Template"/>
-                                        <div className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-white bg-success dark:border-darkmode-600">
-                                        </div>
-                                    </div>
-                                    <div className="ml-2 overflow-hidden">
-                                        <div className="flex items-center">
-                                            <a className="mr-5 truncate font-medium" href="/">
-                                                Al Pacino
-                                            </a>
-                                            <div className="ml-auto whitespace-nowrap text-xs text-slate-400">
-                                                06:05 AM
-                                            </div>
-                                        </div>
-                                        <div className="mt-0.5 w-full truncate text-slate-500">
-                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="cursor-pointer relative flex items-center mt-5">
-                                    <div className="image-fit relative mr-1 h-12 w-12 flex-none">
-                                        <img className="rounded-full" src={profile4} alt="Midone - Tailwind Admin Dashboard Template"/>
-                                        <div className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-white bg-success dark:border-darkmode-600">
-                                        </div>
-                                    </div>
-                                    <div className="ml-2 overflow-hidden">
-                                        <div className="flex items-center">
-                                            <a className="mr-5 truncate font-medium" href="/">
-                                                Al Pacino
-                                            </a>
-                                            <div className="ml-auto whitespace-nowrap text-xs text-slate-400">
-                                                05:09 AM
-                                            </div>
-                                        </div>
-                                        <div className="mt-0.5 w-full truncate text-slate-500">
-                                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 20
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> */}
+                            <div data-tw-toggle="dropdown" aria-expanded="false" className="cursor-pointer relative block text-slate-600 outline-none before:absolute before:right-0 before:top-[-2px] before:h-[8px] before:w-[8px] before:rounded-full before:bg-danger before:content-['']"><i data-tw-merge="" data-lucide="bell" className="stroke-1.5 w-5 h-5 dark:text-slate-500" onClick={toggleNotificationPopup}><BellRing /></i></div>
+                            {isNotificationPopupVisible && <NotificationPopup />}
                         </div>
                         {/* <!-- END: Notifications  --> */}
 
-                        {/* <!-- BEGIN: Account Menu --> */}
-                        <div data-tw-merge="" data-tw-placement="bottom-end" className="dropdown relative"><button data-tw-toggle="dropdown" aria-expanded="false" className="cursor-pointer image-fit zoom-in intro-x block h-8 w-8 overflow-hidden rounded-full shadow-lg"><img src={profile4} alt="Midone - Tailwind Admin Dashboard Template" />
-                        </button>
 
-                            {/* profile section under page */}
-                            {/*                         
-                        <div data-transition="" data-selector=".show" data-enter="transition-all ease-linear duration-150" data-enter-from="absolute !mt-5 invisible opacity-0 translate-y-1" data-enter-to="!mt-1 visible opacity-100 translate-y-0" data-leave="transition-all ease-linear duration-150" data-leave-from="!mt-1 visible opacity-100 translate-y-0" data-leave-to="absolute !mt-5 invisible opacity-0 translate-y-1" className="dropdown-menu absolute z-[9999] hidden">
-                            <div data-tw-merge="" className="dropdown-content rounded-md border-transparent p-2 shadow-[0px_3px_10px_#00000017] dark:border-transparent dark:bg-darkmode-600 mt-px w-56 bg-theme-1 text-white">
-                                <div className="p-2 font-medium font-normal">
-                                    <div className="font-medium">Tom Cruise</div>
-                                    <div className="mt-0.5 text-xs text-white/70 dark:text-slate-500">
-                                        DevOps Engineer
-                                    </div>
-                                </div>
-                                <div className="h-px my-2 -mx-2 bg-slate-200/60 dark:bg-darkmode-400 bg-white/[0.08]">
-                                </div>
-                                <a className="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item hover:bg-white/5"><i data-tw-merge="" data-lucide="user" className="stroke-1.5 mr-2 h-4 w-4"></i>
-                                    Profile</a>
-                                <a className="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item hover:bg-white/5"><i data-tw-merge="" data-lucide="edit" className="stroke-1.5 mr-2 h-4 w-4"></i>
-                                    Add Account</a>
-                                <a className="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item hover:bg-white/5"><i data-tw-merge="" data-lucide="lock" className="stroke-1.5 mr-2 h-4 w-4"></i>
-                                    Reset Password</a>
-                                <a className="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item hover:bg-white/5"><i data-tw-merge="" data-lucide="help-circle" className="stroke-1.5 mr-2 h-4 w-4"></i>
-                                    Help</a>
-                                <div className="h-px my-2 -mx-2 bg-slate-200/60 dark:bg-darkmode-400 bg-white/[0.08]">
-                                </div>
-                                <a className="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item hover:bg-white/5"><i data-tw-merge="" data-lucide="toggle-right" className="stroke-1.5 mr-2 h-4 w-4"></i>
-                                    Logout</a>
-                            </div>
-                        </div> */}
+                        {/* <!-- BEGIN: Profile Menu --> */}
+                        <div data-tw-merge="" data-tw-placement="bottom-end" className="dropdown relative">
+                            <button data-tw-toggle="dropdown" aria-expanded="false" className="cursor-pointer image-fit zoom-in intro-x block h-8 w-8 overflow-hidden rounded-full shadow-lg" onClick={toggleProfilePopup}><img src={profile4} alt="Midone - Tailwind Admin Dashboard Template" /></button>
+                            {isProfilePopupVisible && <ProfilePopup />}
                         </div>
-                        {/* <!-- END: Account Menu --> */}
+                        {/* <!-- END: Profile Menu --> */}
 
                     </div>
                     {/* <!-- END: Top Bar --> */}
@@ -476,72 +261,26 @@ function Dashboard() {
                                 </div>
                                 {/* <!-- END: Sales Report --> */}
 
+
                                 {/* <!-- BEGIN: Weekly Top Seller --> */}
-                                <div className="col-span-12 mt-8 sm:col-span-6 lg:col-span-3">
-                                    <div className="intro-y flex h-10 items-center">
-                                        <h2 className="mr-5 truncate text-lg font-medium">Weekly Top Seller</h2>
-                                        <a className="ml-auto truncate text-primary" href="#"> Show More </a>
-                                    </div>
-                                    <div className="intro-y box mt-5 p-5">
-                                        <div className="mt-3">
-                                            <WeeklyTop />
-                                            {/* <div className="w-auto h-[213px]">
-                                                <canvas id="report-pie-chart" className="chart"></canvas>
-                                            </div> */}
-                                        </div>
-                                        <div className="mx-auto mt-8 w-52 sm:w-auto">
-                                            <div className="flex items-center">
-                                                <div className="mr-3 h-2 w-2 rounded-full bg-primary"></div>
-                                                <span className="truncate">17 - 30 Years old</span>
-                                                <span className="ml-auto font-medium">62%</span>
-                                            </div>
-                                            <div className="mt-4 flex items-center">
-                                                <div className="mr-3 h-2 w-2 rounded-full bg-pending"></div>
-                                                <span className="truncate">31 - 50 Years old</span>
-                                                <span className="ml-auto font-medium">33%</span>
-                                            </div>
-                                            <div className="mt-4 flex items-center">
-                                                <div className="mr-3 h-2 w-2 rounded-full bg-warning"></div>
-                                                <span className="truncate">&gt;= 50 Years old</span>
-                                                <span className="ml-auto font-medium">10%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <ReportBox
+                                    className="col-span-12 mt-8 sm:col-span-6 lg:col-span-3"
+                                    title="Weekly Top Seller"
+                                    linkText="Show More"
+                                    reportComponent={WeeklyTop}
+                                />
                                 {/* <!-- END: Weekly Top Seller --> */}
 
+
                                 {/* <!-- BEGIN: Sales Report --> */}
-                                <div className="col-span-12 mt-8 sm:col-span-6 lg:col-span-3">
-                                    <div className="intro-y flex h-10 items-center">
-                                        <h2 className="mr-5 truncate text-lg font-medium">Sales Report</h2>
-                                        <a className="ml-auto truncate text-primary" href="#"> Show More </a>
-                                    </div>
-                                    <div className="intro-y box mt-5 p-5">
-                                        <div className="mt-3">
-                                            <div className="w-auto h-[213px]">
-                                                <canvas id="report-donut-chart" className="chart"></canvas>
-                                            </div>
-                                        </div>
-                                        <div className="mx-auto mt-8 w-52 sm:w-auto">
-                                            <div className="flex items-center">
-                                                <div className="mr-3 h-2 w-2 rounded-full bg-primary"></div>
-                                                <span className="truncate">17 - 30 Years old</span>
-                                                <span className="ml-auto font-medium">62%</span>
-                                            </div>
-                                            <div className="mt-4 flex items-center">
-                                                <div className="mr-3 h-2 w-2 rounded-full bg-pending"></div>
-                                                <span className="truncate">31 - 50 Years old</span>
-                                                <span className="ml-auto font-medium">33%</span>
-                                            </div>
-                                            <div className="mt-4 flex items-center">
-                                                <div className="mr-3 h-2 w-2 rounded-full bg-warning"></div>
-                                                <span className="truncate">&gt;= 50 Years old</span>
-                                                <span className="ml-auto font-medium">10%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {/* <!-- END: Sales Report --> */}
+                                <ReportBox
+                                    className="col-span-12 mt-8 sm:col-span-6 lg:col-span-3"
+                                    title="Sales Report"
+                                    linkText="Show More"
+                                    reportComponent={SalesReport2}
+                                    reportComponentHeight={200}
+                                />
+                                {/* <!-- END: Sales Report -->
 
                                 {/* <!-- BEGIN: Official Store --> */}
                                 <div className="col-span-12 mt-6 xl:col-span-8">
@@ -557,8 +296,9 @@ function Dashboard() {
                                             250 Official stores in 21 countries, click the marker to see
                                             location details.
                                         </div>
-                                        <div data-lat="-6.2425342" data-long="106.8626478" data-sources="" data-api-key="1e86fd5a7f60486a8e899411776f60d5" className="leaflet z-0 [&_.leaflet-tile-pane]:saturate-[.3] mt-5 h-[310px] rounded-md bg-slate-200">
-                                        </div>
+                                        {/* <div data-lat="-6.2425342" data-long="106.8626478" data-sources="" data-api-key="1e86fd5a7f60486a8e899411776f60d5" className="leaflet z-0 [&_.leaflet-tile-pane]:saturate-[.3] mt-5 h-[310px] rounded-md bg-slate-200">
+                                        </div> */}
+                                        <OfficialStoresMap />
                                     </div>
                                 </div>
                                 {/* <!-- END: Official Store --> */}
@@ -571,70 +311,34 @@ function Dashboard() {
                                         </h2>
                                     </div>
                                     <div className="mt-5">
-                                        <div className="intro-y">
-                                            <div className="box zoom-in mb-3 flex items-center px-4 py-4">
-                                                <div className="image-fit h-10 w-10 flex-none overflow-hidden rounded-md">
-                                                    <img src={profile9} alt="Midone - Tailwind Admin Dashboard Template" />
-                                                </div>
-                                                <div className="ml-4 mr-auto">
-                                                    <div className="font-medium">Kevin Spacey</div>
-                                                    <div className="mt-0.5 text-xs text-slate-500">
-                                                        7 March 2022
-                                                    </div>
-                                                </div>
-                                                <div className="cursor-pointer rounded-full bg-success px-2 py-1 text-xs font-medium text-white">
-                                                    137 Sales
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="intro-y">
-                                            <div className="box zoom-in mb-3 flex items-center px-4 py-4">
-                                                <div className="image-fit h-10 w-10 flex-none overflow-hidden rounded-md">
-                                                    <img src={profile5} alt="Midone - Tailwind Admin Dashboard Template" />
-                                                </div>
-                                                <div className="ml-4 mr-auto">
-                                                    <div className="font-medium">Al Pacino</div>
-                                                    <div className="mt-0.5 text-xs text-slate-500">
-                                                        21 July 2022
-                                                    </div>
-                                                </div>
-                                                <div className="cursor-pointer rounded-full bg-success px-2 py-1 text-xs font-medium text-white">
-                                                    137 Sales
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="intro-y">
-                                            <div className="box zoom-in mb-3 flex items-center px-4 py-4">
-                                                <div className="image-fit h-10 w-10 flex-none overflow-hidden rounded-md">
-                                                    <img src={profile11} alt="Midone - Tailwind Admin Dashboard Template" />
-                                                </div>
-                                                <div className="ml-4 mr-auto">
-                                                    <div className="font-medium">Robert De Niro</div>
-                                                    <div className="mt-0.5 text-xs text-slate-500">
-                                                        19 November 2021
-                                                    </div>
-                                                </div>
-                                                <div className="cursor-pointer rounded-full bg-success px-2 py-1 text-xs font-medium text-white">
-                                                    137 Sales
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="intro-y">
-                                            <div className="box zoom-in mb-3 flex items-center px-4 py-4">
-                                                <div className="image-fit h-10 w-10 flex-none overflow-hidden rounded-md">
-                                                    <img src={profile3} alt="Midone - Tailwind Admin Dashboard Template" />
-                                                </div>
-                                                <div className="ml-4 mr-auto">
-                                                    <div className="font-medium">Russell Crowe</div>
-                                                    <div className="mt-0.5 text-xs text-slate-500">
-                                                        6 September 2021
-                                                    </div>
-                                                </div>
-                                                <div className="cursor-pointer rounded-full bg-success px-2 py-1 text-xs font-medium text-white">
-                                                    137 Sales
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <WeeklyBestSellersCard
+                                            name="Kevin Spacey"
+                                            imgUrl={profile9}
+                                            alt="Midone - Tailwind Admin Dashboard Template"
+                                            date="7 March 2022"
+                                            sales="137 Sales" />
+
+                                        <WeeklyBestSellersCard
+                                            name="Al Pacino"
+                                            imgUrl={profile5}
+                                            alt="Midone - Tailwind Admin Dashboard Template"
+                                            date="21 July 2022"
+                                            sales="137 Sales" />
+
+                                        <WeeklyBestSellersCard
+                                            name="Robert De Niro"
+                                            imgUrl={profile11}
+                                            alt="Midone - Tailwind Admin Dashboard Template"
+                                            date="19 November 2021"
+                                            sales="137 Sales" />
+
+                                        <WeeklyBestSellersCard
+                                            name="Russell Crowe"
+                                            imgUrl={profile3}
+                                            alt="Midone - Tailwind Admin Dashboard Template"
+                                            date="6 September 2021"
+                                            sales="137 Sales" />
+
                                         <a className="intro-y block w-full rounded-md border border-dotted border-slate-400 py-4 text-center text-slate-500 dark:border-darkmode-300" href="#">
                                             View More
                                         </a>
@@ -644,74 +348,23 @@ function Dashboard() {
 
                                 {/* <!-- BEGIN: General Report --> */}
                                 <div className="col-span-12 mt-8 grid grid-cols-12 gap-6">
-                                    <div className="intro-y col-span-12 sm:col-span-6 2xl:col-span-3">
-                                        <div className="box zoom-in p-5">
-                                            <div className="flex items-center">
-                                                <div className="w-2/4 flex-none">
-                                                    <div className="truncate text-lg font-medium">Target Sales</div>
-                                                    <div className="mt-1 text-slate-500">300 Sales</div>
-                                                </div>
-                                                <div className="relative ml-auto flex-none">
-                                                    <div className="w-[90px] h-[90px]">
-                                                        <canvas className="chart report-donut-chart-1"></canvas>
-                                                    </div>
-                                                    <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center font-medium">
-                                                        20%
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="intro-y col-span-12 sm:col-span-6 2xl:col-span-3">
-                                        <div className="box zoom-in p-5">
-                                            <div className="flex">
-                                                <div className="mr-3 truncate text-lg font-medium">
-                                                    Social Media
-                                                </div>
-                                                <div className="ml-auto flex cursor-pointer items-center truncate rounded-full bg-slate-100 px-2 py-1 text-xs text-slate-500 dark:bg-darkmode-400">
-                                                    320 Followers
-                                                </div>
-                                            </div>
-                                            <div className="mt-1">
-                                                <div className="w-auto h-[58px]">
-                                                    <canvas className="chart simple-line-chart-1 -ml-1"></canvas>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="intro-y col-span-12 sm:col-span-6 2xl:col-span-3">
-                                        <div className="box zoom-in p-5">
-                                            <div className="flex items-center">
-                                                <div className="w-2/4 flex-none">
-                                                    <div className="truncate text-lg font-medium">New Products</div>
-                                                    <div className="mt-1 text-slate-500">1450 Products</div>
-                                                </div>
-                                                <div className="relative ml-auto flex-none">
-                                                    <div className="w-[90px] h-[90px]">
-                                                        <canvas className="chart report-donut-chart-1"></canvas>
-                                                    </div>
-                                                    <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center font-medium">
-                                                        45%
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="intro-y col-span-12 sm:col-span-6 2xl:col-span-3">
-                                        <div className="box zoom-in p-5">
-                                            <div className="flex">
-                                                <div className="mr-3 truncate text-lg font-medium">Posted Ads</div>
-                                                <div className="ml-auto flex cursor-pointer items-center truncate rounded-full bg-slate-100 px-2 py-1 text-xs text-slate-500 dark:bg-darkmode-400">
-                                                    180 Campaign
-                                                </div>
-                                            </div>
-                                            <div className="mt-1">
-                                                <div className="w-auto h-[58px]">
-                                                    <canvas className="chart simple-line-chart-1 -ml-1"></canvas>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <GeneralReportCard1
+                                        heading="Target Sales"
+                                        subheading="300 Sales"
+                                        percentage="20%" />
+
+                                    <GeneralReportCard2
+                                        heading="Social Media"
+                                        subheading="320 Followers" />
+
+                                    <GeneralReportCard1
+                                        heading="New Products"
+                                        subheading="1450 Products"
+                                        percentage="45%" />
+
+                                    <GeneralReportCard2
+                                        heading="Posted Ads"
+                                        subheading=" 180 Campaign" />
                                 </div>
                                 {/* <!-- END: General Report --> */}
 
@@ -750,182 +403,38 @@ function Dashboard() {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr data-tw-merge="" className="intro-x">
-                                                    <td data-tw-merge="" className="px-5 py-3 border-b dark:border-darkmode-300 box w-40 rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
-                                                        <div className="flex">
-                                                            <div className="image-fit zoom-in h-10 w-10">
-                                                                <img data-placement="top" title="Uploaded at 7 March 2022" src={preview6} alt="Midone - Tailwind Admin Dashboard Template" className="tooltip cursor-pointer rounded-full shadow-[0px_0px_0px_2px_#fff,_1px_1px_5px_rgba(0,0,0,0.32)] dark:shadow-[0px_0px_0px_2px_#3f4865,_1px_1px_5px_rgba(0,0,0,0.32)]" />
-                                                            </div>
-                                                            <div className="image-fit zoom-in -ml-5 h-10 w-10">
-                                                                <img data-placement="top" title="Uploaded at 21 December 2020" src={profile6} alt="Midone - Tailwind Admin Dashboard Template" className="tooltip cursor-pointer rounded-full shadow-[0px_0px_0px_2px_#fff,_1px_1px_5px_rgba(0,0,0,0.32)] dark:shadow-[0px_0px_0px_2px_#3f4865,_1px_1px_5px_rgba(0,0,0,0.32)]" />
-                                                            </div>
-                                                            <div className="image-fit zoom-in -ml-5 h-10 w-10">
-                                                                <img data-placement="top" title="Uploaded at 7 June 2022" src={profile9} alt="Midone - Tailwind Admin Dashboard Template" className="tooltip cursor-pointer rounded-full shadow-[0px_0px_0px_2px_#fff,_1px_1px_5px_rgba(0,0,0,0.32)] dark:shadow-[0px_0px_0px_2px_#3f4865,_1px_1px_5px_rgba(0,0,0,0.32)]" />
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td data-tw-merge="" className="px-5 py-3 border-b dark:border-darkmode-300 box rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
-                                                        <a className="whitespace-nowrap font-medium" href="#">
-                                                            Nike Air Max 270
-                                                        </a>
-                                                        <div className="mt-0.5 whitespace-nowrap text-xs text-slate-500">
-                                                            Sport & Outdoor
-                                                        </div>
-                                                    </td>
-                                                    <td data-tw-merge="" className="px-5 py-3 border-b dark:border-darkmode-300 box rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
-                                                        202
-                                                    </td>
-                                                    <td data-tw-merge="" className="px-5 py-3 border-b dark:border-darkmode-300 box w-40 rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
-                                                        <div className="flex items-center justify-center text-danger">
-                                                            <i data-tw-merge="" data-lucide="check-square" className="stroke-1.5 mr-2 h-4 w-4"></i>
-                                                            Inactive
-                                                        </div>
-                                                    </td>
-                                                    <td data-tw-merge="" className="px-5 py-3 border-b dark:border-darkmode-300 box w-56 rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600 before:absolute before:inset-y-0 before:left-0 before:my-auto before:block before:h-8 before:w-px before:bg-slate-200 before:dark:bg-darkmode-400">
-                                                        <div className="flex items-center justify-center">
-                                                            <a className="mr-3 flex items-center" href="#">
-                                                                <i data-tw-merge="" data-lucide="check-square" className="stroke-1.5 mr-1 h-4 w-4"></i>
-                                                                Edit
-                                                            </a>
-                                                            <a className="flex items-center text-danger" href="#">
-                                                                <i data-tw-merge="" data-lucide="trash" className="stroke-1.5 mr-1 h-4 w-4"></i>
-                                                                Delete
-                                                            </a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr data-tw-merge="" className="intro-x">
-                                                    <td data-tw-merge="" className="px-5 py-3 border-b dark:border-darkmode-300 box w-40 rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
-                                                        <div className="flex">
-                                                            <div className="image-fit zoom-in h-10 w-10">
-                                                                <img data-placement="top" title="Uploaded at 21 July 2022" src={preview3} alt="Midone - Tailwind Admin Dashboard Template" className="tooltip cursor-pointer rounded-full shadow-[0px_0px_0px_2px_#fff,_1px_1px_5px_rgba(0,0,0,0.32)] dark:shadow-[0px_0px_0px_2px_#3f4865,_1px_1px_5px_rgba(0,0,0,0.32)]" />
-                                                            </div>
-                                                            <div className="image-fit zoom-in -ml-5 h-10 w-10">
-                                                                <img data-placement="top" title="Uploaded at 28 December 2021" src={profile13} alt="Midone - Tailwind Admin Dashboard Template" className="tooltip cursor-pointer rounded-full shadow-[0px_0px_0px_2px_#fff,_1px_1px_5px_rgba(0,0,0,0.32)] dark:shadow-[0px_0px_0px_2px_#3f4865,_1px_1px_5px_rgba(0,0,0,0.32)]" />
-                                                            </div>
-                                                            <div className="image-fit zoom-in -ml-5 h-10 w-10">
-                                                                <img data-placement="top" title="Uploaded at 22 March 2021" src={profile12} alt="Midone - Tailwind Admin Dashboard Template" className="tooltip cursor-pointer rounded-full shadow-[0px_0px_0px_2px_#fff,_1px_1px_5px_rgba(0,0,0,0.32)] dark:shadow-[0px_0px_0px_2px_#3f4865,_1px_1px_5px_rgba(0,0,0,0.32)]" />
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td data-tw-merge="" className="px-5 py-3 border-b dark:border-darkmode-300 box rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
-                                                        <a className="whitespace-nowrap font-medium" href="/">
-                                                            Sony Master Series A9G
-                                                        </a>
-                                                        <div className="mt-0.5 whitespace-nowrap text-xs text-slate-500">
-                                                            Electronic
-                                                        </div>
-                                                    </td>
-                                                    <td data-tw-merge="" className="px-5 py-3 border-b dark:border-darkmode-300 box rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
-                                                        96
-                                                    </td>
-                                                    <td data-tw-merge="" className="px-5 py-3 border-b dark:border-darkmode-300 box w-40 rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
-                                                        <div className="flex items-center justify-center text-danger">
-                                                            <i data-tw-merge="" data-lucide="check-square" className="stroke-1.5 mr-2 h-4 w-4"></i>
-                                                            Inactive
-                                                        </div>
-                                                    </td>
-                                                    <td data-tw-merge="" className="px-5 py-3 border-b dark:border-darkmode-300 box w-56 rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600 before:absolute before:inset-y-0 before:left-0 before:my-auto before:block before:h-8 before:w-px before:bg-slate-200 before:dark:bg-darkmode-400">
-                                                        <div className="flex items-center justify-center">
-                                                            <a className="mr-3 flex items-center" href="#">
-                                                                <i data-tw-merge="" data-lucide="check-square" className="stroke-1.5 mr-1 h-4 w-4"></i>
-                                                                Edit
-                                                            </a>
-                                                            <a className="flex items-center text-danger" href="#">
-                                                                <i data-tw-merge="" data-lucide="trash" className="stroke-1.5 mr-1 h-4 w-4"></i>
-                                                                Delete
-                                                            </a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr data-tw-merge="" className="intro-x">
-                                                    <td data-tw-merge="" className="px-5 py-3 border-b dark:border-darkmode-300 box w-40 rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
-                                                        <div className="flex">
-                                                            <div className="image-fit zoom-in h-10 w-10">
-                                                                <img data-placement="top" title="Uploaded at 19 November 2021" src={preview3} alt="Midone - Tailwind Admin Dashboard Template" className="tooltip cursor-pointer rounded-full shadow-[0px_0px_0px_2px_#fff,_1px_1px_5px_rgba(0,0,0,0.32)] dark:shadow-[0px_0px_0px_2px_#3f4865,_1px_1px_5px_rgba(0,0,0,0.32)]" />
-                                                            </div>
-                                                            <div className="image-fit zoom-in -ml-5 h-10 w-10">
-                                                                <img data-placement="top" title="Uploaded at 14 November 2021" src={profile10} alt="Midone - Tailwind Admin Dashboard Template" className="tooltip cursor-pointer rounded-full shadow-[0px_0px_0px_2px_#fff,_1px_1px_5px_rgba(0,0,0,0.32)] dark:shadow-[0px_0px_0px_2px_#3f4865,_1px_1px_5px_rgba(0,0,0,0.32)]" />
-                                                            </div>
-                                                            <div className="image-fit zoom-in -ml-5 h-10 w-10">
-                                                                <img data-placement="top" title="Uploaded at 10 April 2021" src={profile5} alt="Midone - Tailwind Admin Dashboard Template" className="tooltip cursor-pointer rounded-full shadow-[0px_0px_0px_2px_#fff,_1px_1px_5px_rgba(0,0,0,0.32)] dark:shadow-[0px_0px_0px_2px_#3f4865,_1px_1px_5px_rgba(0,0,0,0.32)]" />
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td data-tw-merge="" className="px-5 py-3 border-b dark:border-darkmode-300 box rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
-                                                        <a className="whitespace-nowrap font-medium" href="#">
-                                                            Nike Tanjun
-                                                        </a>
-                                                        <div className="mt-0.5 whitespace-nowrap text-xs text-slate-500">
-                                                            Sport & Outdoor
-                                                        </div>
-                                                    </td>
-                                                    <td data-tw-merge="" className="px-5 py-3 border-b dark:border-darkmode-300 box rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
-                                                        50
-                                                    </td>
-                                                    <td data-tw-merge="" className="px-5 py-3 border-b dark:border-darkmode-300 box w-40 rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
-                                                        <div className="flex items-center justify-center text-success">
-                                                            <i data-tw-merge="" data-lucide="check-square" className="stroke-1.5 mr-2 h-4 w-4"></i>
-                                                            Active
-                                                        </div>
-                                                    </td>
-                                                    <td data-tw-merge="" className="px-5 py-3 border-b dark:border-darkmode-300 box w-56 rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600 before:absolute before:inset-y-0 before:left-0 before:my-auto before:block before:h-8 before:w-px before:bg-slate-200 before:dark:bg-darkmode-400">
-                                                        <div className="flex items-center justify-center">
-                                                            <a className="mr-3 flex items-center" href="#">
-                                                                <i data-tw-merge="" data-lucide="check-square" className="stroke-1.5 mr-1 h-4 w-4"></i>
-                                                                Edit
-                                                            </a>
-                                                            <a className="flex items-center text-danger" href="#">
-                                                                <i data-tw-merge="" data-lucide="trash" className="stroke-1.5 mr-1 h-4 w-4"></i>
-                                                                Delete
-                                                            </a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr data-tw-merge="" className="intro-x">
-                                                    <td data-tw-merge="" className="px-5 py-3 border-b dark:border-darkmode-300 box w-40 rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
-                                                        <div className="flex">
-                                                            <div className="image-fit zoom-in h-10 w-10">
-                                                                <img data-placement="top" title="Uploaded at 6 September 2021" src={preview1} alt="Midone - Tailwind Admin Dashboard Template" className="tooltip cursor-pointer rounded-full shadow-[0px_0px_0px_2px_#fff,_1px_1px_5px_rgba(0,0,0,0.32)] dark:shadow-[0px_0px_0px_2px_#3f4865,_1px_1px_5px_rgba(0,0,0,0.32)]" />
-                                                            </div>
-                                                            <div className="image-fit zoom-in -ml-5 h-10 w-10">
-                                                                <img data-placement="top" title="Uploaded at 16 August 2022" src={profile10} alt="Midone - Tailwind Admin Dashboard Template" className="tooltip cursor-pointer rounded-full shadow-[0px_0px_0px_2px_#fff,_1px_1px_5px_rgba(0,0,0,0.32)] dark:shadow-[0px_0px_0px_2px_#3f4865,_1px_1px_5px_rgba(0,0,0,0.32)]" />
-                                                            </div>
-                                                            <div className="image-fit zoom-in -ml-5 h-10 w-10">
-                                                                <img data-placement="top" title="Uploaded at 15 January 2022" src={profile4} alt="Midone - Tailwind Admin Dashboard Template" className="tooltip cursor-pointer rounded-full shadow-[0px_0px_0px_2px_#fff,_1px_1px_5px_rgba(0,0,0,0.32)] dark:shadow-[0px_0px_0px_2px_#3f4865,_1px_1px_5px_rgba(0,0,0,0.32)]" />
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td data-tw-merge="" className="px-5 py-3 border-b dark:border-darkmode-300 box rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
-                                                        <a className="whitespace-nowrap font-medium" href="/">
-                                                            Apple MacBook Pro 13
-                                                        </a>
-                                                        <div className="mt-0.5 whitespace-nowrap text-xs text-slate-500">
-                                                            PC & Laptop
-                                                        </div>
-                                                    </td>
-                                                    <td data-tw-merge="" className="px-5 py-3 border-b dark:border-darkmode-300 box rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
-                                                        170
-                                                    </td>
-                                                    <td data-tw-merge="" className="px-5 py-3 border-b dark:border-darkmode-300 box w-40 rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
-                                                        <div className="flex items-center justify-center text-danger">
-                                                            <i data-tw-merge="" data-lucide="check-square" className="stroke-1.5 mr-2 h-4 w-4"></i>
-                                                            Inactive
-                                                        </div>
-                                                    </td>
-                                                    <td data-tw-merge="" className="px-5 py-3 border-b dark:border-darkmode-300 box w-56 rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600 before:absolute before:inset-y-0 before:left-0 before:my-auto before:block before:h-8 before:w-px before:bg-slate-200 before:dark:bg-darkmode-400">
-                                                        <div className="flex items-center justify-center">
-                                                            <a className="mr-3 flex items-center" href="#">
-                                                                <i data-tw-merge="" data-lucide="check-square" className="stroke-1.5 mr-1 h-4 w-4"></i>
-                                                                Edit
-                                                            </a>
-                                                            <a className="flex items-center text-danger" href="#">
-                                                                <i data-tw-merge="" data-lucide="trash" className="stroke-1.5 mr-1 h-4 w-4"></i>
-                                                                Delete
-                                                            </a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                <WeeklyTopProductsData
+                                                    images={[preview6, profile6, profile9]}
+                                                    productName={"Nike Air Max 270"}
+                                                    productCategory={"Sport & Outdoor"}
+                                                    stock={202}
+                                                    status={"Inactive"}
+                                                />
+
+                                                <WeeklyTopProductsData
+                                                    images={[preview3, profile13, profile12]}
+                                                    productName={"Sony Master Series A9G"}
+                                                    productCategory={"Electronic"}
+                                                    stock={96}
+                                                    status={"Inactive"}
+                                                />
+
+                                                <WeeklyTopProductsData
+                                                    images={[preview3, profile10, profile5]}
+                                                    productName={"Nike Tanjun"}
+                                                    productCategory={"Sport & Outdoor"}
+                                                    stock={50}
+                                                    status={"Active"}
+                                                />
+
+                                                <WeeklyTopProductsData
+                                                    images={[preview1, profile10, profile4]}
+                                                    productName={"Apple MacBook Pro 13"}
+                                                    productCategory={"PC & Laptop"}
+                                                    stock={170}
+                                                    status={"Inactive"}
+                                                />
+
                                             </tbody>
                                         </table>
                                     </div>
@@ -982,86 +491,42 @@ function Dashboard() {
                                             <h2 className="mr-5 truncate text-lg font-medium">Transactions</h2>
                                         </div>
                                         <div className="mt-5">
-                                            <div className="intro-x">
-                                                <div className="box zoom-in mb-3 flex items-center px-5 py-3">
-                                                    <div className="image-fit h-10 w-10 flex-none overflow-hidden rounded-full">
-                                                        <img src={profile9} alt="Midone - Tailwind Admin Dashboard Template" />
-                                                    </div>
-                                                    <div className="ml-4 mr-auto">
-                                                        <div className="font-medium">Kevin Spacey</div>
-                                                        <div className="mt-0.5 text-xs text-slate-500">
-                                                            7 March 2022
-                                                        </div>
-                                                    </div>
-                                                    <div className="text-danger">
-                                                        -$121
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="intro-x">
-                                                <div className="box zoom-in mb-3 flex items-center px-5 py-3">
-                                                    <div className="image-fit h-10 w-10 flex-none overflow-hidden rounded-full">
-                                                        <img src={profile5} alt="Midone - Tailwind Admin Dashboard Template" />
-                                                    </div>
-                                                    <div className="ml-4 mr-auto">
-                                                        <div className="font-medium">Al Pacino</div>
-                                                        <div className="mt-0.5 text-xs text-slate-500">
-                                                            21 July 2022
-                                                        </div>
-                                                    </div>
-                                                    <div className="text-danger">
-                                                        -$72
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="intro-x">
-                                                <div className="box zoom-in mb-3 flex items-center px-5 py-3">
-                                                    <div className="image-fit h-10 w-10 flex-none overflow-hidden rounded-full">
-                                                        <img src={profile11} alt="Midone - Tailwind Admin Dashboard Template" />
-                                                    </div>
-                                                    <div className="ml-4 mr-auto">
-                                                        <div className="font-medium">Robert De Niro</div>
-                                                        <div className="mt-0.5 text-xs text-slate-500">
-                                                            19 November 2021
-                                                        </div>
-                                                    </div>
-                                                    <div className="text-success">
-                                                        +$45
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="intro-x">
-                                                <div className="box zoom-in mb-3 flex items-center px-5 py-3">
-                                                    <div className="image-fit h-10 w-10 flex-none overflow-hidden rounded-full">
-                                                        <img src={profile3} alt="Midone - Tailwind Admin Dashboard Template" />
-                                                    </div>
-                                                    <div className="ml-4 mr-auto">
-                                                        <div className="font-medium">Russell Crowe</div>
-                                                        <div className="mt-0.5 text-xs text-slate-500">
-                                                            6 September 2021
-                                                        </div>
-                                                    </div>
-                                                    <div className="text-danger">
-                                                        -$44
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="intro-x">
-                                                <div className="box zoom-in mb-3 flex items-center px-5 py-3">
-                                                    <div className="image-fit h-10 w-10 flex-none overflow-hidden rounded-full">
-                                                        <img src={profile2} alt="Midone - Tailwind Admin Dashboard Template" />
-                                                    </div>
-                                                    <div className="ml-4 mr-auto">
-                                                        <div className="font-medium">Robert De Niro</div>
-                                                        <div className="mt-0.5 text-xs text-slate-500">
-                                                            22 November 2022
-                                                        </div>
-                                                    </div>
-                                                    <div className="text-success">
-                                                        +$21
-                                                    </div>
-                                                </div>
-                                            </div>
+
+                                            <TransactionsCard
+                                                name="Kevin Spacey"
+                                                imgUrl={profile9}
+                                                alt="Midone - Tailwind Admin Dashboard Template"
+                                                date="7 March 2022"
+                                                sales="-$121" />
+
+                                            <TransactionsCard
+                                                name="Al Pacino"
+                                                imgUrl={profile5}
+                                                alt="Midone - Tailwind Admin Dashboard Template"
+                                                date="21 July 2022"
+                                                sales="-$72" />
+
+                                            <TransactionsCard
+                                                name="Kevin Spacey"
+                                                imgUrl={profile11}
+                                                alt="Midone - Tailwind Admin Dashboard Template"
+                                                date="19 November 2021"
+                                                sales="+$45" />
+
+                                            <TransactionsCard
+                                                name="Russell Crowe"
+                                                imgUrl={profile3}
+                                                alt="Midone - Tailwind Admin Dashboard Template"
+                                                date="6 September 2021"
+                                                sales="-$44" />
+
+                                            <TransactionsCard
+                                                name="Robert De Niro"
+                                                imgUrl={profile2}
+                                                alt="Midone - Tailwind Admin Dashboard Template"
+                                                date="22 November 2022"
+                                                sales="+$21" />
+
                                             <a className="intro-x block w-full rounded-md border border-dotted border-slate-400 py-3 text-center text-slate-500 dark:border-darkmode-300" href="#">
                                                 View More
                                             </a>
@@ -1078,92 +543,38 @@ function Dashboard() {
                                             <a className="ml-auto truncate text-primary" href="#"> Show More </a>
                                         </div>
                                         <div className="relative mt-5 before:absolute before:ml-5 before:mt-5 before:block before:h-[85%] before:w-px before:bg-slate-200 before:dark:bg-darkmode-400">
-                                            <div className="intro-x relative mb-3 flex items-center">
-                                                <div className="before:absolute before:ml-5 before:mt-5 before:block before:h-px before:w-20 before:bg-slate-200 before:dark:bg-darkmode-400">
-                                                    <div className="image-fit h-10 w-10 flex-none overflow-hidden rounded-full">
-                                                        <img src={profile9} alt="Midone - Tailwind Admin Dashboard Template" />
-                                                    </div>
-                                                </div>
-                                                <div className="box zoom-in ml-4 flex-1 px-5 py-3">
-                                                    <div className="flex items-center">
-                                                        <div className="font-medium">
-                                                            Hugh Jackman
-                                                        </div>
-                                                        <div className="ml-auto text-xs text-slate-500">07:00 PM</div>
-                                                    </div>
-                                                    <div className="mt-1 text-slate-500">Has joined the team</div>
-                                                </div>
-                                            </div>
-                                            <div className="intro-x relative mb-3 flex items-center">
-                                                <div className="before:absolute before:ml-5 before:mt-5 before:block before:h-px before:w-20 before:bg-slate-200 before:dark:bg-darkmode-400">
-                                                    <div className="image-fit h-10 w-10 flex-none overflow-hidden rounded-full">
-                                                        <img src={profile14} alt="Midone - Tailwind Admin Dashboard Template" />
-                                                    </div>
-                                                </div>
-                                                <div className="box zoom-in ml-4 flex-1 px-5 py-3">
-                                                    <div className="flex items-center">
-                                                        <div className="font-medium">
-                                                            Robert De Niro
-                                                        </div>
-                                                        <div className="ml-auto text-xs text-slate-500">07:00 PM</div>
-                                                    </div>
-                                                    <div className="text-slate-500">
-                                                        <div className="mt-1">Added 3 new photos</div>
-                                                        <div className="mt-2 flex">
-                                                            <div data-placement="top" title="Nike Air Max 270" className="tooltip cursor-pointer image-fit zoom-in mr-1 h-8 w-8"><img className="rounded-md border border-white" src={profile14} alt="Midone - Tailwind Admin Dashboard Template" /></div>
-                                                            <div data-placement="top" title="Sony Master Series A9G" className="tooltip cursor-pointer image-fit zoom-in mr-1 h-8 w-8"><img className="rounded-md border border-white" src={profile13} alt="Midone - Tailwind Admin Dashboard Template" /></div>
-                                                            <div data-placement="top" title="Nike Tanjun" className="tooltip cursor-pointer image-fit zoom-in mr-1 h-8 w-8"><img className="rounded-md border border-white" src={profile10} alt="Midone - Tailwind Admin Dashboard Template" /></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+
+                                            <RecentActivitiesCard
+                                                profile={profile9}
+                                                name={"Hugh Jackman"}
+                                                time={"07:00 PM"}
+                                                activity={"Has joined the team"}
+                                                images={[]} />
+
+                                            <RecentActivitiesCard
+                                                profile={profile14}
+                                                name={"Robert De Niro"}
+                                                time={"07:00 PM"}
+                                                activity={"Added 3 new photos"}
+                                                images={[profile14, profile13, profile10]} />
+
                                             <div className="intro-x my-4 text-center text-xs text-slate-500">
                                                 12 November
                                             </div>
-                                            <div className="intro-x relative mb-3 flex items-center">
-                                                <div className="before:absolute before:ml-5 before:mt-5 before:block before:h-px before:w-20 before:bg-slate-200 before:dark:bg-darkmode-400">
-                                                    <div className="image-fit h-10 w-10 flex-none overflow-hidden rounded-full">
-                                                        <img src={profile15} alt="Midone - Tailwind Admin Dashboard Template" />
-                                                    </div>
-                                                </div>
-                                                <div className="box zoom-in ml-4 flex-1 px-5 py-3">
-                                                    <div className="flex items-center">
-                                                        <div className="font-medium">
-                                                            Arnold Schwarzenegger
-                                                        </div>
-                                                        <div className="ml-auto text-xs text-slate-500">07:00 PM</div>
-                                                    </div>
-                                                    <div className="mt-1 text-slate-500">
-                                                        Has changed
-                                                        <a className="text-primary" href="/">
-                                                            Samsung Galaxy S20 Ultra
-                                                        </a>
-                                                        price and description
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="intro-x relative mb-3 flex items-center">
-                                                <div className="before:absolute before:ml-5 before:mt-5 before:block before:h-px before:w-20 before:bg-slate-200 before:dark:bg-darkmode-400">
-                                                    <div className="image-fit h-10 w-10 flex-none overflow-hidden rounded-full">
-                                                        <img src={profile10} alt="Midone - Tailwind Admin Dashboard Template" />
-                                                    </div>
-                                                </div>
-                                                <div className="box zoom-in ml-4 flex-1 px-5 py-3">
-                                                    <div className="flex items-center">
-                                                        <div className="font-medium">
-                                                            Al Pacino
-                                                        </div>
-                                                        <div className="ml-auto text-xs text-slate-500">07:00 PM</div>
-                                                    </div>
-                                                    <div className="mt-1 text-slate-500">
-                                                        Has changed
-                                                        <a className="text-primary" href="/">
-                                                            Samsung Galaxy S20 Ultra
-                                                        </a>
-                                                        description
-                                                    </div>
-                                                </div>
-                                            </div>
+
+                                            <RecentActivitiesCard
+                                                profile={profile15}
+                                                name={"Christian Bale"}
+                                                time={"07:00 PM"}
+                                                activity={"Has changed Samsung Galaxy S20 Ultra price & description"}
+                                                images={[]} />
+
+                                            <RecentActivitiesCard
+                                                profile={profile10}
+                                                name={"Al Pacino"}
+                                                time={"07:00 PM"}
+                                                activity={"Has changed Nike Tanjun description"}
+                                                images={[]} />
                                         </div>
                                     </div>
                                     {/* <!-- END: Recent Activities --> */}
@@ -1174,58 +585,12 @@ function Dashboard() {
                                             <h2 className="mr-auto truncate text-lg font-medium">
                                                 Important Notes
                                             </h2>
-                                            <button data-tw-merge="" data-carousel="important-notes" data-target="prev" className="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed tiny-slider-navigator mr-2 border-slate-300 px-2 text-slate-600 dark:text-slate-300"><i data-tw-merge="" data-lucide="chevron-left" className="stroke-1.5 h-4 w-4"></i></button>
-                                            <button data-tw-merge="" data-carousel="important-notes" data-target="next" className="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed tiny-slider-navigator mr-2 border-slate-300 px-2 text-slate-600 dark:text-slate-300"><i data-tw-merge="" data-lucide="chevron-right" className="stroke-1.5 h-4 w-4"></i></button>
+                                            <button data-tw-merge="" data-carousel="important-notes" data-target="prev" className="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed tiny-slider-navigator mr-2 border-slate-300 px-2 text-slate-600 dark:text-slate-300"><ChevronLeft className="stroke-1.5 h-4 w-4" /></button>
+                                            <button data-tw-merge="" data-carousel="important-notes" data-target="next" className="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed tiny-slider-navigator mr-2 border-slate-300 px-2 text-slate-600 dark:text-slate-300"><ChevronRight className="stroke-1.5 h-4 w-4" /></button>
                                         </div>
                                         <div className="intro-x mt-5">
                                             <div className="box zoom-in">
-                                                <div data-config="" id="important-notes" className="tiny-slider">
-                                                    <div className="p-5">
-                                                        <div className="truncate text-base font-medium">
-                                                            Lorem Ipsum is simply dummy text
-                                                        </div>
-                                                        <div className="mt-1 text-slate-400">20 Hours ago</div>
-                                                        <div className="mt-1 text-justify text-slate-500">
-                                                            Lorem Ipsum is simply dummy text of the printing and
-                                                            typesetting industry. Lorem Ipsum has been the industry's
-                                                            standard dummy text ever since the 1500s.
-                                                        </div>
-                                                        <div className="mt-5 flex font-medium">
-                                                            <button data-tw-merge="" type="button" className="transition duration-200 border shadow-sm inline-flex items-center justify-center rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-secondary/70 border-secondary/70 text-slate-500 dark:border-darkmode-400 dark:bg-darkmode-400 dark:text-slate-300 [&:hover:not(:disabled)]:bg-slate-100 [&:hover:not(:disabled)]:border-slate-100 [&:hover:not(:disabled)]:dark:border-darkmode-300/80 [&:hover:not(:disabled)]:dark:bg-darkmode-300/80 px-2 py-1">View Notes</button>
-                                                            <button data-tw-merge="" type="button" className="transition duration-200 border shadow-sm inline-flex items-center justify-center rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed border-secondary text-slate-500 dark:border-darkmode-100/40 dark:text-slate-300 [&:hover:not(:disabled)]:bg-secondary/20 [&:hover:not(:disabled)]:dark:bg-darkmode-100/10 ml-auto px-2 py-1">Dismiss</button>
-                                                        </div>
-                                                    </div>
-                                                    <div className="p-5">
-                                                        <div className="truncate text-base font-medium">
-                                                            Lorem Ipsum is simply dummy text
-                                                        </div>
-                                                        <div className="mt-1 text-slate-400">20 Hours ago</div>
-                                                        <div className="mt-1 text-justify text-slate-500">
-                                                            Lorem Ipsum is simply dummy text of the printing and
-                                                            typesetting industry. Lorem Ipsum has been the industry's
-                                                            standard dummy text ever since the 1500s.
-                                                        </div>
-                                                        <div className="mt-5 flex font-medium">
-                                                            <button data-tw-merge="" type="button" className="transition duration-200 border shadow-sm inline-flex items-center justify-center rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-secondary/70 border-secondary/70 text-slate-500 dark:border-darkmode-400 dark:bg-darkmode-400 dark:text-slate-300 [&:hover:not(:disabled)]:bg-slate-100 [&:hover:not(:disabled)]:border-slate-100 [&:hover:not(:disabled)]:dark:border-darkmode-300/80 [&:hover:not(:disabled)]:dark:bg-darkmode-300/80 px-2 py-1">View Notes</button>
-                                                            <button data-tw-merge="" type="button" className="transition duration-200 border shadow-sm inline-flex items-center justify-center rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed border-secondary text-slate-500 dark:border-darkmode-100/40 dark:text-slate-300 [&:hover:not(:disabled)]:bg-secondary/20 [&:hover:not(:disabled)]:dark:bg-darkmode-100/10 ml-auto px-2 py-1">Dismiss</button>
-                                                        </div>
-                                                    </div>
-                                                    <div className="p-5">
-                                                        <div className="truncate text-base font-medium">
-                                                            Lorem Ipsum is simply dummy text
-                                                        </div>
-                                                        <div className="mt-1 text-slate-400">20 Hours ago</div>
-                                                        <div className="mt-1 text-justify text-slate-500">
-                                                            Lorem Ipsum is simply dummy text of the printing and
-                                                            typesetting industry. Lorem Ipsum has been the industry's
-                                                            standard dummy text ever since the 1500s.
-                                                        </div>
-                                                        <div className="mt-5 flex font-medium">
-                                                            <button data-tw-merge="" type="button" className="transition duration-200 border shadow-sm inline-flex items-center justify-center rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-secondary/70 border-secondary/70 text-slate-500 dark:border-darkmode-400 dark:bg-darkmode-400 dark:text-slate-300 [&:hover:not(:disabled)]:bg-slate-100 [&:hover:not(:disabled)]:border-slate-100 [&:hover:not(:disabled)]:dark:border-darkmode-300/80 [&:hover:not(:disabled)]:dark:bg-darkmode-300/80 px-2 py-1">View Notes</button>
-                                                            <button data-tw-merge="" type="button" className="transition duration-200 border shadow-sm inline-flex items-center justify-center rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed border-secondary text-slate-500 dark:border-darkmode-100/40 dark:text-slate-300 [&:hover:not(:disabled)]:bg-secondary/20 [&:hover:not(:disabled)]:dark:bg-darkmode-100/10 ml-auto px-2 py-1">Dismiss</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <ImportantNotesSlider />
                                             </div>
                                         </div>
                                     </div>
@@ -1345,4 +710,4 @@ function Dashboard() {
     )
 }
 
-export default Dashboard
+export default Dashboard;

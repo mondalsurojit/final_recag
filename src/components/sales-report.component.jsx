@@ -52,7 +52,7 @@ const SalesReport = () => {
                 sparkline: {
                     enabled: false
                 },
-                height: "137%",
+                height: "242",
                 width: "100%",
                 type: "area",
                 fontFamily: "Inter, sans-serif",
@@ -106,7 +106,7 @@ const SalesReport = () => {
 
     return (
         <div className="max-w-sm md:max-w-none md:max-w-28rem w-full">
-            <div className="flex justify-between p-5 md:p-6 pb-0 md:pb-0">
+            <div className="flex justify-between p-5 md:p-5 pb-0 md:pb-0">
                 <div>
                 </div>
             </div>

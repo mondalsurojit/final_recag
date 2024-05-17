@@ -24,16 +24,17 @@ const WeeklyTop = () => {
 
     const getChartOptions = () => {
         return {
-            series: [62, 33, 10],
-            colors: ["#1e3a8a", "#f97316", "#facc15"],
+            series: [10, 15, 65],
+            colors: ["#facc15", "#f97316", "#344d95"],
             chart: {
-                height: 210,
+                height: 200,
                 width: "100%",
                 type: "pie",
             },
             stroke: {
                 colors: ["white"],
-                lineCap: "",
+                width: 4,
+                lineCap: "square",
             },
             plotOptions: {
                 pie: {
@@ -88,7 +89,7 @@ const WeeklyTop = () => {
                     <div className="flex justify-end items-center">
                     </div>
                 </div>
-                <div className="py-3" id="pie-chart"></div>
+                <div className="py-0" id="pie-chart"></div>
             </div>
         </div>
     )

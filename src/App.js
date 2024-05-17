@@ -18,16 +18,17 @@ import Privacy from "./pages/Privacy/Privacy"
 import Ranking from "./pages/Rankings/Rankings"
 import Dashboard from './pages/Dashboard/Dashboard.jsx';
 import Community from './pages/Discussions Page/Community.jsx';
+
 function App() {
   return (
-    <div className="App ">
+    <div className="App">
       <AppProvider>
 
         <BrowserRouter>
           <Routes>
             {/* <div className="App w-[100%] "> */}
-              {/* <Home/> */}
-              <Route path="/" element={<Home />} />
+            {/* <Home/> */}
+            <Route path="/" element={<Home />} />
             {/* </div> */}
             <Route path='/code' element={<Code />} />
             <Route path="/dataset" element={<Datasets />} />
