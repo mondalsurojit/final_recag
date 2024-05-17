@@ -1,0 +1,135 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Montserrat:wght@500&family=Mulish&family=Poppins:wght@500&display=swap');
+
+:root{
+    --font-size-one: 2.2rem;
+    --font-size-para: 1.2rem;
+    --font-size-explore: 1.5rem;
+    --font-size-explore-btn: 0.9rem;
+    --font-size-option: 0.8rem;
+    --font-size-xsmall: 0.7rem;
+}
+  
+section.team-section{
+    overflow:hidden;
+    padding:0.4rem 1rem;
+    position:relative;
+}
+.team-container{
+    max-width: 100rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 0.5rem;
+}
+.team-contents{
+    display:flex;
+    flex-flow:column;
+    justify-content: flex-start;
+    padding:0.5rem;
+}
+.team-title{
+    padding:1rem 0;
+    display:flex;
+}
+.team-title>h3.main{
+    font-size:var(--font-size-one);
+    font-weight: 900;
+}
+.team-data{
+    margin-top: 2rem;; 
+}
+.member{
+    width: 100%;
+    height: auto;
+}
+.member * img{
+    border-radius: 1rem;
+    width: 100%;
+    height: 12rem;
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 2rem;
+}
+.team-content{
+    display:flex;
+    flex-flow:column;
+    justify-content: flex-start;
+    padding:0.6rem;
+}
+.mem-name{
+    font-size:var(--font-size-para);
+    font-weight:700;
+    margin-bottom: 0.4rem;
+}
+.designation{
+    font-size:1.1rem;
+    font-weight:500;
+    opacity:0.7;
+    margin-bottom: 0.5rem;
+}
+.description{
+    font-size:1rem;
+    opacity:0.7;
+    font-weight:400;
+}
+
+
+/* css for responsiveness */
+@media screen and (max-width:840px){
+   .grid{
+    grid-template-columns: repeat(3,1fr);
+    row-gap:4rem;
+   }
+}
+
+@media screen and (max-width:650px){
+    .grid{
+    grid-template-columns: repeat(2,1fr);
+   }
+}
+
+@media screen and (max-width:470px){
+    .team-title>h3.main{
+        font-size:var(--font-size-explore);
+    }
+    .grid{
+        grid-template-columns: 1fr;
+    }
+    .member{
+        display:flex;
+        flex-flow: row;
+        gap:2rem;
+        row-gap: 1.5rem;
+    }
+    .mem-name{
+        font-size:var(--font-size-para);
+    }
+    .designation{
+        font-size:var(--font-size-explore-btn);
+    }
+    .description{
+        font-size:var(--font-size-xsmall);
+    }
+    .member * img{
+        width: 10rem;
+        height: 10rem;
+        min-width:3rem;
+        min-height: 3rem;
+    }
+    section.team-section{
+        padding:0.4rem 0.2rem;
+    }
+}
+@media screen and (max-width:380px){
+    .member * img{
+        width: 5rem;
+        height: 5rem;
+    }
+    .member{
+        gap:0.5rem;
+    }
+}
+
+

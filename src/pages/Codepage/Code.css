@@ -7,6 +7,10 @@
     --font-size-explore-btn: 0.9rem;
     --font-size-option: 0.8rem;
 }
+
+.codebutton::-webkit-scrollbar{
+    display: none;
+}
 section.code{
     overflow:hidden;
     padding:0.4rem 1rem;

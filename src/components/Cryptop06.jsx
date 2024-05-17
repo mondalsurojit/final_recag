@@ -26,7 +26,7 @@ import img48 from "../Images/icons8-code-fork-75.png"
 import imgy from "../Images/svg-1.svg"
 import img61 from "../Images/icon-35.svg"
 
-import "../pages/tada.css"
+// import "../pages/tada.css"
 function Cryptop06() {
 
     const [isHovered, setIsHovered] = useState(false);
@@ -567,11 +567,8 @@ function InputCluster({ item }) {
   
     return (
       <div
-        className={`self-stretch flex flex-row items-start justify-start gap-[2rem] text-left text-[1.688rem] text-white font-montserrat mq450:flex-wrap bg-cardblue p-2 rounded-xl shadow-lg ${
-          isHovered ? 'animated tada' : ''
-        }`}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        className={`self-stretch flex flex-row items-start justify-start gap-[2rem] text-left text-[1.688rem] text-white font-montserrat mq450:flex-wrap bg-cardblue p-2 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105`}
+       
       >
         <img
           className="h-[78px] w-[70px] relative overflow-hidden shrink-0 object-cover hover:transform hover:translate-y-[-10px] transition-transform duration-250 ease-in-out"

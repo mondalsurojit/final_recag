@@ -16,8 +16,8 @@ section.ranking{
 .rank-container{
     max-width: 100rem;
     width: 100%;
-    margin: 0 auto;
-    padding: 0 2rem;
+    /* margin: 0 auto; */
+    /* padding: 0 2rem; */
 }
 .rank-content{
     display:flex;
@@ -74,6 +74,8 @@ section.ranking{
     display:flex;
     justify-content: space-between;
     align-items: center;
+    align-self: center;
+    width: 97%;
 }
 .rank-grandmasters,.rank-masters,.rank-experts,.rank-contributors,.rank-novices{
     display:flex;
@@ -101,7 +103,7 @@ section.ranking{
     width:100%;
     border:0.2rem solid rgba(228,230,232,0.7);
     border-radius: 1rem;
-    position: relative;
+    /* position: relative; */
     max-height: 58rem;
     overflow: scroll;
 }
@@ -110,7 +112,8 @@ section.ranking{
     position: sticky;
     top: 0;
     z-index: 100;
-    background-color: rgba(150, 151, 151, 0.766);
+    background-color: #2434b3;
+    color: white;
     width:100%;
     display:flex;
     align-items: center;

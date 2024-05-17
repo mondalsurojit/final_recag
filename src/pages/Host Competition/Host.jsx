@@ -26,6 +26,7 @@ import Mobilemenu from '../Dashboard/Mobilemenu'
 import Simplemenu from '../Dashboard/Simplemenu'
 import profile4 from "../image/fakers/profile-4.jpg"
 import { BellRing, Search } from 'lucide-react';
+import { FaPlus } from 'react-icons/fa';
 
 export default function Host() {
     const [expandFirst, setExpandFirst] = useState(false);
@@ -43,17 +44,17 @@ export default function Host() {
             <div className="flex sm:m-8 m-2">
                 <Simplemenu style={{ color: "#fff" }} />
 
-                <section className={`host-section das`} style={{ overflow: 'scroll', height: "100vh", width: "100vw", backgroundColor: "#f1f5f9", borderRadius: "15px" }}
+                <section className={`host-section das`} style={{ overflow: 'scroll', height: "100vh", width: "100vw", backgroundColor: "white", borderRadius: "15px", padding: "2rem" }}
                 >
                     <div className="host-container">
                         <div className="hosting-section">
                             <div className="first-section">
 
                                 {/* <!-- BEGIN: Top Bar --> */}
-                                <div className="relative z-[51] flex h-[40px] items-center border-b border-slate-200" style={{ marginTop: "-13px", padding: "0 10px",zIndex:"0" }}>
+                                <div className="relative z-[51] flex h-[40px] items-center border-b border-slate-200" style={{ marginTop: "-25px", padding: "22px 10px", zIndex: "0" }}>
 
                                     {/* <!-- BEGIN: Breadcrumb --> */}
-                                    <div aria-label="breadcrumb" className="flex -intro-x mr-auto hidden sm:flex">
+                                    <div aria-label="breadcrumb" className=" -intro-x mr-auto hidden sm:flex">
                                         <ol className="flex items-center text-theme-1 dark:text-slate-300" >
                                             <li className="">
                                                 <a href="/">Application</a>
@@ -83,46 +84,63 @@ export default function Host() {
                                     </button>
                                     </div>
                                 </div>
-                                <div className="host-detailss">
-                                    <div className="hosting-content">
-                                        <div className="host-competition-content">
-                                            <h1 className="host-title">Host your data science competition on Kaggle</h1>
-                                            <p className="host-para">Whether you&apos;re an ML enthusiast, a teacher in class, or part of a business looking to solve challenging problems, the Kaggle platform connects your audience with your machine learning goals.</p>
-                                            <a href="/">
-                                                <div className='buttons'>
-                                                    <div className="button first">
-                                                        <div className="button-title">See Our Competition Types</div>
-                                                    </div>
-                                                </div>
-                                            </a>
+
+
+
+                                <div className="dataset-details">
+                                    <div className="dataset-content">
+                                        <h1 className="main-title">Host your data science competition on Recag</h1>
+                                        <p className="dataset-para">Whether you&apos;re an ML enthusiast, a teacher in class, or part of a business looking to solve challenging problems, the Recag platform connects your audience with your machine learning goals.</p>
+
+
+                                        <div className='flex flex-row gap-[1rem]'>
+                                            <button
+                                                className="bg-darkblue-100 hover:bg-blue-600 text-white font-[600]  flex"
+                                                style={{ borderRadius: "20px", padding: "8px 16px 8px 12px" }}
+                                                href="/competition"
+                                            >
+                                                <span className='ml-2 text-[14px]'>See Our Competition Types</span>
+                                            </button>
+
+
+
                                         </div>
+
+
+
+
                                     </div>
-                                    <div className="winning-image">
-                                        <img src={img1} alt="winner-logo" width={250} height={200} />
+                                    <div className="datasets-image pr-4">
+                                        <img src={img1} alt="logo-1" width={220} height={170} />
                                     </div>
                                 </div>
+
+
+
+
+
+
                             </div>
                             <div className="second-section">
                                 <div className="main-head">
-                                    <h3 className='main'>Why a Kaggle Competition?</h3>
+                                    <h3 className='main'>Why a Recag Competition?</h3>
                                 </div>
                                 <div className="bottom-head">
                                     <div className="left-sec">
                                         <p className="left-sec">
-
-                                            Kaggle is the home of data science, with over 16 million users, ready to solve your predictive modeling problem through data competitions.
+                                            Recag is the home of data science, with over 16 million users, ready to solve your predictive modeling problem through data competitions.
                                         </p>
                                         <p className="left-sec">
-                                            You set the terms, Kagglers construct their algorithms, and our website scores their accuracy in real time to find the winner. Competitions are the smart, simple way to tackle a tough business problem, educate students, or simply create a fun event.
+                                            You set the terms, Recagrs construct their algorithms, and our website scores their accuracy in real time to find the winner. Competitions are the smart, simple way to tackle a tough business problem, educate students, or simply create a fun event.
                                         </p>
                                         <p className="left-sec">
-                                            You bring the problem and the data, and Kaggle brings the platform.
+                                            You bring the problem and the data, and Recag brings the platform.
                                         </p>
                                     </div>
                                     <div className="right-sec">
                                         <img src={img8} alt="logo-8" />
                                         <div className="right-sec-content">
-                                            <h3 className="heading">Kaagle Competition Features</h3>
+                                            <h3 className="heading">Recag Competition Features</h3>
                                             <div className="grid-section">
                                                 <div className="sub-content">
                                                     <img src={img2} alt="logo-2" />
@@ -148,7 +166,7 @@ export default function Host() {
                                                 </div>
                                                 <div className="sub-content">
                                                     <img src={img7} alt="logo-7" />
-                                                    <div className="sub-head">Kaggle Notebooks</div>
+                                                    <div className="sub-head">Recag Notebooks</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -156,9 +174,9 @@ export default function Host() {
                                 </div>
                             </div>
                             <div className="third-section">
-                                <h3 className="main">Which Kaggle Competition is right for you?</h3>
-                                <p className="third-sec">
-                                    Kaggle offers a range of offerings for competition hosts. Select the one that&apos;s right for your needs.
+                                <h3 className="main">Which Recag Competition is right for you?</h3>
+                                <p className="host-par">
+                                    Recag offers a range of offerings for competition hosts. Select the one that&apos;s right for your needs.
                                 </p>
                                 <div className="top-comp column">
                                     <div className="community-sec row">
@@ -304,7 +322,7 @@ export default function Host() {
                                             <div className="middle-line-fourth"><img src={img12} alt="logo-12" className="check" /></div>
                                         </div>
                                         <div className="middle-lines">
-                                            <div className="middle-line-one">Marketing on Kaggle & social media</div>
+                                            <div className="middle-line-one">Marketing on Recag & social media</div>
                                             <div className="middle-line-sec"><img src={img13} alt="logo-12" className="dash" /></div>
                                             <div className="middle-line-third"><img src={img12} alt="logo-12" className="check" /></div>
                                             <div className="middle-line-fourth"><img src={img12} alt="logo-12" className="check" /></div>
@@ -316,7 +334,7 @@ export default function Host() {
                                             <div className="middle-line-fourth"><img src={img12} alt="logo-12" className="check" /></div>
                                         </div>
                                         <div className="middle-lines">
-                                            <div className="middle-line-one">Increased participation via Kaggle progression system</div>
+                                            <div className="middle-line-one">Increased participation via Recag progression system</div>
                                             <div className="middle-line-sec"><img src={img13} alt="logo-12" className="dash" /></div>
                                             <div className="middle-line-third"><img src={img12} alt="logo-12" className="check" /></div>
                                             <div className="middle-line-fourth"><img src={img12} alt="logo-12" className="check" /></div>
@@ -349,9 +367,18 @@ export default function Host() {
                                     <div className="bottom-comp">
                                         <div className="host-bottom-content">
                                             <a href="/">
-                                                <button className="start">
-                                                    Get Started
-                                                </button>
+                                            <div className='flex flex-row gap-[1rem]'>
+                                            <button
+                                                className="bg-darkblue-100 hover:bg-blue-600 text-white font-[600]  flex"
+                                                style={{ borderRadius: "20px", padding: "0.4rem 1rem" }}
+                                                href="/competition"
+                                            >
+                                                <span className='ml-2 text-[14px]'>Get Started</span>
+                                            </button>
+
+
+
+                                        </div>
                                             </a>
                                             <a href="/">
                                                 <div className="learn-more">
@@ -361,9 +388,18 @@ export default function Host() {
                                         </div>
                                         <div className="host-bottom-content">
                                             <a href="/">
-                                                <button className="contact">
-                                                    Contact Us
-                                                </button>
+                                            <div className='flex flex-row gap-[1rem]'>
+                                            <button
+                                                className="bg-darkblue-100 hover:bg-blue-600 text-white font-[600]  flex"
+                                                style={{ borderRadius: "20px", padding: "8px 16px 8px 12px" }}
+                                                href="/competition"
+                                            >
+                                                <span className='ml-2 text-[14px]'>Contact Us</span>
+                                            </button>
+
+
+
+                                        </div>
                                             </a>
                                             <a href="/">
                                                 <div className="learn-more">
@@ -373,9 +409,18 @@ export default function Host() {
                                         </div>
                                         <div className="host-bottom-content">
                                             <a href="/">
-                                                <button className="apply">
-                                                    Apply Now
-                                                </button>
+                                            <div className='flex flex-row gap-[1rem]'>
+                                            <button
+                                                className="bg-darkblue-100 hover:bg-blue-600 text-white font-[600]  flex"
+                                                style={{ borderRadius: "20px", padding: "8px 16px 8px 12px" }}
+                                                href="/competition"
+                                            >
+                                                <span className='ml-2 text-[14px]'>Apply Now</span>
+                                            </button>
+
+
+
+                                        </div>
                                             </a>
                                             <a href="/">
                                                 <div className="learn-more">
@@ -391,7 +436,7 @@ export default function Host() {
                                 <h3 className="main">Competition FAQs</h3>
                                 <div className="faq-section">
                                     <div className="faq">
-                                        <div className="faq-ques">
+                                        <div className="faq-ques ">
                                             <div className="faq-left">
                                                 <h5 className="ques">Who&apos;s eligible to launch a community competition?</h5>
                                             </div>
@@ -413,7 +458,7 @@ export default function Host() {
                                             </div>
                                         </div>
                                         <p className={`ans ${expandSecond ? "visible" : ""}`} >
-                                            Kaggle is offering quarterly grants to hosts at academic/sesearch institutions and non-profit organizations who want to run competitions to further their machine learning research efforts.
+                                            Recag is offering quarterly grants to hosts at academic/sesearch institutions and non-profit organizations who want to run competitions to further their machine learning research efforts.
                                         </p>
                                     </div>
                                     <div className="faq">

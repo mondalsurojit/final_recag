@@ -22,12 +22,82 @@ import "../css/components/mobile-menu.css"
 import Mobilemenu from '../Dashboard/Mobilemenu'
 import Simplemenu from '../Dashboard/Simplemenu'
 import profile4 from "../image/fakers/profile-4.jpg"
-import { BellRing, Dot, Eye, MessageCircle, Search, ThumbsUp } from 'lucide-react';
+import { ArrowDownNarrowWide, BellRing, Boxes, Dot, Eye, LibraryBig, MessageCircle, Search, SquareMousePointer, Tags, ThumbsUp } from 'lucide-react';
 import Model from "react-modal"
+import { FaPlus } from 'react-icons/fa';
 
 export default function Discussions() {
 
     const [visible, setvisible] = useState(false);
+
+
+    // for tag
+    
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Your form submission logic here
+    console.log("Form submitted!");
+    toggleModal();
+  };
+
+
+  const [buttonStates, setButtonStates] = useState({});
+  const handle = (itemId) => {
+
+    setButtonStates((prevState) => ({
+      ...prevState,
+      [itemId]: !prevState[itemId] || false,
+    }));
+  };
+
+  const data = [
+    {
+      id: 1,
+      title: "# Machine Learning"
+    },
+    {
+      id: 2,
+      title: "# Data Science"
+    },
+    {
+      id: 3,
+      title: "# NLP"
+    },
+    {
+      id: 4,
+      title: "# Data Handling"
+    },
+    {
+      id: 5,
+      title: "# Deep Learning"
+    },
+    {
+      id: 6,
+      title: "# Nueral Network"
+    },
+    {
+      id: 7,
+      title: "Data Visualization"
+    },
+    {
+      id: 8,
+      title: "Pre-Trained Model"
+    },
+    {
+        id: 9,
+        title: "Nextjs"
+      },
+      {
+        id: 10,
+        title: "SSR"
+      }
+  ];
 
     const questions = [
         {
@@ -134,17 +204,17 @@ export default function Discussions() {
                 <Simplemenu style={{ color: "#fff" }} />
 
 
-                <section className={`discussion das`} style={{ overflow: 'scroll', height: "100vh", width: "100vw", backgroundColor: "#f1f5f9", borderRadius: "15px" }}
+                <section className={`discussion das`} style={{ overflow: 'scroll', height: "100vh", width: "100vw", backgroundColor: "white", borderRadius: "15px", padding: "1rem 2rem" }}
                 >
                     <div className="container">
                         <div className="discussion-section">
                             <div className="top-section">
 
                                 {/* <!-- BEGIN: Top Bar --> */}
-                                <div className="relative z-[51] flex h-[40px] items-center border-b border-slate-200" style={{ marginTop: "-28px", padding: "0 10px", zIndex: "0" }}>
+                                <div className="relative z-[51] flex h-[40px] items-center border-b border-slate-200" style={{ marginTop: "-20px", padding: "0 10px", zIndex: "0" }}>
 
                                     {/* <!-- BEGIN: Breadcrumb --> */}
-                                    <div aria-label="breadcrumb" className="flex -intro-x mr-auto hidden sm:flex">
+                                    <div aria-label="breadcrumb" className=" -intro-x mr-auto hidden sm:flex">
                                         <ol className="flex items-center text-theme-1 dark:text-slate-300" >
                                             <li className="">
                                                 <a href="/">Application</a>
@@ -180,8 +250,8 @@ export default function Discussions() {
                                         <h1 className="main-title">Discussions</h1>
                                         <p className="discussion-para">Discuss the Kaggle platform & machine learning topics - this includes sharing feedback, asking questions, and more.</p>
                                         <Link to="#" className='btn'>
-                                            <div className="button second">
-                                                <div className="button-content"> Your Discussions</div>
+                                            <div className='w-[155px] justify-center mt-4' style={{ borderRadius: "20px", padding: "8px 16px 8px 20px", border: "1px solid black" }}>
+                                                <div className=" text-[14px] font-medium mx-auto" >Your Discussions</div>
                                             </div>
                                         </Link>
                                     </div>
@@ -194,11 +264,96 @@ export default function Discussions() {
                     </div>
 
                     <div>
-                        <div className='flex pl-5' >
-                            <Link to="/discussions/community"><button className='dis-but' style={{ marginRight: "10px" }}>Community</button></Link>
-                            <button className='dis-but' style={{ marginRight: "10px" }}>Collections</button>
-                            <button className='dis-but' style={{ marginRight: "10px" }}>Tag</button>
-                            <button className='dis-but' style={{ marginRight: "10px" }}>Find Jobs</button>
+                        <div className='flex  gap-4 ' >
+                            <Link to="/discussions/community"> <button
+                                className="bg-darkblue-100 hover:bg-blue-600 text-white font-[600]  flex"
+                                style={{ borderRadius: "20px", padding: "8px 16px 8px 12px" }}
+                            >
+                                <span className='ml-2 text-[14px] flex flex-row gap-1'> Community   <Boxes size={20}/></span>
+                            </button></Link>
+
+                            <Link to="/discussions/community"> <button
+                                className="bg-darkblue-100 hover:bg-blue-600 text-white font-[600]  flex"
+                                style={{ borderRadius: "20px", padding: "8px 16px 8px 12px" }}
+                            >
+                                <span className='ml-2 text-[14px] flex flex-row gap-1'>Collections <LibraryBig size={20}/></span>
+                            </button></Link>
+
+
+                            <Link to="/discussions/community"> <button
+                                className="bg-darkblue-100 hover:bg-blue-600 text-white font-[600]  flex"
+                                style={{ borderRadius: "20px", padding: "8px 16px 8px 12px" }}
+                            >
+                                <span className='ml-2 text-[14px] flex flex-row gap-1'>Find Jobs  <SquareMousePointer size={20}/></span>
+                            </button></Link>
+
+                            <button
+                                className="bg-darkblue-100 hover:bg-blue-600 text-white font-[600]  flex"
+                                style={{ borderRadius: "20px", padding: "8px 16px 8px 12px" }}
+                                onClick={toggleModal}
+
+                            >
+                                <span className='ml-2 text-[14px] flex flex-row gap-1'>Tags  <Tags size={20}/></span>
+                            </button>
+                            {isOpen && (
+                        <div className="fixed inset-0 flex justify-center items-center z-50">
+                          <div className="absolute inset-0 bg-black opacity-50"></div>
+                          <div className="dataform bg-white sm:bg-red-400 p-8 rounded shadow-md z-50">
+                            <h2 className="text-2xl font-bold mb-4">Select Tags</h2>
+                            <form onSubmit={handleSubmit}>
+                              <div className="mb-4">
+
+                              <div className='flex mb-6'>
+                {/* <span className='flex items-center  mr-3' style={{padding:"6px 12px" ,backgroundColor: "#1e40ad", color: "white", fontSize: "14px" , borderRadius:"16px" }}><ArrowDownNarrowWide size={16}/><span className='ml-2'>Filters</span> </span> */}
+               
+                <div className="flex flex-row flex-wrap gap-4 mainy m-1 mr-2">
+                <span
+                  className="bg-darkblue-100 mr-3 hover:bg-blue-600 text-white font-[600] flex justify-center items-center"
+
+                  style={{ borderRadius: "20px", padding: "0px 16px 0px 12px" }}
+                >
+                  <ArrowDownNarrowWide /> <span className='ml-2  text-[14px]'>Filters</span>
+                </span>
+                  {data.map((item) => (
+                    <div
+                      className=" flex mr-3"
+                      key={item.id}
+                    >
+                      <button
+                        onClick={() => handle(item.id)}
+                        style={{ borderRadius: "16px", padding: "6px 12px" }}
+                        className={`text-[14 px] font-[400] border border-gray-400  ${buttonStates[item.id] ? 'bg-darkblue-100 text-white ' : 'bg-white text-black'}`}
+                      >
+                        {item.title}
+                      </button>
+                    </div>
+                  ))}
+                </div>
+</div>
+
+
+                                
+                              </div>
+                              <div className="text-right">
+                                <button
+                                  className="bg-blue-600 hover:bg-darkblue-200 text-white font-bold py-2 px-4 rounded mr-2"
+                                //   type="submit"
+                                >
+                                  Submit
+                                </button>
+                                <button
+                                  className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded"
+                                  onClick={toggleModal}
+                                >
+                                  Cancel
+                                </button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      )}
+
+
                         </div>
                     </div>
 
@@ -209,8 +364,14 @@ export default function Discussions() {
                     <div>
                         <div className='dis-stack'>
                             <div className='dis-head flex'>
-                                <h1 className='dis-he'>ALL Questions</h1>
-                                <button className='dis-but' onClick={() => setvisible(true)}>Ask a Questions</button>
+                                <h1 className='main-title text-[2.1rem]'>All Questions</h1>
+                                <button
+                                    className="bg-darkblue-100 hover:bg-blue-600 text-white font-[600]  flex"
+                                    onClick={() => setvisible(true)}
+                                    style={{ borderRadius: "20px", padding: "8px 16px 8px 12px" }}
+                                >
+                                  <FaPlus className='plus-icon' />  <span className='ml-2 text-[14px]'>Ask a Question</span>
+                                </button>
 
                                 <Model isOpen={visible} onRequestClose={() => setvisible(true)}
                                     style={{
@@ -230,43 +391,43 @@ export default function Discussions() {
                                     }}
                                 >
 
-<form className='formpaper'>
+                                    <form className='formpaper'>
 
-<div className='paperbut'>
-    <button onClick={() => setvisible(false)}>
-        X
-    </button>
-</div>
-<div className='research-intake'>
+                                        <div className='paperbut'>
+                                            <button onClick={() => setvisible(false)}>
+                                                X
+                                            </button>
+                                        </div>
+                                        <div className='research-intake'>
 
 
-<div className='dis-form-labe'>
-<h1 className='dis-he' style={{marginTop:"-50px" , color:"white" , fontSize:"24px" }}> Ask a Question</h1>
-    </div>
-    <div className='dis-form-labe'>
-        <label>Question Title : </label>
-        <input type='text' className=' w-full' style={{height:"40px" , margin:"5px 0" , color:"black"}}/>
-        <p style={{fontSize:"12px" , color:"#f4f6f8"}}>Be specific and imagine you're asking a question to another person.</p>
-    </div>
+                                            <div className='dis-form-labe'>
+                                                <h1 className='dis-he' style={{ marginTop: "-50px", color: "white", fontSize: "24px" }}> Ask a Question</h1>
+                                            </div>
+                                            <div className='dis-form-labe'>
+                                                <label>Question Title : </label>
+                                                <input type='text' className=' w-full' style={{ height: "40px", margin: "5px 0", color: "black" }} />
+                                                <p style={{ fontSize: "12px", color: "#f4f6f8" }}>Be specific and imagine you're asking a question to another person.</p>
+                                            </div>
 
-    <div className='dis-form-labe'>
-        <label >Detail Explaination of Your Problem: </label>
-        <textarea type="text" className='w-full' style={{height:"150px" , margin:"5px 0" , color:"black"}}></textarea>
-        <p style={{fontSize:"12px" , color:"#f4f6f8"}}>Introduces the problem and expand on what you put in the title. Minimum 20 characters.</p>
-    </div>
+                                            <div className='dis-form-labe'>
+                                                <label >Detail Explaination of Your Problem: </label>
+                                                <textarea type="text" className='w-full' style={{ height: "150px", margin: "5px 0", color: "black" }}></textarea>
+                                                <p style={{ fontSize: "12px", color: "#f4f6f8" }}>Introduces the problem and expand on what you put in the title. Minimum 20 characters.</p>
+                                            </div>
 
-    <div className='dis-form-labe'>
-        <label>Tags: </label>
-        <input type='text' className='w-full' style={{height:"30px" , margin:"5px 0" , color:"black"}}/>
-        <p style={{fontSize:"12px" , color:"#f4f6f8"}}>Add up to 3 tags to describe what your question is about. You need to press enter to add a tag.</p>
-    </div>
+                                            <div className='dis-form-labe'>
+                                                <label>Tags: </label>
+                                                <input type='text' className='w-full' style={{ height: "30px", margin: "5px 0", color: "black" }} />
+                                                <p style={{ fontSize: "12px", color: "#f4f6f8" }}>Add up to 3 tags to describe what your question is about. You need to press enter to add a tag.</p>
+                                            </div>
 
-</div>
+                                        </div>
 
-<div style={{ position:"relative"}}>
-    <button className='research-submit'>Submit</button>
-</div>
-</form>
+                                        <div style={{ position: "relative" }}>
+                                            <button className='research-submit'>Submit</button>
+                                        </div>
+                                    </form>
 
 
                                 </Model>
@@ -274,15 +435,19 @@ export default function Discussions() {
                             </div>
 
                             <div className='dis-search'>
-                                <div className="flex min-h-[56px] items-center gap-4 rounded-[5px] px-4 bg-white border border-gray-300" style={{ borderRadius: "5px", fontSize: "20px", padding: "5px" }}>
+                                <div className="flex min-h-[56px] items-center gap-4 rounded-[5px] px-8  border border-gray-300" style={{ borderRadius: "5px", fontSize: "20px", padding: "5px", backgroundColor:"#f1f5f9"}}>
 
-                                    <Search size={24} />
+
                                     <input
-                                        className="dis-se flex h-10 w-full rounded-md border-none px-3 py-2 text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
+                                        className="dis-se flex h-10 w-full rounded-md border-none px-8 py-2 text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 text-center my-1 bg-white font-medium"
                                         placeholder="Search for Questions"
                                         type="text"
-                                        value=""
+                                        style={{backgroundColor:""}}
                                     />
+                                    <div className='pr-6'>
+
+                                        <Search size={24} />
+                                    </div>
                                 </div>
                                 {/* <input className='dis-sea' type='text' placeholder='Search for Question'/> */}
                             </div>
@@ -291,15 +456,15 @@ export default function Discussions() {
 
                                 {
                                     questions.map((item) => (
-                                        <div className='bg-white ' style={{ borderRadius: "5px", marginBottom: "30px" }} key={item.id}>
+                                        <div className=' transform transition-transform duration-300 hover:scale-105' style={{ borderRadius: "5px", marginBottom: "30px" ,backgroundColor:"#f1f5f9" }} key={item.id}>
                                             <div className='dis-card' style={{ borderRadius: "5px", marginBottom: "30px" }}>
                                                 <div className=''>
-                                                    <h2 className='dis-card-head'>{item.title}</h2>
+                                                    <h2 className='dis-card-head pb-1'>{item.title}</h2>
                                                 </div>
 
                                                 <div className='dis-card-tag'>
-                                                    <div className='dis-card-tag1'>NEXTJS</div>
-                                                    <div className='dis-card-tag1'>SSR</div>
+                                                    <div className='dis-card-tag1 text-center'>NEXTJS</div>
+                                                    <div className='dis-card-tag1 text-center'>SSR</div>
                                                 </div>
 
                                                 <div className='flex' style={{ justifyContent: "space-between", marginTop: "10px" }}>

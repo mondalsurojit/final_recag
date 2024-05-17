@@ -3,7 +3,7 @@ import React from 'react'
 export const GridView = (data) => {
     const {title,time,subtitle,project,prerequisite,link,image} = data;
   return (
-    <div className='grid-view'>
+    <div className='grid-view transform transition-transform duration-300 hover:scale-105'>
         <div className="gridview-top-content">
             <h2 className="grid-title">{title}</h2>
             <img src={image} alt="images" width={50} />

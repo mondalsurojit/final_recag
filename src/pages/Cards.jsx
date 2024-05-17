@@ -6,7 +6,7 @@ import { GoTriangleUp } from "react-icons/go";
 export const Cards = (data) => {
     const {image,title,desc1,time,use,size,desc3,rating,rating_title} = data;
   return (
-    <div className='card'>
+    <div className='card transform transition-transform duration-300 hover:scale-105'>
         <figure>
             <img src={image} alt="images" />
         </figure>

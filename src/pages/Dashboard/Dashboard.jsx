@@ -50,7 +50,7 @@ function Dashboard() {
     
 
     <Mobilemenu/>
-    <div className="flex  m-8  ">
+    <div className="flex " style={{margin:"1.5rem 2rem 2rem 1.5rem"}}>
     <Simplemenu style={{color:"#fff"}}/>
     
         

@@ -47,7 +47,7 @@ import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
-import {  Paper } from '@mui/material';
+import { Paper } from '@mui/material';
 import Basicstep1 from './steps/Basicstep1';
 import Step2 from './steps/Step2';
 import Step3 from './steps/Step3';
@@ -75,24 +75,24 @@ export default function Learn() {
         setCurrentStep(currentStep - 1);
     };
 
-    const getcurrentstep = (currentStep) =>{
+    const getcurrentstep = (currentStep) => {
 
         switch (currentStep) {
-            case 0: return <Basicstep1 handleclick={handleclick}/>;
+            case 0: return <Basicstep1 handleclick={handleclick} />;
 
-            case 1: return <Step2 handleclick={handleclick} handleprevious={handleprevious}/>;
+            case 1: return <Step2 handleclick={handleclick} handleprevious={handleprevious} />;
 
-            case 2: return <Step3 handleclick={handleclick} handleprevious={handleprevious}/>;
+            case 2: return <Step3 handleclick={handleclick} handleprevious={handleprevious} />;
 
 
             // case 3: return <Step4 handleclick={handleclick} handleprevious={handleprevious}/>;
 
-            case 3: return <Step5 handleclick={handleclick} handleprevious={handleprevious}/>
-            break;
+            case 3: return <Step5 handleclick={handleclick} handleprevious={handleprevious} />
+                break;
 
-            default: return <Basicstep1 handleclick={handleclick}/>;
+            default: return <Basicstep1 handleclick={handleclick} />;
 
-        
+
         }
     }
     const learnData = [
@@ -284,7 +284,7 @@ export default function Learn() {
             <Mobilemenu />
             <div className="flex sm:m-8 m-2">
                 <Simplemenu style={{ color: "#fff" }} />
-                <section className={`learn das`} style={{ overflow: 'scroll', height: "100vh", width: "100vw", backgroundColor: "#f1f5f9", borderRadius: "15px" }}
+                <section className={`learn das`} style={{ overflow: 'scroll', height: "100vh", width: "100vw", backgroundColor: "#f1f5f9", borderRadius: "15px", padding: "1rem 2rem" }}
                 >
                     <div className="container">
                         <div className="learn-section">
@@ -292,10 +292,10 @@ export default function Learn() {
 
 
                                 {/* <!-- BEGIN: Top Bar --> */}
-                                <div className="relative  flex h-[40px] items-center border-b border-slate-200" style={{ marginTop: "-28px", padding: "0 10px", zIndex: "0" }}>
+                                <div className="relative  flex h-[40px] items-center border-b border-slate-200" style={{ marginTop: "-20px", padding: "0 10px", zIndex: "0" }}>
 
                                     {/* <!-- BEGIN: Breadcrumb --> */}
-                                    <div aria-label="breadcrumb" className="flex -intro-x mr-auto hidden sm:flex">
+                                    <div aria-label="breadcrumb" className=" -intro-x mr-auto hidden sm:flex">
                                         <ol className="flex items-center text-theme-1 dark:text-slate-300" >
                                             <li className="">
                                                 <a href="/">Application</a>
@@ -326,10 +326,77 @@ export default function Learn() {
                                     </div>
                                 </div>
 
+
                                 <div className="learn-details">
                                     <div className="learn-content">
                                         <h1 className="main-title">Learn</h1>
                                         <p className="learn-para">Gain the skills you need to do independent data science projects.</p>
+                                        <div className='flex flex-row gap-4' >
+                                            <div>
+                                                {/* <FaPlus className='plus-icon' /> */}
+                                                <button
+                                                    className="bg-darkblue-100 hover:bg-blue-600 text-white font-[600]  flex"
+                                                    onClick={() => setvisible(true)}
+                                                    style={{ borderRadius: "20px", padding: "8px 16px 8px 12px" }}
+                                                >
+                                                    <FaPlus className='plus-icon' /> <span className='ml-2 text-[14px]'>Add Paper</span>
+                                                </button>
+
+
+                                                <Model isOpen={visible} onRequestClose={() => setvisible(false)}
+
+                                                    style={{
+
+
+                                                        content: {
+                                                            background: "white",
+                                                            zIndex: "2",
+                                                            display: "flex",
+                                                            color: "black",
+                                                            width: "1100px",
+                                                            marginLeft: "200px"
+
+                                                        }
+                                                    }}
+                                                >
+
+                                                    <form className='formpape'>
+
+                                                        <div className='paperbut'>
+                                                            <button onClick={() => setvisible(false)}>
+                                                                X
+                                                            </button>
+                                                        </div>
+
+
+                                                        <div style={{ marginTop: "70px" }}>
+                                                            <h1 style={{ color: "black", fontSize: "20px", fontWeight: "500", marginLeft: "30px" }}> Create New Courses </h1>
+                                                            <Box sx={{ width: '100%', marginTop: "30px" }}>
+                                                                <Stepper activeStep={currentStep} alternativeLabel>
+                                                                    {steps.map((label) => (
+                                                                        <Step key={label}>
+                                                                            <StepLabel>{label}</StepLabel>
+                                                                        </Step>
+                                                                    ))}
+                                                                </Stepper>
+                                                            </Box>
+
+                                                            <Box style={{ color: "black" }}>
+                                                                {getcurrentstep(currentStep)}
+                                                            </Box>
+                                                        </div>
+                                                    </form>
+
+                                                </Model>
+
+
+
+                                            </div>
+                                            <div style={{ borderRadius: "20px", padding: "8px 16px 8px 12px" , border:"1px solid black"}}>
+                                                <div className=" text-[14px] font-medium">Your Work</div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                     <div className="datasets-image">
                                         <img src={img1} alt="logo-1" />
@@ -337,69 +404,12 @@ export default function Learn() {
                                 </div>
 
 
-                                <div className='buttons' style={{ padding: "20px" }}>
-                                    <div className="button first" style={{ backgroundColor: " #1e40ad " }}>
-                                        <FaPlus className='plus-icon' />
-                                        <button style={{ color: "white" }} onClick={() => setvisible(true)}>
-                                            <div style={{ color: "white" }}>Add Paper</div>
-                                        </button>
 
-                                        <Model isOpen={visible} onRequestClose={() => setvisible(false)}
-
-                                            style={{
-
-
-                                                content: {
-                                                    background: "white",
-                                                    zIndex: "2",
-                                                    display: "flex",
-                                                    color: "black",
-                                                    width: "1100px",
-                                                    marginLeft: "200px"
-
-                                                }
-                                            }}
-                                        >
-
-                                            <form className='formpape'>
-
-                                                <div className='paperbut'>
-                                                    <button onClick={() => setvisible(false)}>
-                                                        X
-                                                    </button>
-                                                </div>
-
-
-                                                <div style={{ marginTop: "70px" }}>
-                                                    <h1 style={{ color: "black", fontSize: "20px", fontWeight: "500", marginLeft: "30px" }}> Create New Courses </h1>
-                                                    <Box sx={{ width: '100%', marginTop: "30px" }}>
-                                                        <Stepper activeStep={currentStep} alternativeLabel>
-                                                            {steps.map((label) => (
-                                                                <Step key={label}>
-                                                                    <StepLabel>{label}</StepLabel>
-                                                                </Step>
-                                                            ))}
-                                                        </Stepper>
-                                                    </Box>
-
-                                                    <Box  style={{color:"black"}}>
-                                                        {getcurrentstep(currentStep)}
-                                                    </Box>
-                                                </div>
-                                            </form>
-
-                                        </Model>
-
-
-
-                                    </div>
-                                    <div className="button second">
-                                        <div className="button-content">Your Work</div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
+
+
                     <div className='container'>
                         <div className="trending-section">
                             <div className="top-trending top-learning">
@@ -487,14 +497,14 @@ export default function Learn() {
 
 
 
-                    <div style={{ marginBottom: "20px", justifyContent: "space-between", margin: "10px" }} className='flex'>
+                    <div style={{ marginBottom: "2rem", justifyContent: "space-between", margin: "10px", overflowX: "auto" }} className='flex  codebutton '>
 
                         {
                             utubecard.map((item) => (
-                                <div className='course-card' key={item.id}>
+                                <div className='course-card transform transition-transform duration-300 hover:scale-105' key={item.id}>
                                     <div className='course-video'>
                                         <iframe
-                                            width="290"
+                                            width="252"
                                             height="150"
                                             src={item.video}
                                             title="YouTube video player"
