@@ -47,7 +47,7 @@ section.team-section{
     width: 100%;
     height: 12rem;
 }
-.grid{
+.grid-team{
     display: grid;
     grid-template-columns: repeat(4,1fr);
     gap: 2rem;
@@ -78,14 +78,14 @@ section.team-section{
 
 /* css for responsiveness */
 @media screen and (max-width:840px){
-   .grid{
+   .grid-team{
     grid-template-columns: repeat(3,1fr);
     row-gap:4rem;
    }
 }
 
 @media screen and (max-width:650px){
-    .grid{
+    .grid-team{
     grid-template-columns: repeat(2,1fr);
    }
 }
@@ -94,7 +94,7 @@ section.team-section{
     .team-title>h3.main{
         font-size:var(--font-size-explore);
     }
-    .grid{
+    .grid-team{
         grid-template-columns: 1fr;
     }
     .member{

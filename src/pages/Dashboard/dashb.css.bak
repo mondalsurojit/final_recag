@@ -1,0 +1,23 @@
+.ml-3{
+    margin-left: 8px;
+}
+
+.text-lg{
+    line-height: 21px;
+}
+
+.side-nav__divider{
+    width:100%;
+    height: 1px;
+    background: white;
+    z-index: 10;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+    
+}
+
+.das::-webkit-scrollbar {
+    display: none;
+  }

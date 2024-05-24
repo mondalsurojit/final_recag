@@ -20,6 +20,9 @@ import Dashboard from './pages/Dashboard/Dashboard.jsx';
 import Community from './pages/Discussions Page/Community.jsx';
 
 import Team from './pages/Team/Team.jsx';
+import TrendingDataset from './pages/Datasetpage/TrendingDataset.jsx';
+import TopRequiredDataset from './pages/Datasetpage/TopRequiredDataset.jsx';
+import TopRequiredModel from './pages/Modelpage/TopRequiredModel.jsx';
 
 function App() {
   return (
@@ -28,13 +31,18 @@ function App() {
 
         <BrowserRouter>
           <Routes>
-            {/* <div className="App w-[100%] "> */}
-            {/* <Home/> */}
+            
             <Route path="/" element={<Home />} />
-            {/* </div> */}
+          
             <Route path='/code' element={<Code />} />
             <Route path="/dataset" element={<Datasets />} />
+            <Route path="/dataset/trending-dataset" element={<TrendingDataset/>} />
+            <Route path='/dataset/toptrending-dataset' element={<TopRequiredDataset/>}/>
+
             <Route path='/model' element={<Models />} />
+            <Route path='/model/trending-model' element={<TopRequiredModel/>}/>
+
+
             <Route path='/courses' element={<Learn />} />
             <Route path='/competition' element={<Competitions />} />
             <Route path='/dashboard' element={<Dashboard />} />

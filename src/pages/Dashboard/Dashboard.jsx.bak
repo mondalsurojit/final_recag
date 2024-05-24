@@ -56,7 +56,6 @@ import Breadcrumb from '../../components/breadcrumb.component.jsx'
 
 function Dashboard() {
     const [isSearchPopupVisible, setIsSearchPopupVisible] = useState(false);
-
     const [isNotificationPopupVisible, setIsNotificationPopupVisible] = useState(false);
     const [isProfilePopupVisible, setIsProfilePopupVisible] = useState(false);
 
@@ -64,7 +63,6 @@ function Dashboard() {
         closeOtherPopups();
         setIsSearchPopupVisible(!isSearchPopupVisible);
     };
-
 
     const toggleNotificationPopup = () => {
         closeOtherPopups();
@@ -77,6 +75,7 @@ function Dashboard() {
     };
 
     const closeOtherPopups = () => {
+        setIsSearchPopupVisible(false);
         setIsNotificationPopupVisible(false);
         setIsProfilePopupVisible(false);
     }
@@ -86,23 +85,20 @@ function Dashboard() {
         <div>
             {/* style={{padding:"20px 30px"}} */}
 
-            <Mobilemenu className="block sm:hidden" />
-
-            <div className=" flex sm:m-8 m-2">
+            <Mobilemenu />
+            <div className="mt-[4.7rem] flex md:mt-0">
                 <Simplemenu style={{ color: "#fff" }} />
 
 
                 {/* <!-- BEGIN: Content --> */}
-                <div className="das md:max-w-auto min-h-screen min-w-0 max-w-full flex-1 rounded-[30px] bg-slate-100 px-4 pb-10 before:block before:h-px before:w-full before:content-[''] dark:bg-darkmode-700 md:px-[22px]" style={{ overflow: 'scroll', overflowX: "hidden", width: "100vw", backgroundColor: "#f1f5f9", borderRadius: "15px" }}>
-
-                
+                <div className="das md:max-w-auto min-h-screen min-w-0 max-w-full flex-1 rounded-[30px] bg-slate-100 px-4 pb-10 before:block before:h-px before:w-full before:content-[''] dark:bg-darkmode-700 md:px-[22px]" style={{ overflowX: "hidden", overflowY: "scroll", height: "100%", margin: "20px 30px 20px 0" }}>
                     {/* <!-- BEGIN: Top Bar --> */}
-                    <div className="relative z-[51] flex h-[67px] items-center border-b border-slate-200">
+                    <div className="relative z-[51] flex h-[67px] items-center border-b border-slate-200" style={{ zIndex: "0" }}>
 
-                        <Breadcrumb />
+                      <Breadcrumb/>
 
-                         {/* <!-- BEGIN: Search --> */}
-                         <div className="search intro-x relative mr-3 sm:mr-6" style={{ backgroundColor: "transparent" }}>
+                        {/* <!-- BEGIN: Search --> */}
+                        <div className="search intro-x relative mr-3 sm:mr-6" style={{ backgroundColor: "transparent" }}>
                             <div className="relative hidden sm:block" >
                                 <input data-tw-merge="" type="text" placeholder="Search..." className="disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:bg-darkmode-800/50 dark:disabled:border-transparent [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 [&[readonly]]:dark:border-transparent ease-in-out text-sm placeholder:text-slate-400/90 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-opacity-40 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 group-[.form-inline]:flex-1 group-[.input-group]:rounded-none group-[.input-group]:[&:not(:first-child)]:border-l-transparent group-[.input-group]:first:rounded-l group-[.input-group]:last:rounded-r group-[.input-group]:z-10 w-56 rounded-full border-transparent bg-slate-300/50 pr-8 shadow-none transition-[width] duration-300 focus:w-72 focus:border-transparent dark:bg-darkmode-400/70" onClick={toggleSearchPopup} />
                                 <Search data-tw-merge="" data-lucide="search" className="stroke-1.5 w-5 h-5 absolute inset-y-0 right-0 my-auto mr-3 text-slate-600 dark:text-slate-500" />
@@ -130,12 +126,11 @@ function Dashboard() {
                     </div>
                     {/* <!-- END: Top Bar --> */}
 
-                    
-                    <div className="grid grid-cols-12 gap-6">
+                    <div className="grid grid-cols-12 gap-6" style={{ zIndex: "0" }}>
                         <div className="col-span-12 2xl:col-span-9">
                             <div className="grid grid-cols-12 gap-6">
                                 {/* <!-- BEGIN: General Report --> */}
-                                <div className="col-span-12 mt-8" >
+                                <div className="col-span-12 mt-8" style={{ zIndex: "0" }}>
                                     <div className="intro-y flex h-10 items-center">
                                         <h2 className="mr-5 truncate text-lg font-medium">General Report</h2>
                                         <a className="ml-auto flex items-center text-primary" href="/">
@@ -707,7 +702,6 @@ function Dashboard() {
                 {/* <!-- END: Content --> */}
             </div>
         </div>
-
 
 
 
